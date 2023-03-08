@@ -1,4 +1,4 @@
 package com.project.service;
 
-public interface ZadanieServiceImpl {
+public class ZadanieServiceImpl {
 }
