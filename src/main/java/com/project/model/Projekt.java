@@ -31,19 +31,16 @@ public class Projekt {
     @Column(nullable = true, length = 1000)
     private String opis;
 
-    @NotBlank(message = "Pole dataczas_utworzenia nie może być puste!")
     @Column(nullable = false)
     private Timestamp dataczas_utworzenia;
 
     @Column(nullable = true)
     private Date data_oddania;
 
-//    @NotBlank(message = "Pole dataczas_utworzenia nie może być puste!")
 //    @CreationTimestamp
 //    @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
 //    private LocalDateTime dataCzasUtworzenia;
 
-    @NotBlank(message = "Pole dataczas_modyfikacji nie może być puste!")
     @UpdateTimestamp
     @Column(name = "dataczas_modyfikacji", nullable = false)
     private LocalDateTime dataCzasModyfikacji;
