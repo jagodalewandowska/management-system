@@ -9,7 +9,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
-import java.sql.Timestamp;
+//import java.sql.Timestamp;
+//import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -31,15 +32,15 @@ public class Projekt {
     @Column(nullable = true, length = 1000)
     private String opis;
 
-    @Column(nullable = false)
-    private Timestamp dataczas_utworzenia;
+//    @Column(nullable = false)
+//    private Timestamp dataczas_utworzenia;
 
     @Column(nullable = true)
     private Date data_oddania;
 
-//    @CreationTimestamp
-//    @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
-//    private LocalDateTime dataCzasUtworzenia;
+    @CreationTimestamp
+    @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
+    private LocalDateTime dataCzasUtworzenia;
 
     @UpdateTimestamp
     @Column(name = "dataczas_modyfikacji", nullable = false)
@@ -87,13 +88,13 @@ public class Projekt {
         this.opis = opis;
     }
 
-    public Timestamp getDataczas_utworzenia() {
-        return dataczas_utworzenia;
-    }
-
-    public void setDataczas_utworzenia(Timestamp dataczas_utworzenia) {
-        this.dataczas_utworzenia = dataczas_utworzenia;
-    }
+//    public Timestamp getDataczas_utworzenia() {
+//        return dataczas_utworzenia;
+//    }
+//
+//    public void setDataczas_utworzenia(Timestamp dataczas_utworzenia) {
+//        this.dataczas_utworzenia = dataczas_utworzenia;
+//    }
 
     public Date getData_oddania() {
         return data_oddania;
@@ -103,13 +104,13 @@ public class Projekt {
         this.data_oddania = data_oddania;
     }
 
-//    public LocalDateTime getDataCzasUtworzenia() {
-//        return dataCzasUtworzenia;
-//    }
-//
-//    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
-//        this.dataCzasUtworzenia = dataCzasUtworzenia;
-//    }
+    public LocalDateTime getDataCzasUtworzenia() {
+        return dataCzasUtworzenia;
+    }
+
+    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
+        this.dataCzasUtworzenia = dataCzasUtworzenia;
+    }
 
     public LocalDateTime getDataCzasModyfikacji() {
         return dataCzasModyfikacji;
@@ -131,8 +132,9 @@ public class Projekt {
 
     public Projekt() {}
 
-    public Projekt(String nazwa, String opis) {
+    public Projekt(String nazwa, String opis, Date data_oddania) {
         this.nazwa = nazwa;
         this.opis = opis;
+        this.data_oddania = getData_oddania();
     }
 }
