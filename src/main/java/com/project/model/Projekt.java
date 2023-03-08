@@ -38,10 +38,10 @@ public class Projekt {
     @Column(nullable = true)
     private Date data_oddania;
 
-    @NotBlank(message = "Pole dataczas_utworzenia nie może być puste!")
-    @CreationTimestamp
-    @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
-    private LocalDateTime dataCzasUtworzenia;
+//    @NotBlank(message = "Pole dataczas_utworzenia nie może być puste!")
+//    @CreationTimestamp
+//    @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
+//    private LocalDateTime dataCzasUtworzenia;
 
     @NotBlank(message = "Pole dataczas_modyfikacji nie może być puste!")
     @UpdateTimestamp
@@ -106,13 +106,13 @@ public class Projekt {
         this.data_oddania = data_oddania;
     }
 
-    public LocalDateTime getDataCzasUtworzenia() {
-        return dataCzasUtworzenia;
-    }
-
-    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
-        this.dataCzasUtworzenia = dataCzasUtworzenia;
-    }
+//    public LocalDateTime getDataCzasUtworzenia() {
+//        return dataCzasUtworzenia;
+//    }
+//
+//    public void setDataCzasUtworzenia(LocalDateTime dataCzasUtworzenia) {
+//        this.dataCzasUtworzenia = dataCzasUtworzenia;
+//    }
 
     public LocalDateTime getDataCzasModyfikacji() {
         return dataCzasModyfikacji;
