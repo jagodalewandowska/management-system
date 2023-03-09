@@ -25,8 +25,13 @@ public class ProjektServiceImpl implements ProjektService {
     }
     @Override
     public Projekt setProjekt(Projekt projekt) {
-        //TODO
-        return null;
+        Projekt projektToSave = null;
+        if(projekt.getProjektId()!=null) {
+            projektToSave = projekt;
+        }else {
+            projektToSave = new Projekt(projekt.getNazwa(),projekt.getOpis(),projekt.getData_oddania());
+        }
+        return  projektRepository.save(projektToSave);
     }
     @Override
     @Transactional
@@ -38,13 +43,11 @@ public class ProjektServiceImpl implements ProjektService {
     }
     @Override
     public Page<Projekt> getProjekty(Pageable pageable) {
-        //TODO
-        return null;
+        return projektRepository.findAll(pageable);
     }
     @Override
     public Page<Projekt> searchByNazwa(String nazwa, Pageable pageable) {
-        //TODO
-        return null;
+        return projektRepository.findByNazwaContainingIgnoreCase(nazwa, pageable);
     }
 }
 

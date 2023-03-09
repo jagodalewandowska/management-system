@@ -135,6 +135,15 @@ public class Projekt {
     public Projekt(String nazwa, String opis, Date data_oddania) {
         this.nazwa = nazwa;
         this.opis = opis;
-        this.data_oddania = getData_oddania();
+        this.data_oddania = data_oddania;
+    }
+
+    public Projekt(Integer projektId, String nazwa, String opis, LocalDateTime dataCzasUtworzenia, Date data_oddania) {
+        super();
+        this.projektId = projektId;
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.dataCzasUtworzenia = dataCzasUtworzenia;
+        this.data_oddania = data_oddania;
     }
 }
