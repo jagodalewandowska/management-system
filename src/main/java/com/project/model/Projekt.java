@@ -10,7 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Date;
 //import java.sql.Timestamp;
-//import java.time.LocalDate;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -35,8 +35,8 @@ public class Projekt {
 //    @Column(nullable = false)
 //    private Timestamp dataczas_utworzenia;
 
-    @Column(nullable = true)
-    private Date data_oddania;
+    @Column(name = "dataOddania")
+    private LocalDate dataOddania;
 
     @CreationTimestamp
     @Column(name = "dataczas_utworzenia", nullable = false, updatable = false)
@@ -96,12 +96,13 @@ public class Projekt {
 //        this.dataczas_utworzenia = dataczas_utworzenia;
 //    }
 
-    public Date getData_oddania() {
-        return data_oddania;
+
+    public LocalDate getDataOddania() {
+        return dataOddania;
     }
 
-    public void setData_oddania(Date data_oddania) {
-        this.data_oddania = data_oddania;
+    public void setDataOddania(LocalDate dataOddania) {
+        this.dataOddania = dataOddania;
     }
 
     public LocalDateTime getDataCzasUtworzenia() {
@@ -132,18 +133,18 @@ public class Projekt {
 
     public Projekt() {}
 
-    public Projekt(String nazwa, String opis, Date data_oddania) {
+    public Projekt(String nazwa, String opis, LocalDate dataOddania) {
         this.nazwa = nazwa;
         this.opis = opis;
-        this.data_oddania = data_oddania;
+        this.dataOddania = dataOddania;
     }
 
-    public Projekt(Integer projektId, String nazwa, String opis, LocalDateTime dataCzasUtworzenia, Date data_oddania) {
+    public Projekt(Integer projektId, String nazwa, String opis, LocalDateTime dataCzasUtworzenia, LocalDate dataOddania) {
         super();
         this.projektId = projektId;
         this.nazwa = nazwa;
         this.opis = opis;
         this.dataCzasUtworzenia = dataCzasUtworzenia;
-        this.data_oddania = data_oddania;
+        this.dataOddania = dataOddania;
     }
 }

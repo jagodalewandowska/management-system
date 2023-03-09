@@ -29,7 +29,7 @@ public class ProjektServiceImpl implements ProjektService {
         if(projekt.getProjektId()!=null) {
             projektToSave = projekt;
         }else {
-            projektToSave = new Projekt(projekt.getNazwa(),projekt.getOpis(),projekt.getData_oddania());
+            projektToSave = new Projekt(projekt.getNazwa(),projekt.getOpis(),projekt.getDataOddania());
         }
         return  projektRepository.save(projektToSave);
     }
