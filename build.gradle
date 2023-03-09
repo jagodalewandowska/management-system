@@ -23,6 +23,17 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
+compileJava {
+	options.encoding = 'UTF-8'
+}
+
+compileTestJava{
+	options.encoding = 'UTF-8'
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
+	testLogging {
+		showStandardStreams = true //ustawia drukowanie komunikatów w konsoli
+	}
 }
