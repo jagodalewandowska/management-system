@@ -14,8 +14,8 @@
 4. Testy (podpunkt 4)
     
 ### Podsumowanie:
-|  |  **Jagoda** |  **Monika** |  **Błażej**
-| --- | --- | --- | --- |
-|  **Kto co zrealizował?** | ... | ... | ... |
-|  **Co zamierza zrealizować?** | ... | ... | ... |
-|  **Co się nie udało?** | ... | ... | ... |
+|  |  **Jagoda** |  **Monika** |  **Błażej** | **Maciej** |
+| --- | --- | --- | --- | --- |
+|  **Kto co zrealizował?** | backend | testowanie | testowanie | frontend |
+|  **Co zamierza zrealizować?** | ... | ... | ... | ... |
+|  **Co się nie udało?** | ... | ... | ... | ... |
