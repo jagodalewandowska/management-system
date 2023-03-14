@@ -15,11 +15,10 @@ import com.project.service.ProjektService;
 @Controller
 public class ProjectController {
     private ProjektService projektService;
-    //@Autowired – przy jednym konstruktorze wstrzykiwanie jest zadaniem domyślnym, adnotacji nie jest potrzebna
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
-    @GetMapping("/projektList") //np. http://localhost:8081/projektList?page=0&size=10&sort=dataCzasModyfikacji,desc
+    @GetMapping("/projektList")
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "projektList";
@@ -32,19 +31,18 @@ public class ProjectController {
             Projekt projekt = new Projekt();
             model.addAttribute("projekt", projekt);
         }
-        return "projektEdit";
+        return "index";
     }
     @PostMapping(path = "/projektEdit")
     public String projektEditSave(@ModelAttribute @Valid Projekt projekt, BindingResult bindingResult) {
-//parametr BindingResult powinien wystąpić zaraz za parametrem opatrzonym adnotacją @Valid
         if (bindingResult.hasErrors()) {
-            return "projektEdit";
+            return "index";
         }
         try {
             projekt = projektService.setProjekt(projekt);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
-            return "projektEdit";
+            return "index";
         }
         return "redirect:/projektList";
     }
