@@ -1,27 +1,19 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Zadanie {
     private Integer zadanieId;
-
-    @NotBlank(message = "Pole nazwa nie może być puste!")
-    @Size(min = 3, max = 50, message = "Nazwa musi zawierać od {min} do {max} znaków!")
     private String nazwa;
-
-    private int kolejnosc;
-
+    private Integer kolejnosc;
     private String opis;
-
-    @NotBlank(message = "Pole dataczas_dodania nie może być puste!")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Timestamp dataczas_dodania;
 
-    @JsonIgnoreProperties({"projekt"})
     private Projekt projekt;
 
     public Integer getZadanieId() {

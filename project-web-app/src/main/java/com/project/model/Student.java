@@ -1,34 +1,16 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
     private Integer studentId;
-
-    @NotBlank(message = "Pole imię nie może być puste!")
-    @Size(min = 3, max = 50, message = "Imię musi zawierać od {min} do {max} znaków!")
     private String imie;
-
-    @NotBlank(message = "Pole nazwisko nie może być puste!")
-    @Size(min = 3, max = 100, message = "Nazwisko musi zawierać od {min} do {max} znaków!")
     private String nazwisko;
-
-    @NotBlank(message = "Pole nr_indeksu nie może być puste!")
     private String nrIndeksu;
-
-    @NotBlank(message = "Pole email nie może być puste!")
-    @Size(min = 3, max = 50, message = "Email musi zawierać od {min} do {max} znaków!")
     private String email;
-
-    @NotBlank(message = "Pole stacjonarny nie może być puste!")
-    private boolean stacjonarny;
-
-    @JsonIgnoreProperties({"projekt"})
+    private Boolean stacjonarny;
     private Set<Projekt> projekty;
 
     public Set<Projekt> getProjekty() {
