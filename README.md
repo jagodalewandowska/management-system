@@ -11,9 +11,10 @@ APLIKACJA DO ZARZĄDZANIA PROJEKTAMI
 4. Utworzony plik tekstowy application.properties w katalogu resources
 5. Dodany ProjectController
 6. Dodany przykładowy szablon ekranu edycji projektu
+7. Zaimplementuj pozostałe klasy – ZadanieServiceImpl i StudentServiceImpl.
 
 ### TODO
-1. Zaimplementuj pozostałe klasy – ZadanieServiceImpl i StudentServiceImpl.
+1. Naprawić index.html
 
 ## Back-End
 ### Zrobione:
