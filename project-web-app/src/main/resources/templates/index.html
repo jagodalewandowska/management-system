@@ -9,14 +9,17 @@
 <div class="root" th:with="isDelete=${#strings.equalsIgnoreCase(param.delete,'true')}">
     <form action="#" th:action="@{/projektEdit}" th:object="${projekt}" method="POST"
           th:with="akcja=*{projektId} ? (${isDelete}?'delete':'update') :'create', opis=*{projektId} ?
-(${isDelete}?'Usuń':'Aktualizuj') : 'Utwórz'" autocomplete="off">
+ (${isDelete}?'Usuń':'Aktualizuj') : 'Utwórz'" autocomplete="off">
+
         <h1 th:text="${opis} + ' projekt'">Edytuj projekt</h1>
+
         <div class="err" th:if="${#fields.hasErrors('*')}">
             BŁĘDY:
             <ul>
                 <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
             </ul>
         </div>
+
         <div class="container">
             <div class="btns-panel">
                 <input class="btn" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}" />
