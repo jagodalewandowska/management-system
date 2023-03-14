@@ -80,3 +80,30 @@
 2023-03-14 17:05:18.511 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11500 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
 2023-03-14 17:05:18.514 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
 2023-03-14 17:05:21.573 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 3.986 seconds (process running for 6.933)
+2023-03-14 17:20:06.607 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api/projekty
+2023-03-14 17:20:11.521 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api/projekty
+2023-03-14 17:20:12.748 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-14 17:21:05.793 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-14 17:28:43.402 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 3228 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-14 17:28:43.404 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-14 17:28:46.426 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 3.927 seconds (process running for 5.642)
+2023-03-14 17:29:37.617 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api//api/projekty
+2023-03-14 17:33:42.455 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 8980 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-14 17:33:42.458 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-14 17:33:45.593 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.095 seconds (process running for 6.01)
+2023-03-14 17:34:26.084 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080//api/projekty
+2023-03-14 17:34:26.454 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.setProjekt(51) - REQUEST (location) -> GET http://localhost:8080/api/projekty/5
+2023-03-14 17:34:26.717 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-14 18:01:31.840 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 1756 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-14 18:01:31.843 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-14 18:01:35.765 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 5.192 seconds (process running for 7.501)
+2023-03-14 18:03:41.254 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.setProjekt(46) - REQUEST -> POST http://localhost:8080//api/projekty
+2023-03-14 18:03:53.872 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.setProjekt(46) - REQUEST -> POST http://localhost:8080//api/projekty
+2023-03-14 18:03:56.506 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.setProjekt(46) - REQUEST -> POST http://localhost:8080//api/projekty
+2023-03-14 18:04:04.468 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 8708 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-14 18:04:04.470 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-14 18:04:07.470 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.059 seconds (process running for 5.415)
+2023-03-14 18:04:17.789 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api/projekty
+2023-03-14 18:04:50.347 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api/projekty
+2023-03-14 18:04:50.537 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.setProjekt(51) - REQUEST (location) -> GET http://localhost:8080/api/projekty/6
+2023-03-14 18:04:50.844 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
