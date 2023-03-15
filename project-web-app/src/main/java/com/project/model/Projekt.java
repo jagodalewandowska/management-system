@@ -108,6 +108,13 @@ public class Projekt {
         this.dataOddania = dataOddania;
     }
 
+    public Projekt(Integer projektId, String nazwa, String opis, LocalDate dataOddania) {
+        this.projektId = projektId;
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.dataOddania = dataOddania;
+    }
+
     public Projekt(Integer projektId, String nazwa, String opis, LocalDateTime dataCzasUtworzenia, LocalDate dataOddania) {
         super();
         this.projektId = projektId;

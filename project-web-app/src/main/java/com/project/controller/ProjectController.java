@@ -31,18 +31,18 @@ public class ProjectController {
             Projekt projekt = new Projekt();
             model.addAttribute("projekt", projekt);
         }
-        return "index";
+        return "projektEdit";
     }
     @PostMapping(path = "/projektEdit")
     public String projektEditSave(@ModelAttribute @Valid Projekt projekt, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "index";
+            return "projektEdit";
         }
         try {
             projekt = projektService.setProjekt(projekt);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
-            return "index";
+            return "projektEdit";
         }
         return "redirect:/projektList";
     }
