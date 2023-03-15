@@ -1,5 +1,25 @@
 # Programowanie zwinne
 
+## Lab 3
+
+### Zrobione
+1. Aktualizacja nazw index.html
+2. Dodać css do projektList
+
+### TODO
+1. Przydzielić zadania?
+2. Dodać studentEdit, zadanieEdit + css
+3. Dodać studentList, zadanieList + css
+4. Dodać css do projektEdit.
+
+|  | **Jagoda**                                         | **Monika**                           | **Błażej**                           | **Maciej**          |
+| --- |----------------------------------------------------|--------------------------------------|--------------------------------------|---------------------|
+|  **Kto co zrealizował?** | projectList, projectEdit + css, przydzielane zadań | Dodać studentEdit, studentList + css | Dodać zadanieList, zadanieEdit + css | Przydzielanie zadań |
+|  **Co zamierza zrealizować?** | ...                                                | ...                                  | ...                                  | ...                 |
+|  **Co się nie udało?** | ...                                                | ...                                  | ...                                  | ...                 |
+
+-----
+
 ## Lab 2
 APLIKACJA DO ZARZĄDZANIA PROJEKTAMI 
 
@@ -13,8 +33,6 @@ APLIKACJA DO ZARZĄDZANIA PROJEKTAMI
 6. Dodany przykładowy szablon ekranu edycji projektu
 7. Zaimplementuj pozostałe klasy – ZadanieServiceImpl i StudentServiceImpl.
 
-### TODO
-1. Naprawić index.html
 
 ## Back-End
 ### Zrobione:
