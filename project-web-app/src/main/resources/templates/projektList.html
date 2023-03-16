@@ -6,13 +6,16 @@
         <title>Lista projektów</title>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><b>Lista projektów</b></li>
+                <li><a th:href="@{/projektList}">Dodaj projekt</a></li>
+                <li><a th:href="@{/studentList}">Lista studentów</a></li>
+                <li><a th:href="@{/zadanieList}">Lista zadań</a></li>
+                <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
+            </ul>
+        </nav>
         <div class="root">
-            <h1>Lista projektów</h1>
-            <div class="btns-panel">
-                <a th:href="@{/projektEdit}" class="button_project">Dodaj projekt</a>
-                <a th:href="@{/studentList}" class="button_project">Lista studentów</a>
-                <a th:href="@{/zadanieList}" class="button_project">Lista zadań</a>
-            </div>
             <div class="container">
                 <table class="styled_table">
                     <thead>
