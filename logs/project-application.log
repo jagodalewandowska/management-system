@@ -281,3 +281,12 @@
 2023-03-16 16:17:53.569 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.45 seconds (process running for 6.011)
 2023-03-16 16:17:54.049 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
 2023-03-16 16:17:55.414 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:10.358 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:13.549 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:15.359 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:19.271 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:23.668 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-16 16:19:41.865 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 10272 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-16 16:19:41.868 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-16 16:19:45.315 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.456 seconds (process running for 7.709)
+2023-03-16 16:19:45.546 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
