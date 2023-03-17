@@ -4,7 +4,7 @@
 
 ### Zrobione
 1. Aktualizacja nazw index.html
-2. Dodać css do projektList
+2. Dodać css do projektList.
 
 ### TODO
 1. Przydzielić zadania?
