@@ -2,15 +2,7 @@
 
 ## Lab 3
 
-### Zrobione
-1. Aktualizacja nazw index.html
-2. Dodać css do projektList.
-
-### TODO
-1. Przydzielić zadania?
-2. Dodać studentEdit, zadanieEdit + css
-3. Dodać studentList, zadanieList + css
-4. Dodać css do projektEdit.
+https://trello.com/b/9RUZ5X2m/22032023
 
 |  | **Jagoda**                                         | **Monika**                           | **Błażej**                           | **Maciej**          |
 | --- |----------------------------------------------------|--------------------------------------|--------------------------------------|---------------------|
