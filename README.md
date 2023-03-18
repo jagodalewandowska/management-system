@@ -14,7 +14,7 @@
 
 |  | **Jagoda**                                         | **Monika**                           | **Błażej**                           | **Maciej**          |
 | --- |----------------------------------------------------|--------------------------------------|--------------------------------------|---------------------|
-|  **Kto co zrealizował?** | projectList css, projectEdit, przydzielane zadań | Dodać studentEdit, studentList | Dodać zadanieList, zadanieEdit | ProjectEdit css |
+|  **Kto co zrealizował?** | projectList css, projectEdit, przydzielane zadań, index "/" | Dodać studentEdit, studentList | Dodać zadanieList, zadanieEdit | ProjectEdit css |
 |  **Co zamierza zrealizować?** | ...                                                | ...                                  | ...                                  | ...                 |
 |  **Co się nie udało?** | ...                                                | ...                                  | ...                                  | ...                 |
 
