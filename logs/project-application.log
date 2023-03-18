@@ -371,3 +371,23 @@
 2023-03-18 13:48:22.642 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 14744 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
 2023-03-18 13:48:22.642 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
 2023-03-18 13:48:24.904 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.887 seconds (process running for 3.908)
+2023-03-18 13:52:25.927 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-18 13:53:04.121 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 19544 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:53:04.121 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:53:06.307 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.893 seconds (process running for 3.787)
+2023-03-18 13:54:06.920 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11312 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:54:06.921 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:54:09.283 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 3.086 seconds (process running for 3.957)
+2023-03-18 13:54:22.198 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 18692 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:54:22.199 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:54:24.454 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.918 seconds (process running for 3.741)
+2023-03-18 13:54:37.465 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 19424 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:54:37.467 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:54:39.966 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 3.212 seconds (process running for 4.038)
+2023-03-18 13:54:48.208 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-18 13:55:02.202 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 3056 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:55:02.203 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:55:04.484 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 3.025 seconds (process running for 4.226)
+2023-03-18 13:55:24.962 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 5020 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-18 13:55:24.963 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-18 13:55:26.884 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.497 seconds (process running for 3.315)
