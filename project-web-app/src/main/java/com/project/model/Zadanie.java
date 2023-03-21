@@ -71,4 +71,23 @@ public class Zadanie {
         this.kolejnosc = kolejnosc;
         this.opis = opis;
     }
+
+    public Zadanie(Integer zadanieId, String nazwa, Integer kolejnosc, String opis, Timestamp dataczas_dodania,
+                   Projekt projekt) {
+        super();
+        this.zadanieId = zadanieId;
+        this.nazwa = nazwa;
+        this.kolejnosc = kolejnosc;
+        this.opis = opis;
+        this.dataczas_dodania = dataczas_dodania;
+        this.projekt = projekt;
+    }
+
+    public Zadanie(Projekt projekt, String nazwa, Integer kolejnosc, String opis) {
+        this.projekt = projekt;
+        this.nazwa = nazwa;
+        this.kolejnosc = kolejnosc;
+        this.opis = opis;
+    }
+
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/list-style.css}" rel="stylesheet" />
+    <title>Lista studentów</title>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><b>Lista projektów</b></li>
+        <li><a th:href="@{/studentEdit}">Dodaj studenta</a></li>
+        <li><a th:href="@{/projektList}">Lista projektów</a></li>
+        <li><a th:href="@{/zadanieList}">Lista zadań</a></li>
+        <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
+    </ul>
+</nav>
+<div class="root">
+    <div class="container">
+        <table class="styled_table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>NrIndeksu</th>
+                <th>Email</th>
+                <th>Stacjonarny</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="student : ${studenci}">
+                <td th:text="${student.studentId}">Id</td>
+                <td th:text="${student.imie}">Imię</td>
+                <td th:text="${student.nazwisko}">Nazwisko</td>
+                <td th:text="${student.nrIndeksu}">NrIndeksu</td>
+                <td th:text="${student.email}">Email</td>
+                <td th:text="${student.stacjonarny}">Stacjonarny</td>
+                <td>
+                    <a th:href="@{/studentEdit(studentId=${student.studentId})}">Edytuj</a><br>
+                    <a th:href="@{/studentEdit(studentId=${student.studentId},delete='true')}">Usuń</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

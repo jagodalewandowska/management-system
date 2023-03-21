@@ -391,3 +391,29 @@
 2023-03-18 13:55:24.962 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 5020 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
 2023-03-18 13:55:24.963 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
 2023-03-18 13:55:26.884 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.497 seconds (process running for 3.315)
+2023-03-21 12:35:20.978 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 12228 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:35:20.980 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:35:26.470 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 8.943 seconds (process running for 14.25)
+2023-03-21 12:35:38.999 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-21 12:35:46.679 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-03-21 12:35:48.050 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-03-21 12:36:24.926 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 6164 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:36:24.929 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:36:29.632 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 8.908 seconds (process running for 11.155)
+2023-03-21 12:36:43.187 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11464 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:36:43.191 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:36:47.420 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 6.075 seconds (process running for 9.515)
+2023-03-21 12:36:47.717 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-03-21 12:36:48.415 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-03-21 12:37:29.123 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getZadania(70) - REQUEST -> GET http://localhost:8080/api/zadania?page=0&size=20&sort=
+2023-03-21 12:42:45.978 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 13604 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:42:45.985 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:42:50.397 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 6.234 seconds (process running for 8.498)
+2023-03-21 12:44:58.989 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11976 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:44:58.991 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:45:08.224 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 12.385 seconds (process running for 15.142)
+2023-03-21 12:45:18.312 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 12576 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
+2023-03-21 12:45:18.314 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-03-21 12:45:22.464 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 5.321 seconds (process running for 7.28)
+2023-03-21 12:45:29.773 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getZadania(70) - REQUEST -> GET http://localhost:8080/api/zadania?page=0&size=20&sort=
+2023-03-21 12:45:32.736 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=

@@ -70,16 +70,33 @@ public class Student {
     }
 
     public Student() {}
-    public Student(String imie, String nazwisko, String nrIndeksu, Boolean stacjonarny) {
+    public Student(Integer studentId, String imie, String nazwisko, String nrIndeksu, String email,
+                   Boolean stacjonarny) {
+        super();
+        this.studentId = studentId;
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.nrIndeksu = nrIndeksu;
+        this.email = email;
+        this.stacjonarny = stacjonarny;
     }
+
     public Student(String imie, String nazwisko, String nrIndeksu, String email, Boolean stacjonarny) {
         this.imie = imie;
         this.nazwisko = nazwisko;
         this.nrIndeksu = nrIndeksu;
         this.email = email;
         this.stacjonarny = stacjonarny;
+    }
+
+    public Student(Integer studentId, String imie, String nazwisko, String nrIndeksu, String email,
+                   Boolean stacjonarny, Set<Projekt> projekty) {
+        this.studentId = studentId;
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.nrIndeksu = nrIndeksu;
+        this.email = email;
+        this.stacjonarny = stacjonarny;
+        this.projekty = projekty;
     }
 }
