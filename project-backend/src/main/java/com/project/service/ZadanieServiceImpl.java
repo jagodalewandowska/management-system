@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.project.model.Projekt;
 import com.project.model.Zadanie;
 import com.project.repository.ProjektRepository;
 import com.project.repository.ZadanieRepository;
@@ -29,7 +30,14 @@ public class ZadanieServiceImpl implements ZadanieService {
 
     @Override
     public Zadanie setZadanie(Zadanie zadanie, Integer projektId) {
-        //todo
+        Zadanie zadanieToSave = null;
+        if(zadanie.getZadanieId()!=null) {
+            zadanieToSave = zadanieToSave;
+        }else {
+            //todo
+            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis()); //todo
+        }
+        return  zadanieRepository.save(zadanieToSave);
         return null;
     }
 
