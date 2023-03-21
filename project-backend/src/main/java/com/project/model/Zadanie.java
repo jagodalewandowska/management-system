@@ -42,6 +42,9 @@ public class Zadanie {
     @JoinColumn(name = "projekt_id")
     private Projekt projekt;
 
+    public Zadanie(String nazwa, String opis, int kolejnosc) {
+    }
+
     public Integer getZadanieId() {
         return zadanieId;
     }

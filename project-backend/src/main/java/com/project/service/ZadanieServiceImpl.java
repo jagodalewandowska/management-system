@@ -32,13 +32,11 @@ public class ZadanieServiceImpl implements ZadanieService {
     public Zadanie setZadanie(Zadanie zadanie, Integer projektId) {
         Zadanie zadanieToSave = null;
         if(zadanie.getZadanieId()!=null) {
-            zadanieToSave = zadanieToSave;
+            zadanieToSave = zadanie;
         }else {
-            //todo
-            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis()); //todo
+            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis(), zadanie.getKolejnosc());
         }
         return  zadanieRepository.save(zadanieToSave);
-        return null;
     }
 
     @Override
