@@ -1,0 +1,92 @@
+
+:root {
+    --primaryColor: rgb(25,119,242);
+    --buttonColor: rgb(66,183,41);
+    --bodyColor: rgb(239,242,245);
+    --textColor: rgb(27,30,33);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bodyColor);
+    font-family: Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+button {
+    border: none;
+}
+
+input {
+    padding: 7px;
+    margin: 2% 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 300px;
+    font-family: Verdana, sans-serif;
+}
+
+input::placeholder {
+    color: gray;
+    font-weight: lighter;
+    font-size: 10px;
+}
+.btn {
+    width: 100%;
+    border-radius: 3px;
+    color: #fff;
+    padding: 6px;
+    font-family: Verdana, sans-serif;
+
+}
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+.text__wrapper {
+    width: 37vw;
+    margin-right: 3%;
+    margin-top: 5%;
+}
+.heading {
+    position: relative;
+    top: -50%;
+    left: -7%;
+}
+.heading > img {
+    width: 350px;
+}
+.form__wrapper {
+    width: 500px;
+    height: 250px;
+    margin-top: 5%;
+    background-color: #fff;
+    padding: 5% 2% 5% 2%;
+    border-radius: 5px;
+    line-height: 150%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.form {
+    margin-top: -18%;
+    /*margin-bottom: 7%;*/
+}
+.loginButton {
+    background-color: #830e21;
+    color: white;
+    margin-top: 2%;
+}
