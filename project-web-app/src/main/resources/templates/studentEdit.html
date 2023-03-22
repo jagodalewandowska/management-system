@@ -60,8 +60,15 @@
                     </div>
                     <div>
                         <label for="projekty" class="lbl">Id projektów:</label>
-                        <textarea class="fld" rows="1" cols="45" th:field="*{projekty}"> </textarea>
+                        <select th:field="*{projekty}">
+                            <option th:each="projekt : ${projekty}" th:value="${projekt.projektId}"">
+                            </option>
+                        </select>
                     </div>
+<!--                    <div>-->
+<!--                        <label for="projekty" class="lbl">Id projektów:</label>-->
+<!--                        <textarea class="fld" rows="1" cols="45" th:field="*{projekty}"> </textarea>-->
+<!--                    </div>-->
                 </div>
             </form>
         </div>

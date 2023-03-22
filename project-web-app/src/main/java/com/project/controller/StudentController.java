@@ -1,5 +1,7 @@
 package com.project.controller;
+import com.project.model.Projekt;
 import com.project.model.Student;
+import com.project.service.ProjektService;
 import com.project.service.StudentService;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
@@ -13,21 +15,28 @@ import org.springframework.web.client.HttpStatusCodeException;
 @Controller
 public class StudentController {
     private StudentService studentService;
-    public StudentController(StudentService studentService) {
+    private ProjektService projektService;
+    public StudentController(StudentService studentService, ProjektService projektService) {
         this.studentService = studentService;
+        this.projektService = projektService;
+
     }
     @GetMapping("/studentList")
     public String studentList(Model model, Pageable pageable) {
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
+        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "studentList";
     }
     @GetMapping("/studentEdit")
-    public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
+    public String studentEdit(@RequestParam(required = false) Integer studentId, Model model, Integer projektId) {
         if (studentId != null) {
             model.addAttribute("student", studentService.getStudent(studentId).get());
+            model.addAttribute("projekt", projektService.getProjekt(projektId).get());
         } else {
             Student student = new Student();
+            Projekt projekt = new Projekt();
             model.addAttribute("student", student);
+            model.addAttribute("projekt", projekt);
         }
         return "studentEdit";
     }
