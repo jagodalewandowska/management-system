@@ -37,21 +37,18 @@ public class ProjektServiceImpl implements ProjektService {
     }
     @Override
     public Projekt setProjekt(Projekt projekt) {
-        if (projekt.getProjektId() != null) { // modyfikacja istniejącego projektu
+        if (projekt.getProjektId() != null) {
             String url = getUriStringComponent(projekt.getProjektId());
             logger.info("REQUEST -> PUT {}", url);
             restTemplate.put(url, projekt);
             return projekt;
-        } else {//utworzenie nowego projektu
-// po dodaniu projektu zwracany jest w nagłówku Location - link do utworzonego zasobu
+        } else {
             HttpEntity<Projekt> request = new HttpEntity<>(projekt);
             String url = getUriStringComponent();
             logger.info("REQUEST -> POST {}", url);
             URI location = restTemplate.postForLocation(url, request);
             logger.info("REQUEST (location) -> GET {}", location);
             return restTemplate.getForObject(location, Projekt.class);
-// jeżeli usługa miałaby zwracać utworzony obiekt a nie link to trzeba by użyć
-// return restTemplate.postForObject(url, projekt, Projekt.class);
         }
     }
     @Override
