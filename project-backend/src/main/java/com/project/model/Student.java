@@ -37,7 +37,6 @@ public class Student {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
 
-    @Column(nullable = false)
     private boolean stacjonarny;
 
     @ManyToMany(mappedBy = "studenci")
