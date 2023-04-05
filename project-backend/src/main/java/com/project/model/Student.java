@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Set;
 
@@ -42,6 +43,7 @@ public class Student {
     @ManyToMany(mappedBy = "studenci")
     @JsonIgnoreProperties({"projekt"})
     private Set<Projekt> projekty;
+
 
     public Set<Projekt> getProjekty() {
         return projekty;
@@ -91,7 +93,7 @@ public class Student {
         this.email = email;
     }
 
-    public boolean isStacjonarny() {
+    public boolean getStacjonarny() {
         return stacjonarny;
     }
 

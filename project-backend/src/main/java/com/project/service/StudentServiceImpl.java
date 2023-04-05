@@ -31,7 +31,7 @@ public class StudentServiceImpl implements StudentService {
         if(student.getStudentId()!=null) {
             studentToSave = student;
         }else {
-            studentToSave = new Student (student.getImie(), student.getNazwisko(), student.getNrIndeksu(), student.getEmail(), student.isStacjonarny());
+            studentToSave = new Student (student.getImie(), student.getNazwisko(), student.getNrIndeksu(), student.getEmail(), student.getStacjonarny());
         }
         return studentRepository.save(studentToSave);
     }

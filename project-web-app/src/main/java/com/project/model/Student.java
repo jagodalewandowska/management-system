@@ -1,6 +1,8 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.beans.factory.annotation.Value;
+
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -10,6 +12,7 @@ public class Student {
     private String nazwisko;
     private String nrIndeksu;
     private String email;
+    @Value("false")
     private Boolean stacjonarny;
     private Set<Projekt> projekty;
 
@@ -61,11 +64,16 @@ public class Student {
         this.email = email;
     }
 
-    public boolean isStacjonarny() {
+
+    public void setStacjonarny(boolean stacjonarny) {
+        this.stacjonarny = stacjonarny;
+    }
+
+    public Boolean getStacjonarny() {
         return stacjonarny;
     }
 
-    public void setStacjonarny(boolean stacjonarny) {
+    public void setStacjonarny(Boolean stacjonarny) {
         this.stacjonarny = stacjonarny;
     }
 
