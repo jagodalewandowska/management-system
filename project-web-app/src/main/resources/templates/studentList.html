@@ -26,7 +26,7 @@
                             <th>Numer indeksu</th>
                             <th>E-mail</th>
                             <th>Rodzaj studiów</th>
-                            <th>Projekty</th>
+<!--                            <th>Projekty</th>-->
                             <th>Edycja</th>
                         </tr>
                     </thead>
@@ -37,8 +37,10 @@
                             <td th:text="${student.imie}">Imię</td>
                             <td th:text="${student.nrIndeksu}">Numer indeksu</td>
                             <td th:text="${student.email}">E-mail</td>
-                            <td th:text="${student.stacjonarny}">Rodzaj studiów</td>
-                            <td th:text="${student.projekty}">Projekty</td>
+                            <td th:text="(${student.stacjonarny}) ? 'stacjonarny' : 'niestacjonarny'">Rodzaj studiów</td>
+
+
+<!--                            <td th:text="${student.projekty}">Projekty</td>-->
                             <td>
                                 <a th:href="@{/studentEdit(studentId=${student.studentId})}" class="button_edit">Edytuj</a><br>
                                 <a th:href="@{/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>

@@ -1,74 +1,68 @@
-2023-04-05 08:42:31.721 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 6084 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 08:42:31.735 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 08:42:36.300 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 5.798 seconds (process running for 7.518)
-2023-04-05 08:43:32.506 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:43:37.570 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 08:43:37.810 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:43:41.390 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/2
-2023-04-05 08:43:41.607 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getProjekt(35) - REQUEST -> GET http://localhost:8080/api/projekty/null
-2023-04-05 08:45:08.254 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:46:12.434 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.setProjekt(49) - REQUEST -> POST http://localhost:8080/api/projekty
-2023-04-05 08:46:12.866 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.setProjekt(51) - REQUEST (location) -> GET http://localhost:8080/api/projekty/7
-2023-04-05 08:46:13.066 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:49:09.344 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 08:49:09.512 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:49:18.919 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 08:49:19.143 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:49:28.409 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 08:49:30.769 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getZadania(70) - REQUEST -> GET http://localhost:8080/api/zadania?page=0&size=20&sort=
-2023-04-05 08:49:36.474 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 08:49:36.650 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:01:18.145 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:03:41.624 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:03:41.792 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:04:51.437 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/2
-2023-04-05 09:04:51.613 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekt(35) - REQUEST -> GET http://localhost:8080/api/projekty/null
-2023-04-05 09:09:41.563 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:09:42.602 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:09:52.972 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:10:52.900 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11968 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 09:10:52.903 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 09:10:56.746 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.807 seconds (process running for 6.787)
-2023-04-05 09:11:17.454 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:13:12.163 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 696 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 09:13:12.166 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 09:13:16.810 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 6.016 seconds (process running for 9.516)
-2023-04-05 09:13:44.009 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:51:56.529 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 17396 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 09:51:56.532 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 09:51:59.781 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.276 seconds (process running for 5.249)
-2023-04-05 09:52:14.814 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:52:19.223 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:52:19.455 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:52:36.865 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:53:58.850 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 8380 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 09:53:58.854 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 09:54:02.925 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 5.367 seconds (process running for 7.176)
-2023-04-05 09:54:09.401 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:54:16.640 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:54:21.168 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:54:21.792 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:54:42.594 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:55:25.035 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:55:29.934 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:55:54.794 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 09:56:54.972 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 11700 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 09:56:54.975 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 09:56:58.835 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 4.918 seconds (process running for 6.493)
-2023-04-05 09:57:26.511 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:57:32.122 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:57:32.290 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:57:41.016 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 09:57:41.213 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 09:57:43.605 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/1
-2023-04-05 09:57:43.773 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getProjekt(35) - REQUEST -> GET http://localhost:8080/api/projekty/null
-2023-04-05 17:41:58.899 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 3904 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
-2023-04-05 17:41:58.915 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-04-05 17:42:04.645 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 7.112 seconds (process running for 9.321)
-2023-04-05 17:42:28.063 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 17:42:33.312 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 17:42:33.512 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
-2023-04-05 17:42:52.258 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
-2023-04-05 17:42:52.698 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.setStudent(55) - REQUEST (location) -> GET http://localhost:8080/api/studenci/3
-2023-04-05 17:42:52.882 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
-2023-04-05 17:42:53.058 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 19:29:08.072 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 13456 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 19:29:08.080 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 19:29:10.031 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.48 seconds (process running for 3.153)
+2023-04-06 19:35:26.715 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 19:35:35.799 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.getProjekt(35) - REQUEST -> GET http://localhost:8080/api/projekty/7
+2023-04-06 19:35:37.983 [http-nio-8081-exec-7] INFO  c.project.service.ProjektServiceImpl.deleteProjekt(62) - REQUEST -> DELETE http://localhost:8080/api/projekty/7
+2023-04-06 19:35:38.146 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 19:35:41.326 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 19:35:41.429 [http-nio-8081-exec-10] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 19:35:44.059 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/1
+2023-04-06 19:35:44.150 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekt(35) - REQUEST -> GET http://localhost:8080/api/projekty/null
+2023-04-06 20:21:59.096 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 296 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 20:21:59.097 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 20:22:01.038 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.472 seconds (process running for 3.189)
+2023-04-06 20:22:34.961 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 20:22:37.867 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 20:22:40.464 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/1
+2023-04-06 20:22:56.984 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(47) - REQUEST -> PUT http://localhost:8080/api/studenci/1
+2023-04-06 20:22:57.236 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 20:23:02.783 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/2
+2023-04-06 20:23:08.291 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.setStudent(47) - REQUEST -> PUT http://localhost:8080/api/studenci/2
+2023-04-06 20:23:08.389 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 20:23:12.972 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/2
+2023-04-06 20:23:15.460 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.deleteStudent(77) - REQUEST -> DELETE http://localhost:8080/api/studenci/2
+2023-04-06 20:23:15.560 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 20:23:17.644 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/1
+2023-04-06 20:23:19.389 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.deleteStudent(77) - REQUEST -> DELETE http://localhost:8080/api/studenci/1
+2023-04-06 20:23:19.485 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 20:23:21.401 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/3
+2023-04-06 20:23:22.814 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.deleteStudent(77) - REQUEST -> DELETE http://localhost:8080/api/studenci/3
+2023-04-06 20:23:22.914 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:01:00.325 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 16704 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 21:01:00.326 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 21:01:02.281 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.498 seconds (process running for 3.289)
+2023-04-06 21:01:26.544 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 21:01:29.750 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:01:44.566 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
+2023-04-06 21:01:44.822 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(55) - REQUEST (location) -> GET http://localhost:8080/api/studenci/4
+2023-04-06 21:01:44.952 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:03:42.668 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
+2023-04-06 21:03:47.275 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
+2023-04-06 21:03:50.704 [http-nio-8081-exec-5] INFO  c.project.service.ProjektServiceImpl.setStudent(53) - REQUEST -> POST http://localhost:8080/api/studenci
+2023-04-06 21:03:52.314 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:03:57.171 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:04:04.494 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:05:24.383 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 9304 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 21:05:24.384 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 21:05:26.345 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.576 seconds (process running for 3.246)
+2023-04-06 21:05:56.638 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 21:05:59.388 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:06:43.987 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 8876 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 21:06:43.988 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 21:06:45.887 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.432 seconds (process running for 3.098)
+2023-04-06 21:06:55.789 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 21:07:00.108 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:08:42.673 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 1040 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 21:08:42.674 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 21:08:44.569 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.449 seconds (process running for 3.247)
+2023-04-06 21:09:48.438 [http-nio-8081-exec-2] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 21:09:51.024 [http-nio-8081-exec-3] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:13:37.507 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 8680 (C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1\project-web-app\build\classes\java\main started by Acer in C:\Users\Acer\Desktop\Studia\MAGISTERKA - Informatyka stosowana\SEM 1\Programowanie zwinne\Projekt\programowaniezwinne1)
+2023-04-06 21:13:37.508 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-06 21:13:39.424 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 2.45 seconds (process running for 3.125)
+2023-04-06 21:14:05.044 [http-nio-8081-exec-1] INFO  c.project.service.ProjektServiceImpl.getProjekty(68) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
+2023-04-06 21:14:09.037 [http-nio-8081-exec-4] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=
+2023-04-06 21:14:15.100 [http-nio-8081-exec-6] INFO  c.project.service.ProjektServiceImpl.getStudent(39) - REQUEST -> GET http://localhost:8080/api/studenci/4
+2023-04-06 21:14:18.872 [http-nio-8081-exec-8] INFO  c.project.service.ProjektServiceImpl.setStudent(47) - REQUEST -> PUT http://localhost:8080/api/studenci/4
+2023-04-06 21:14:19.134 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getStudenci(84) - REQUEST -> GET http://localhost:8080/api/studenci?page=0&size=20&sort=

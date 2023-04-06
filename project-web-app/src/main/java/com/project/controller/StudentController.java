@@ -15,28 +15,29 @@ import org.springframework.web.client.HttpStatusCodeException;
 @Controller
 public class StudentController {
     private StudentService studentService;
-    private ProjektService projektService;
+//    private ProjektService projektService;
     public StudentController(StudentService studentService, ProjektService projektService) {
         this.studentService = studentService;
-        this.projektService = projektService;
+//        this.projektService = projektService;
 
     }
     @GetMapping("/studentList")
     public String studentList(Model model, Pageable pageable) {
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
-        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+//        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "studentList";
     }
     @GetMapping("/studentEdit")
-    public String studentEdit(@RequestParam(required = false) Integer studentId, Model model, Integer projektId) {
+    public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
+//                              , Integer projektId) {
         if (studentId != null) {
             model.addAttribute("student", studentService.getStudent(studentId).get());
-            model.addAttribute("projekt", projektService.getProjekt(projektId).get());
+//            model.addAttribute("projekt", projektService.getProjekt(projektId).get());
         } else {
             Student student = new Student();
-            Projekt projekt = new Projekt();
+//            Projekt projekt = new Projekt();
             model.addAttribute("student", student);
-            model.addAttribute("projekt", projekt);
+//            model.addAttribute("projekt", projekt);
         }
         return "studentEdit";
     }

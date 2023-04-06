@@ -60,9 +60,9 @@ public class StudentRestController {
     Page<Student> getStudenciByNazwisko(@RequestParam String nazwisko, Pageable pageable) {
         return studentService.searchByNazwisko(nazwisko, pageable);
     }
-    @GetMapping(value ="/student_lista")
-    List<Student> getProjekty(){
-        return studentService.getStudenci(PageRequest.of(0, 20)).getContent();
-    }
+//    @GetMapping(value ="/student_lista")
+//    List<Student> getProjekty(){
+//        return studentService.getStudenci(PageRequest.of(0, 20)).getContent();
+//    }
 
 }
