@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         }
         return new org.springframework.security
                 .core.userdetails.User(user.getEmail(),
-                user.getPassword(),
+                new BCryptPasswordEncoder().encode(user.getPassword()),
                 mapRolesToAuthorities(user.getRoles()));
     }
 

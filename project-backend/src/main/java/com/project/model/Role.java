@@ -1,18 +1,15 @@
 package com.project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "user_roles")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name="role_id")
+    private Long role_id;
     private String name;
 
     public Role() {
@@ -25,11 +22,11 @@ public class Role {
     }
 
     public Long getId() {
-        return id;
+        return role_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long role_id) {
+        this.role_id = role_id;
     }
 
     public String getName() {

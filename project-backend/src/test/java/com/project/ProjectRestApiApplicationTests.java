@@ -9,5 +9,4 @@ class ProjectRestApiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
 }

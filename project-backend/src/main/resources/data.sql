@@ -1,0 +1,8 @@
+-- INSERT INTO user_ (email, first_name, last_name, password) VALUES('admin', 'admin', 'admin', 'admin')
+-- INSERT INTO user_ (email, first_name, last_name, password) VALUES('test','test', 'test', 'test')
+-- INSERT INTO user_roles (name, user_id) VALUES ('user', (SELECT id FROM user_ WHERE email='test'))
+-- INSERT INTO student (email, imie, nazwisko, nr_indeksu, stacjonarny) VALUES('test', 'test', 'test', '144249', '1')
+-- INSERT INTO projekt (dataczas_modyfikacji, dataczas_utworzenia, data_oddania, nazwa, opis) VALUES('2023-04-05', '2023-04-05', '2023-04-05', 'zwinne', 'czy dziala backend')
+-- INSERT INTO projekt (dataczas_modyfikacji, dataczas_utworzenia, data_oddania, nazwa, opis) VALUES('2023-04-05', '2023-04-05', '2023-04-05', 'stochastyczne', 'chuj ci w dupe igor')
+-- INSERT INTO projekt (dataczas_modyfikacji, dataczas_utworzenia, data_oddania, nazwa, opis) VALUES('2023-04-05', '2023-04-05', '2023-04-05', 'sztuczna inteligencja', 'tobie tez talaska')
+INSERT INTO projekt_student (projekt_id, student_id) VALUES ((SELECT projekt_id FROM projekt WHERE nazwa = 'zwinne'), (SELECT student_id FROM student WHERE email='test'))
