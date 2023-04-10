@@ -17,6 +17,18 @@
         </nav>
         <div class="root">
             <div class="container">
+                <br>
+                <form method="get" action="#" th:action="@{/projektList/search}" id="searchform">
+                    <label for="snazwa" class="myText">Szukaj po nazwie projektu: </label>
+                    <input type="text" id="snazwa" name="nazwa">
+                    <select name="size" id="size" form="searchform">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input type="submit" class="button_edit_nav" value="Szukaj">
+                    <a th:href="@{/projektList}" class="button_edit_nav">Resetuj</a><br>
+                </form>
+                <br>
                 <table class="styled_table">
                     <thead>
                         <tr>

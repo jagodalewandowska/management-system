@@ -27,7 +27,6 @@ nav ul li {
 nav ul li a {
     font-size: 12px;
     color: #830e21;
-    transition: 600ms;
 }
 nav ul li a:hover {
     color: #f5f5f7;
@@ -36,7 +35,6 @@ nav ul li a:hover {
 nav ul li b {
     font-size: 12px;
     color: #830e21;
-    transition: 600ms;
 }
 
 nav img {
@@ -49,6 +47,10 @@ nav img {
     margin-right: 10%;
     margin-left: 10%;
     font-family: Verdana, sans-serif;
+}
+
+.myText {
+    font-size: 10px;
 }
 
 table {
@@ -117,6 +119,16 @@ tr:nth-child(even) {
     font-family: Verdana, sans-serif;
     width: 100%;
     text-align: center;
+}
+
+.button_edit_nav {
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 10px;
+    text-decoration:none;
+    border: 0;
+    cursor: pointer;
+    font-family: Verdana, sans-serif;
 }
 
 .button_edit {

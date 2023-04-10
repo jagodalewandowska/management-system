@@ -71,7 +71,7 @@ public class ProjektServiceImpl implements ProjektService {
     @Override
     public Page<Projekt> searchByNazwa(String nazwa, Pageable pageable) {
         URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(), pageable)
-                .queryParam("nazwisko", nazwa)
+                .queryParam("nazwa", nazwa)
                 .build().toUri();
         logger.info("REQUEST -> GET {}", url);
         return getPage(url, restTemplate);
