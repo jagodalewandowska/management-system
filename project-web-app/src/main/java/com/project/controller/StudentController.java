@@ -2,15 +2,20 @@ package com.project.controller;
 import com.project.model.Projekt;
 import com.project.model.Student;
 import com.project.service.ProjektService;
+import com.project.service.ServiceUtil;
 import com.project.service.StudentService;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
+
+import java.net.URI;
 
 @Controller
 public class StudentController {
@@ -65,5 +70,18 @@ public class StudentController {
     public String studentEditDelete(@ModelAttribute Student student) {
         studentService.deleteStudent(student.getStudentId());
         return "redirect:/studentList";
+    }
+
+
+    @GetMapping("/studentList/search")
+    public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwisko) {
+        Pageable pageable = PageRequest.of(0, size);
+        model.addAttribute("studenci", studentService.searchByNazwisko(nazwisko,pageable).getContent());
+        model.addAttribute("size", size);
+        model.addAttribute("page", 0);
+        model.addAttribute("nazwisko", nazwisko);
+        model.addAttribute("nextPage", 1);
+        model.addAttribute("previousPage", 0);
+        return "studentList";
     }
 }

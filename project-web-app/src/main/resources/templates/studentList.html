@@ -17,6 +17,18 @@
         </nav>
         <div class="root">
             <div class="container">
+                <br>
+                <form method="get" action="#" th:action="@{/studentList/search}" id="searchform">
+                    <label for="nazwisko" class="myText">Szukaj po nazwisku: </label>
+                    <input type="text" id="nazwisko" name="nazwisko">
+                    <select name="size" id="size" form="searchform">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                    </select>
+                    <input type="submit" class="button_edit_nav" value="Szukaj">
+                    <a th:href="@{/studentList}" class="button_edit_nav">Resetuj</a><br>
+                </form>
+                <br>
                 <table class="styled_table">
                     <thead>
                         <tr>

@@ -11,4 +11,5 @@ public interface ZadanieService {
     Zadanie setZadanie(Zadanie zadanie, Integer projektId);
     void deleteZadanie(Integer zadanieId);
     Page<Zadanie> getZadania(Pageable pageable);
+    Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable);
 }

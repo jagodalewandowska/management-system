@@ -75,6 +75,14 @@ public class ZadanieServiceImpl implements ZadanieService {
         return ServiceUtil.getPage(uri, restTemplate,
                 new ParameterizedTypeReference<RestResponsePage<Zadanie>>() {});
     }
+    @Override
+    public Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable) {
+        URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(), pageable)
+                .queryParam("nazwa", nazwa)
+                .build().toUri();
+        logger.info("REQUEST -> GET {}", url);
+        return getPage(url, restTemplate);
+    }
     private String getResourcePath() {
         return RESOURCE_PATH;
     }

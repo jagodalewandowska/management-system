@@ -4,6 +4,7 @@ import com.project.model.Zadanie;
 import com.project.service.ZadanieService;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,5 +62,17 @@ public class ZadanieController {
     public String zadanieEditDelete(@ModelAttribute Zadanie zadanie) {
         zadanieService.deleteZadanie(zadanie.getZadanieId());
         return "redirect:/zadanieList";
+    }
+
+    @GetMapping("/zadanieList/search")
+    public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwa) {
+        Pageable pageable = PageRequest.of(0, size);
+        model.addAttribute("zadania", zadanieService.searchByNazwa(nazwa,pageable).getContent());
+        model.addAttribute("size", size);
+        model.addAttribute("page", 0);
+        model.addAttribute("nazwa", nazwa);
+        model.addAttribute("nextPage", 1);
+        model.addAttribute("previousPage", 0);
+        return "studentList";
     }
 }

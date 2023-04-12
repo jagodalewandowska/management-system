@@ -28,7 +28,7 @@ public class Zadanie {
     private String nazwa;
 
     @Column(nullable = true)
-    private int kolejnosc;
+    private Integer kolejnosc;
 
     @Column(nullable = true, length = 1000)
     private String opis;
@@ -61,11 +61,11 @@ public class Zadanie {
         this.nazwa = nazwa;
     }
 
-    public int getKolejnosc() {
+    public Integer getKolejnosc() {
         return kolejnosc;
     }
 
-    public void setKolejnosc(int kolejnosc) {
+    public void setKolejnosc(Integer kolejnosc) {
         this.kolejnosc = kolejnosc;
     }
 
