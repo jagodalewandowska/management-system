@@ -54,13 +54,17 @@ public class ProjektServiceImpl implements ProjektService {
     }
 
     @Override
-    public Page <Projekt> getProjektyPageSort(String sort) {
+    public Page <Projekt> getProjektyPageSort(String sort, String direction) {
         Pageable pageable = null;
+        direction = direction.toUpperCase();
         if (sort != null) {
-            // with sorting
-            pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.Direction.ASC, sort);
+            if (direction.equals("ASC")) {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.Direction.ASC, sort);
+            }
+            if (direction.equals("DESC")) {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.Direction.DESC, sort);
+            }
         } else {
-            // without sorting
             pageable = PageRequest.of(0, Integer.MAX_VALUE);
         }
         return projektRepository.findAll(pageable);

@@ -33,7 +33,6 @@ public class ProjektRestController {
         } else if (direction.equals("desc")) {
             return Sort.Direction.DESC;
         }
-
         return Sort.Direction.ASC;
     }
 
@@ -81,9 +80,9 @@ public class ProjektRestController {
         return projektService.searchByNazwa(nazwa, pageable);
     }
 
-    @GetMapping("/projekty/sortBy={sort}")
-    public List <Projekt> getSortedProjekty(@PathVariable String sort) {
-        Page <Projekt> data = projektService.getProjektyPageSort(sort);
+    @GetMapping("/projekty/sort={sort}/order={order}")
+    public List <Projekt> getSortedProjekty(@PathVariable String sort, @PathVariable String order) {
+        Page <Projekt> data = projektService.getProjektyPageSort(sort, order);
         return data.getContent();
     }
 
