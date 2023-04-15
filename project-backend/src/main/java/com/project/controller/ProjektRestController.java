@@ -1,9 +1,12 @@
 package com.project.controller;
 import java.net.URI;
+import java.util.List;
+
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +26,17 @@ import com.project.service.ProjektService;
 @RequestMapping("/api")
 public class ProjektRestController {
     private ProjektService projektService;
+
+    private Sort.Direction getSortDirection(String direction) {
+        if (direction.equals("asc")) {
+            return Sort.Direction.ASC;
+        } else if (direction.equals("desc")) {
+            return Sort.Direction.DESC;
+        }
+
+        return Sort.Direction.ASC;
+    }
+
     @Autowired
     public ProjektRestController(ProjektService projektService) {
         this.projektService = projektService;
@@ -56,17 +70,22 @@ public class ProjektRestController {
             return new ResponseEntity<Void>(HttpStatus.OK);
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
-    //Przykład żądania wywołującego metodę: http://localhost:8080/api/projekty?page=0&size=10&sort=nazwa,desc
+
     @GetMapping(value = "/projekty")
     Page<Projekt> getProjekty(Pageable pageable) {
         return projektService.getProjekty(pageable);
     }
 
-    // Przykład żądania wywołującego metodę: GET http://localhost:8080/api/projekty?nazwa=webowa
-    // Metoda zostanie wywołana tylko, gdy w żądaniu będzie przesyłana wartość parametru nazwa.
     @GetMapping(value = "/projekty", params="nazwa")
     Page<Projekt> getProjektyByNazwa(@RequestParam String nazwa, Pageable pageable) {
         return projektService.searchByNazwa(nazwa, pageable);
     }
+
+    @GetMapping("/projekty/sortBy={sort}")
+    public List <Projekt> getSortedProjekty(@PathVariable String sort) {
+        Page <Projekt> data = projektService.getProjektyPageSort(sort);
+        return data.getContent();
+    }
+
 }
 
