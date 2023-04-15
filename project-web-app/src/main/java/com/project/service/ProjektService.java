@@ -12,5 +12,4 @@ public interface ProjektService {
     void deleteProjekt(Integer projektId);
     Page<Projekt> getProjekty(Pageable pageable);
     Page<Projekt> searchByNazwa(String nazwa, Pageable pageable);
-    //Page<Projekt> findPaginated(String sortField, String sortDirection, Pageable pageable);
 }

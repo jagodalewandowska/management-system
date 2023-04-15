@@ -1,9 +1,13 @@
 package com.project.controller;
+import com.project.service.ProjektServiceImpl;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +20,19 @@ import java.util.List;
 
 @Controller
 public class ProjectController {
+    private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
+
+    private Sort.Direction getSortDirection(String direction) {
+        direction = direction.toLowerCase();
+        if (direction.equals("asc")) {
+            return Sort.Direction.ASC;
+        } else if (direction.equals("desc")) {
+            return Sort.Direction.DESC;
+        }
+        return Sort.Direction.ASC;
+    }
+
+
     private ProjektService projektService;
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
@@ -66,6 +83,14 @@ public class ProjectController {
         model.addAttribute("nazwa", nazwa);
         model.addAttribute("nextPage", 1);
         model.addAttribute("previousPage", 0);
+        return "projektList";
+    }
+
+    @GetMapping("/projektList/results")
+    public String sortProjectList(Model model, @RequestParam String sortField, @RequestParam String order) {
+        logger.info(order);
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sortField);
+        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "projektList";
     }
 }

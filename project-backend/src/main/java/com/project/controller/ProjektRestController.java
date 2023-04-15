@@ -80,9 +80,9 @@ public class ProjektRestController {
         return projektService.searchByNazwa(nazwa, pageable);
     }
 
-    @GetMapping("/projekty/sort={sort}/order={order}")
-    public List <Projekt> getSortedProjekty(@PathVariable String sort, @PathVariable String order) {
-        Page <Projekt> data = projektService.getProjektyPageSort(sort, order);
+    @GetMapping("/projekty/sortField={sortField}/order={order}")
+    public List <Projekt> getSortedProjekty(@PathVariable String sortField, @PathVariable String order) {
+        Page <Projekt> data = projektService.getProjektyPageSort(sortField, order);
         return data.getContent();
     }
 
