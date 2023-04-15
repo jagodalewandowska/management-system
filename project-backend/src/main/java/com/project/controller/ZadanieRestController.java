@@ -63,10 +63,4 @@ public class ZadanieRestController {
     Page<Zadanie> getZadania(Pageable pageable) {
         return zadanieService.getZadania(pageable);
     }
-
-    @GetMapping(value = "/lista_zadan")
-    List<Zadanie> getProjects(){
-        return zadanieService.getZadania(PageRequest.of(0, 20)).getContent();
-    }
-
 }
