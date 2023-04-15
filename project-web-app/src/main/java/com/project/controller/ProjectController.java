@@ -87,9 +87,9 @@ public class ProjectController {
     }
 
     @GetMapping("/projektList/results")
-    public String sortProjectList(Model model, @RequestParam String sortField, @RequestParam String order) {
+    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
         logger.info(order);
-        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sortField);
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "projektList";
     }
