@@ -2,6 +2,8 @@ package com.project.controller;
 
 import java.net.URI;
 import java.util.List;
+
+import com.project.model.Projekt;
 import jakarta.validation.Valid;
 
 import com.project.model.Zadanie;
@@ -62,5 +64,11 @@ public class ZadanieRestController {
     @GetMapping(value = "/zadania")
     Page<Zadanie> getZadania(Pageable pageable) {
         return zadanieService.getZadania(pageable);
+    }
+
+    @GetMapping("/zadania/sort={sort}/order={order}")
+    public List <Zadanie> getSortedZadania(@PathVariable String sort, @PathVariable String order) {
+        Page <Zadanie> data = zadanieService.getZadaniaPageSort(sort, order);
+        return data.getContent();
     }
 }

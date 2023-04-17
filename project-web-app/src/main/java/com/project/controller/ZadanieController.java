@@ -6,6 +6,7 @@ import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,16 @@ import org.springframework.web.client.HttpStatusCodeException;
 @SessionAttributes("zadanie")
 public class ZadanieController {
     private ZadanieService zadanieService;
+
+    private Sort.Direction getSortDirection(String direction) {
+        direction = direction.toLowerCase();
+        if (direction.equals("asc")) {
+            return Sort.Direction.ASC;
+        } else if (direction.equals("desc")) {
+            return Sort.Direction.DESC;
+        }
+        return Sort.Direction.ASC;
+    }
 
     public ZadanieController(ZadanieService zadanieService) {
         this.zadanieService = zadanieService;
@@ -53,12 +64,12 @@ public class ZadanieController {
         return "redirect:/zadanieList";
     }
 
-    @PostMapping(params="cancel", path = "/zadanieEdit")
+    @PostMapping(params = "cancel", path = "/zadanieEdit")
     public String zadanieEditCancel() {
         return "redirect:/zadanieList";
     }
 
-    @PostMapping(params="delete", path = "/zadanieEdit")
+    @PostMapping(params = "delete", path = "/zadanieEdit")
     public String zadanieEditDelete(@ModelAttribute Zadanie zadanie) {
         zadanieService.deleteZadanie(zadanie.getZadanieId());
         return "redirect:/zadanieList";
@@ -67,12 +78,19 @@ public class ZadanieController {
     @GetMapping("/zadanieList/search")
     public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwa) {
         Pageable pageable = PageRequest.of(0, size);
-        model.addAttribute("zadania", zadanieService.searchByNazwa(nazwa,pageable).getContent());
+        model.addAttribute("zadania", zadanieService.searchByNazwa(nazwa, pageable).getContent());
         model.addAttribute("size", size);
         model.addAttribute("page", 0);
         model.addAttribute("nazwa", nazwa);
         model.addAttribute("nextPage", 1);
         model.addAttribute("previousPage", 0);
         return "studentList";
+    }
+
+    @GetMapping("/zadanieList/results")
+    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
+        model.addAttribute("zadania", zadanieService.getZadania(pageable).getContent());
+        return "zadanieList";
     }
 }

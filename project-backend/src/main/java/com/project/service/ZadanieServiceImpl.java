@@ -7,7 +7,9 @@ import com.project.repository.ZadanieRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -48,6 +50,23 @@ public class ZadanieServiceImpl implements ZadanieService {
 
     @Override
     public Page<Zadanie> getZadania(Pageable pageable) {
+        return zadanieRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page <Zadanie> getZadaniaPageSort(String sort, String direction) {
+        Pageable pageable = null;
+        direction = direction.toUpperCase();
+        if (sort != null) {
+            if (direction.equals("ASC")) {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.Direction.ASC, sort);
+            }
+            if (direction.equals("DESC")) {
+                pageable = PageRequest.of(0, Integer.MAX_VALUE, Sort.Direction.DESC, sort);
+            }
+        } else {
+            pageable = PageRequest.of(0, Integer.MAX_VALUE);
+        }
         return zadanieRepository.findAll(pageable);
     }
 }
