@@ -9,6 +9,7 @@ import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +20,17 @@ import java.net.URI;
 
 @Controller
 public class StudentController {
+
+    private Sort.Direction getSortDirection(String direction) {
+        direction = direction.toLowerCase();
+        if (direction.equals("asc")) {
+            return Sort.Direction.ASC;
+        } else if (direction.equals("desc")) {
+            return Sort.Direction.DESC;
+        }
+        return Sort.Direction.ASC;
+    }
+
     private StudentService studentService;
 //    private ProjektService projektService;
     public StudentController(StudentService studentService, ProjektService projektService) {
@@ -82,6 +94,13 @@ public class StudentController {
         model.addAttribute("nazwisko", nazwisko);
         model.addAttribute("nextPage", 1);
         model.addAttribute("previousPage", 0);
+        return "studentList";
+    }
+
+    @GetMapping("/studentList/results")
+    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
+        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
+        model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
         return "studentList";
     }
 }

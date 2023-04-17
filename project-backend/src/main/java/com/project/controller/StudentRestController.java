@@ -60,4 +60,10 @@ public class StudentRestController {
     Page<Student> getStudenciByNazwisko(@RequestParam String nazwisko, Pageable pageable) {
         return studentService.searchByNazwisko(nazwisko, pageable);
     }
+
+    @GetMapping("/studenci/sort={sort}/order={order}")
+    public List <Student> getSortedStudenci(@PathVariable String sort, @PathVariable String order) {
+        Page <Student> data = studentService.getStudenciPageSort(sort, order);
+        return data.getContent();
+    }
 }
