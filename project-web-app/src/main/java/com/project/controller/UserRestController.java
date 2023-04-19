@@ -2,6 +2,7 @@ package com.project.controller;
 
 import com.project.model.UserRegistrationDto;
 import com.project.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,10 +25,10 @@ public class UserRestController {
         return new UserRegistrationDto();
     }
 
-    @GetMapping
-    public String showRegistrationForm() {
-        return "signup";
-    }
+//    @GetMapping
+//    public String showRegistrationForm() {
+//        return "signup";
+//    }
 
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user")

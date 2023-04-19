@@ -1,8 +1,16 @@
-2023-03-28 10:40:57.341 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 9844 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
-2023-03-28 10:40:57.360 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-03-28 10:42:35.478 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 2044 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
-2023-03-28 10:42:35.480 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-03-28 10:45:01.159 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 10376 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
-2023-03-28 10:45:01.161 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
-2023-03-28 10:46:20.034 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17.0.6 with PID 1416 (C:\Users\Jagoda\programowaniezwinne\project-web-app\build\classes\java\main started by Jagoda in C:\Users\Jagoda\programowaniezwinne)
-2023-03-28 10:46:20.036 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:09:46.229 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 4328 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:09:46.234 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:23:25.647 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 6252 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:23:25.649 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:23:44.645 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 4844 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:23:44.645 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:28:09.251 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 9468 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:28:09.251 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:28:38.176 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 5064 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:28:38.176 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:29:10.477 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 8032 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:29:10.477 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:29:55.076 [restartedMain] INFO  com.project.Main.logStarting(51) - Starting Main using Java 17 with PID 13948 (G:\Projekty\programowaniezwinne\project-web-app\build\classes\java\main started by maszy in G:\Projekty\programowaniezwinne)
+2023-04-19 21:29:55.076 [restartedMain] INFO  com.project.Main.logStartupProfileInfo(632) - No active profile set, falling back to 1 default profile: "default"
+2023-04-19 21:29:56.119 [restartedMain] INFO  com.project.Main.logStarted(57) - Started Main in 1.348 seconds (process running for 1.765)
+2023-04-19 21:30:37.081 [http-nio-8081-exec-9] INFO  c.project.service.ProjektServiceImpl.getProjekty(65) - REQUEST -> GET http://localhost:8080/api/projekty?page=0&size=20&sort=
