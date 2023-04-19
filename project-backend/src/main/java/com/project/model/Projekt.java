@@ -1,4 +1,5 @@
 package com.project.model;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -47,10 +48,11 @@ public class Projekt {
     private LocalDateTime dataCzasModyfikacji;
 
     @OneToMany(mappedBy = "projekt")
-    @JsonIgnoreProperties({"projekt"})
+    @JsonIgnoreProperties({"zadania"})
     private List<Zadanie> zadania;
 
     @ManyToMany
+    @JsonBackReference
     @JoinTable(name = "projekt_student",
             joinColumns = {@JoinColumn(name="projekt_id")},
             inverseJoinColumns = {@JoinColumn(name="student_id")})

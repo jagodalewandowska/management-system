@@ -1,6 +1,7 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -41,7 +42,7 @@ public class Student {
     private boolean stacjonarny;
 
     @ManyToMany(mappedBy = "studenci")
-    @JsonIgnoreProperties({"projekt"})
+    @JsonManagedReference
     private Set<Projekt> projekty;
 
     public Set<Projekt> getProjekty() {
