@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
+        <link href="https://examples.javacodegeeks.com/wp-content/litespeed/localres/aHR0cHM6Ly9zdGFja3BhdGguYm9vdHN0cmFwY2RuLmNvbS8=bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <link th:href="@{/css/list-style.css}" rel="stylesheet" />
         <title>Lista projektów</title>
     </head>
@@ -49,11 +50,21 @@
                 <table class="styled_table">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nazwa</th>
-                            <th>Opis</th>
-                            <th>Utworzony</th>
-                            <th>Data oddania</th>
+                            <th>
+                                <a th:href="@{'/projektList/results?sort=projektId&order=' + ${reverseSortDir}}">Id</a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/projektList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/projektList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/projektList/results?sort=dataCzasUtworzenia&order=' + ${reverseSortDir}}">Data Utworzenia</a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}}">Data Utworzenia</a>
+                            </th>
                             <th>Edit</th>
                         </tr>
                     </thead>

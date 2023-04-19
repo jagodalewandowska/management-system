@@ -78,12 +78,19 @@ table {
 th {
     background-color:#830e21;
     color: white;
+    text-decoration: none;
 }
 
 td, th {
     border: 1px solid #dcdcdc;
     text-align: left;
     padding: 8px;
+}
+
+th a {
+    background: transparent;
+    text-decoration: none;
+    color: white;
 }
 
 tr:nth-child(even) {

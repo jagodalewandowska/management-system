@@ -40,7 +40,7 @@ public class ProjectController {
     @GetMapping({"/projektList", "/projektList/"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "projektList";
+        return "redirect:projektList/results?sort=projektId&order=asc";
     }
     @GetMapping("/projektEdit")
     public String projektEdit(@RequestParam(required = false) Integer projektId, Model model) {
@@ -91,6 +91,8 @@ public class ProjectController {
         logger.info(order);
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+        model.addAttribute("order", order);
+        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
         return "projektList";
     }
 }
