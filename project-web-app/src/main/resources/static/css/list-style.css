@@ -92,6 +92,11 @@ th a {
     text-decoration: none;
     color: white;
 }
+th img {
+    background: transparent;
+    height: 15px;
+    float: right;
+}
 
 tr:nth-child(even) {
     background-color: #F8F8FF;
