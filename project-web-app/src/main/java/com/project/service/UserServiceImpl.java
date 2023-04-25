@@ -4,10 +4,13 @@ import com.project.model.Projekt;
 import com.project.model.Student;
 import com.project.model.User;
 import com.project.model.UserRegistrationDto;
+import com.project.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +20,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.Console;
 import java.net.URI;
 import java.util.List;
 
@@ -28,6 +32,10 @@ public class UserServiceImpl implements UserService {
     private String  serverUrl;
     private final static String RESOURCE_PATH = "/api/users";
     private RestTemplate restTemplate;
+
+    @Autowired
+    UserRepository userRepository;
+
     @Autowired
     public UserServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -40,6 +48,15 @@ public class UserServiceImpl implements UserService {
         return ServiceUtil.getPage(uri, restTemplate,
                 new ParameterizedTypeReference<RestResponsePage<User>>() {});
     }
+
+    @Override
+    public void register(User user) {
+        User new_user = new User();
+        BeanUtils.copyProperties(user, new_user);
+        userRepository.save(new_user);
+        System.out.println("TUTAJ_TEŻ");
+    }
+
     @Override
     public Page<User> getAll(Pageable pageable) {
         URI url = ServiceUtil.getURI(serverUrl, getResourcePath(), pageable);

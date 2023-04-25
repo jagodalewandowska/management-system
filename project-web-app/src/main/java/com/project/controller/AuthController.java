@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AuthController {
     @GetMapping("/signup")
     public String register() {
-        return "signup";
+        return "register_account";
     }
 
     @GetMapping("/forgot-password")

@@ -11,5 +11,7 @@ import java.util.List;
 
 public interface UserService  { // extends UserDetailsService
     //User save(UserRegistrationDto registrationDto);
+
+    void register(final User user);
     Page<User> getAll(Pageable pageable);
 }
