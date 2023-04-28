@@ -14,7 +14,7 @@
 
 body {
     background-color: var(--bodyColor);
-    font-family: Verdana, sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 a {
@@ -33,7 +33,7 @@ input {
     border: 1px solid lightgray;
     border-radius: 5px;
     width: 300px;
-    font-family: Verdana, sans-serif;
+    font-family: Inter, sans-serif;
 }
 
 input::placeholder {
@@ -46,7 +46,7 @@ input::placeholder {
     border-radius: 3px;
     color: #fff;
     padding: 6px;
-    font-family: Verdana, sans-serif;
+    font-family: Inter, sans-serif;
 
 }
 #container {
