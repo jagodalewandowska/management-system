@@ -42,7 +42,7 @@ public class StudentController {
     public String studentList(Model model, Pageable pageable) {
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
 //        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "studentList";
+        return "redirect:studentList/results?sort=studentId&order=asc";
     }
     @GetMapping("/studentEdit")
     public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
@@ -101,6 +101,8 @@ public class StudentController {
     public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
+        model.addAttribute("order", order);
+        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
         return "studentList";
     }
 }

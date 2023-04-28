@@ -17,23 +17,8 @@
         </nav>
         <div class="root">
             <div class="container">
-                <div class="same_row">
-                    <form method="get" action="#" th:action="@{/studentList/results}" id="sortform" style="margin-right: 80px">
-                        <select name="sort" id="sort" form="sortform">
-                            <option value="nazwisko">Nazwisko</option>
-                            <option value="imie">Imię</option>
-                            <option value="nrIndeksu">Numer indeksu</option>
-                            <option value="email">Adres e-mail</option>
-                            <option value="stacjonarny">Forma studiów</option>
-                        </select>
-                        <select name="order" id="order" form="sortform">
-                            <option value="asc">Rosnąco</option>
-                            <option value="desc">Malejąco</option>
-                        </select>
-                        <input type="submit" class="button_edit_nav" value="Sortuj">
-                    </form>
                 <form method="get" action="#" th:action="@{/studentList/search}" id="searchform">
-                    <label for="nazwisko" class="myText">Szukaj po nazwisku: </label>
+                    <label for="nazwisko" class="myText">🔍</label>
                     <input type="text" id="nazwisko" name="nazwisko">
                     <select name="size" id="size" form="searchform">
                         <option value="5">5</option>
@@ -43,18 +28,34 @@
                     <a th:href="@{/studentList}" class="button_edit_nav">Resetuj</a><br>
                 </form>
                 <br>
-                    <br>
-                </div>
+                <br>
                 <table class="styled_table">
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Nazwisko</th>
-                            <th>Imię</th>
-                            <th>Numer indeksu</th>
-                            <th>E-mail</th>
-                            <th>Rodzaj studiów</th>
-<!--                            <th>Projekty</th>-->
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=studentId&order=' + ${reverseSortDir}}">Id</a>
+                                <a th:href="@{'/studentList/results?sort=studentId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}">Nazwisko</a>
+                                <a th:href="@{'/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=imie&order=' + ${reverseSortDir}}">Imię</a>
+                                <a th:href="@{'/studentList/results?sort=imie&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}">Numer indeksu</a>
+                                <a th:href="@{'/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=email&order=' + ${reverseSortDir}}">E-mail</a>
+                                <a th:href="@{'/studentList/results?sort=email&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
+                            <th>
+                                <a th:href="@{'/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}">Rodzaj studiów</a>
+                                <a th:href="@{'/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                            </th>
                             <th>Edycja</th>
                         </tr>
                     </thead>

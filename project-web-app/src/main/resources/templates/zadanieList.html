@@ -18,24 +18,8 @@
 <div class="root">
   <div class="container">
     <br>
-    <div class="same_row">
-      <form method="get" action="#" th:action="@{/studentList/results}" id="sortform" style="margin-right: 80px">
-        <select name="sort" id="sort" form="sortform">
-          <option value="zadanieId">ID</option>
-          <option value="nazwa">Nazwa</option>
-          <option value="kolejnosc">Kolejnosc</option>
-          <option value="opis">Opis</option>
-          <option value="dataCzasUtworzenia">Data dodania</option>
-          <option value="projektId">ID projektu</option>
-        </select>
-        <select name="order" id="order" form="sortform">
-          <option value="asc">Rosnąco</option>
-          <option value="desc">Malejąco</option>
-        </select>
-        <input type="submit" class="button_edit_nav" value="Sortuj">
-      </form>
       <form method="get" action="#" th:action="@{/zadanieList/search}" id="searchform">
-        <label for="snazwa" class="myText">Szukaj po nazwie zadania: </label>
+        <label for="snazwa" class="myText">🔍</label>
         <input type="text" id="snazwa" name="nazwa">
         <select name="size" id="size" form="searchform">
           <option value="5">5</option>
@@ -44,16 +28,31 @@
         <input type="submit" class="button_edit_nav" value="Szukaj">
         <a th:href="@{/zadanieList}" class="button_edit_nav">Resetuj</a><br>
       </form>
-    </div>
+    <br>
     <br>
     <table class="styled_table">
       <thead>
       <tr>
-        <th>Id</th>
-        <th>Nazwa</th>
-        <th>Kolejnosc</th>
-        <th>Opis</th>
-        <th>Data dodania</th>
+        <th>
+          <a th:href="@{'/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}">Id</a>
+          <a th:href="@{'/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+        </th>
+        <th>
+          <a th:href="@{'/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
+          <a th:href="@{'/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+        </th>
+        <th>
+          <a th:href="@{'/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}">Kolejność</a>
+          <a th:href="@{'/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+        </th>
+        <th>
+          <a th:href="@{'/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
+          <a th:href="@{'/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+        </th>
+        <th>
+          <a th:href="@{'/zadanieList/results?sort=dataczas_dodania&order=' + ${reverseSortDir}}">Data dodania</a>
+          <a th:href="@{'/zadanieList/results?sort=dataczas_dodania&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+        </th>
         <th>Projekt Id</th>
         <th>Edit</th>
       </tr>

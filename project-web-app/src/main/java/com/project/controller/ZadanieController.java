@@ -34,7 +34,7 @@ public class ZadanieController {
     @GetMapping("/zadanieList")
     public String zadanieList(Model model, Pageable pageable) {
         model.addAttribute("zadania", zadanieService.getZadania(pageable).getContent());
-        return "zadanieList";
+        return "redirect:zadanieList/results?sort=zadanieId&order=asc";
     }
 
     @GetMapping("/zadanieEdit")
@@ -91,6 +91,8 @@ public class ZadanieController {
     public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("zadania", zadanieService.getZadania(pageable).getContent());
+        model.addAttribute("order", order);
+        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
         return "zadanieList";
     }
 }
