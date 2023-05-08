@@ -56,7 +56,10 @@
       </div>
       <div th:if="*{projekt}">
         <label for="projekt.projektId" class="lbl">Projekt:</label>
-        <input th:field="*{projekt.projektId}" class="fld" type="text" size="23"/>
+        <select class="form-control" id="dropDownList">
+          <option value="0">select option</option>
+          <option th:each="projekt : ${projekty}" th:value="${projekt.projektId}" th:text="${projekt.nazwa}"></option>
+        </select>
       </div>
     </div>
   </form>

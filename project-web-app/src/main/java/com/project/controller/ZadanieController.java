@@ -1,9 +1,11 @@
 package com.project.controller;
 import com.project.model.Projekt;
 import com.project.model.Zadanie;
+import com.project.service.ProjektService;
 import com.project.service.ZadanieService;
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.util.Strings;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,6 +18,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 @SessionAttributes("zadanie")
 public class ZadanieController {
     private ZadanieService zadanieService;
+    private ProjektService projektService;
 
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
@@ -27,8 +30,9 @@ public class ZadanieController {
         return Sort.Direction.ASC;
     }
 
-    public ZadanieController(ZadanieService zadanieService) {
+    public ZadanieController(ZadanieService zadanieService, ProjektService projektService) {
         this.zadanieService = zadanieService;
+        this.projektService = projektService;
     }
 
     @GetMapping("/zadanieList")
@@ -38,14 +42,16 @@ public class ZadanieController {
     }
 
     @GetMapping("/zadanieEdit")
-    public String zadanieEdit(@RequestParam(required = false) Integer zadanieId, Model model) {
+    public String zadanieEdit(@RequestParam(required = false) Integer zadanieId, Model model, Pageable pageable) {
         if (zadanieId != null) {
             model.addAttribute("zadanie", zadanieService.getZadanie(zadanieId).get());
+            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         } else {
             Zadanie zadanie = new Zadanie();
             Projekt projekt = new Projekt();
             zadanie.setProjekt(projekt);
             model.addAttribute("zadanie", zadanie);
+            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         }
         return "zadanieEdit";
     }
