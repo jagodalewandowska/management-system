@@ -44,7 +44,7 @@ public class ZadanieRestControllerTest {
 
     @Test
     public void getZadanie() throws Exception {
-        Zadanie zadanie= new Zadanie();
+        Zadanie zadanie= new Zadanie("Nazwa1", 1, "Opis1");
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
         when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
