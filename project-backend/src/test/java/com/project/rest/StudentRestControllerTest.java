@@ -58,4 +58,94 @@ public class StudentRestControllerTest {
         verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
         verifyNoMoreInteractions(mockStudentService);
     }
+    @Test
+    public void getStudent() throws Exception { //??
+        Student student= new Student("Jan1", "Kowalski2", "12346", "kowalskijan1@gmail.com", true);
+        Page<Student> page = new PageImpl<>(Collections.singletonList(student));
+        when(mockStudentService.getStudenci(any(Pageable.class))).thenReturn(page);
+        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].imie").value(student.getImie()))
+                .andExpect(jsonPath("$.content[0].nazwisko").value(student.getNazwisko()))
+                .andExpect(jsonPath("$.content[0].nrIndeksu").value(student.getNrIndeksu()))
+                .andExpect(jsonPath("$.content[0].email").value(student.getEmail()))
+                .andExpect(jsonPath("$.content[0].stacjonarny").value(student.getStacjonarny()));
+
+        verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
+        verifyNoMoreInteractions(mockStudentService);
+    }
+    @Test
+    public void getStudentNonStationary() throws Exception { //??
+        Student student= new Student("Jan2", "Kowal2", "12347", "kowalskijan2@gmail.com", false);
+        Page<Student> page = new PageImpl<>(Collections.singletonList(student));
+        when(mockStudentService.getStudenci(any(Pageable.class))).thenReturn(page);
+        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].imie").value(student.getImie()))
+                .andExpect(jsonPath("$.content[0].nazwisko").value(student.getNazwisko()))
+                .andExpect(jsonPath("$.content[0].nrIndeksu").value(student.getNrIndeksu()))
+                .andExpect(jsonPath("$.content[0].email").value(student.getEmail()))
+                .andExpect(jsonPath("$.content[0].stacjonarny").value(student.getStacjonarny()));
+
+        verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
+        verifyNoMoreInteractions(mockStudentService);
+    }
+    @Test
+    public void getStudentEmptyEmail() throws Exception { //??
+        Student student= new Student("Jan3", "Kowalski3", "12348", "", true);
+        Page<Student> page = new PageImpl<>(Collections.singletonList(student));
+        when(mockStudentService.getStudenci(any(Pageable.class))).thenReturn(page);
+        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].imie").value(student.getImie()))
+                .andExpect(jsonPath("$.content[0].nazwisko").value(student.getNazwisko()))
+                .andExpect(jsonPath("$.content[0].nrIndeksu").value(student.getNrIndeksu()))
+                .andExpect(jsonPath("$.content[0].email").value(student.getEmail()))
+                .andExpect(jsonPath("$.content[0].stacjonarny").value(student.getStacjonarny()));
+
+        verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
+        verifyNoMoreInteractions(mockStudentService);
+    }
+    @Test
+    public void getStudentEmptyName() throws Exception { //??
+        Student student= new Student("", "Kowalski4", "12349", "kowalskijan4@gmail.com", true);
+        Page<Student> page = new PageImpl<>(Collections.singletonList(student));
+        when(mockStudentService.getStudenci(any(Pageable.class))).thenReturn(page);
+        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].imie").value(student.getImie()))
+                .andExpect(jsonPath("$.content[0].nazwisko").value(student.getNazwisko()))
+                .andExpect(jsonPath("$.content[0].nrIndeksu").value(student.getNrIndeksu()))
+                .andExpect(jsonPath("$.content[0].email").value(student.getEmail()))
+                .andExpect(jsonPath("$.content[0].stacjonarny").value(student.getStacjonarny()));
+
+        verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
+        verifyNoMoreInteractions(mockStudentService);
+    }
+    @Test
+    public void getStudentIndexDuplication() throws Exception { //??
+        Student student= new Student("Jan5", "Kowalski5", "12345", "kowalskijan5@gmail.com", true);
+        Page<Student> page = new PageImpl<>(Collections.singletonList(student));
+        when(mockStudentService.getStudenci(any(Pageable.class))).thenReturn(page);
+        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].imie").value(student.getImie()))
+                .andExpect(jsonPath("$.content[0].nazwisko").value(student.getNazwisko()))
+                .andExpect(jsonPath("$.content[0].nrIndeksu").value(student.getNrIndeksu()))
+                .andExpect(jsonPath("$.content[0].email").value(student.getEmail()))
+                .andExpect(jsonPath("$.content[0].stacjonarny").value(student.getStacjonarny()));
+
+        verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
+        verifyNoMoreInteractions(mockStudentService);
+    }
 }
