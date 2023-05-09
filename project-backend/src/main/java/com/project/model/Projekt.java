@@ -47,7 +47,7 @@ public class Projekt {
     private LocalDateTime dataCzasModyfikacji;
 
     @OneToMany(mappedBy = "projekt")
-    @JsonIgnoreProperties({"projekt"})
+    @JsonIgnoreProperties(value = {"projekt"}, allowSetters = true)
     private List<Zadanie> zadania;
 
     @ManyToMany

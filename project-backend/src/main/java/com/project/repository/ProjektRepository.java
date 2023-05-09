@@ -10,5 +10,5 @@ import com.project.model.Projekt;
 public interface ProjektRepository extends JpaRepository<Projekt, Integer> {
 
     Page<Projekt> findByNazwaContainingIgnoreCase(String nazwa, Pageable pageable);
-    List<Projekt> findByNazwaContainingIgnoreCase(String nazwa);
+//    List<Projekt> findByNazwaContainingIgnoreCase(String nazwa);
 }

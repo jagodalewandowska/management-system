@@ -52,6 +52,7 @@ public class ProjektRestController {
                 .path("/{projektId}").buildAndExpand(createdProjekt.getProjektId()).toUri();
         return ResponseEntity.created(location).build();
     }
+
     @PutMapping("/projekty/{projektId}")
     public ResponseEntity<Void> updateProjekt(@Valid @RequestBody Projekt projekt,
                                               @PathVariable Integer projektId) {
@@ -62,6 +63,7 @@ public class ProjektRestController {
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
     @DeleteMapping("/projekty/{projektId}")
     public ResponseEntity<Void> deleteProjekt(@PathVariable Integer projektId) {
         return projektService.getProjekt(projektId).map(p -> {

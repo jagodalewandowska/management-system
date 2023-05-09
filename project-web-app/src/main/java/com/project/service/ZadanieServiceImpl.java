@@ -31,6 +31,7 @@ public class ZadanieServiceImpl implements ZadanieService {
     public ZadanieServiceImpl(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
+
     @Override
     public Optional<Zadanie> getZadanie(Integer zadanieId) {
         URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(zadanieId))
@@ -39,6 +40,14 @@ public class ZadanieServiceImpl implements ZadanieService {
         logger.info("REQUEST -> GET {}", url);
         return Optional.ofNullable(restTemplate.getForObject(url, Zadanie.class));
     }
+
+    @Override
+    public Page<Zadanie> getZadania(Pageable pageable) {
+        URI url = ServiceUtil.getURI(serverUrl, getResourcePath(), pageable);
+        logger.info("REQUEST -> GET {}", url);
+        return getPage(url, restTemplate);
+    }
+
     @Override
     public Zadanie setZadanie(Zadanie zadanie, Integer projektId) {
         if (zadanie.getZadanieId() != null) {
@@ -64,17 +73,12 @@ public class ZadanieServiceImpl implements ZadanieService {
         logger.info("REQUEST -> DELETE {}", url);
         restTemplate.delete(url);
     }
-    @Override
-    public Page<Zadanie> getZadania(Pageable pageable) {
-        URI url = ServiceUtil.getURI(serverUrl, getResourcePath(), pageable);
-        logger.info("REQUEST -> GET {}", url);
-        return getPage(url, restTemplate);
-    }
 
     private Page<Zadanie> getPage(URI uri, RestTemplate restTemplate) {
         return ServiceUtil.getPage(uri, restTemplate,
                 new ParameterizedTypeReference<RestResponsePage<Zadanie>>() {});
     }
+
     @Override
     public Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable) {
         URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(), pageable)
@@ -83,6 +87,7 @@ public class ZadanieServiceImpl implements ZadanieService {
         logger.info("REQUEST -> GET {}", url);
         return getPage(url, restTemplate);
     }
+
     private String getResourcePath() {
         return RESOURCE_PATH;
     }

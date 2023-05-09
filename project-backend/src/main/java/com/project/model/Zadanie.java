@@ -11,8 +11,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.bytecode.internal.bytebuddy.BytecodeProviderImpl;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="zadanie")
@@ -33,16 +35,18 @@ public class Zadanie {
     @Column(nullable = true, length = 1000)
     private String opis;
 
-    @NotBlank(message = "Pole dataczas_dodania nie może być puste!")
-    @Column(nullable = false)
-    private Timestamp dataczas_dodania;
+//    @NotBlank(message = "Pole dataczas_dodania nie może być puste!")
+    @CreationTimestamp
+    @Column(name = "dataczas_dodania", nullable = false, updatable = false)
+    private LocalDateTime dataczas_dodania;
 
     @ManyToOne
     @JsonIgnoreProperties({"projekt"})
     @JoinColumn(name = "projekt_id")
     private Projekt projekt;
 
-    public Zadanie(String nazwa, String opis, int kolejnosc) {
+    public Zadanie() {
+
     }
 
     public Integer getZadanieId() {
@@ -77,11 +81,11 @@ public class Zadanie {
         this.opis = opis;
     }
 
-    public Timestamp getDataczas_dodania() {
+    public LocalDateTime getDataczas_dodania() {
         return dataczas_dodania;
     }
 
-    public void setDataczas_dodania(Timestamp dataczas_dodania) {
+    public void setDataczas_dodania(LocalDateTime dataczas_dodania) {
         this.dataczas_dodania = dataczas_dodania;
     }
 
@@ -93,11 +97,19 @@ public class Zadanie {
         this.projekt = projekt;
     }
 
-    public Zadanie() {}
-
-    public Zadanie(String nazwa, int kolejnosc, String opis) {
+    public Zadanie(String nazwa, String opis, Integer kolejnosc, LocalDateTime dataczas_dodania) {
         this.nazwa = nazwa;
         this.kolejnosc = kolejnosc;
         this.opis = opis;
+        this.dataczas_dodania = dataczas_dodania;
+    }
+
+    public Zadanie(Integer zadanieId, String nazwa, String opis, Integer kolejnosc, LocalDateTime dataczas_dodania){
+        super();
+        this.zadanieId = zadanieId;
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.kolejnosc = kolejnosc;
+        this.dataczas_dodania = dataczas_dodania;
     }
 }

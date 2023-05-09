@@ -11,18 +11,22 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Service
 public class ZadanieServiceImpl implements ZadanieService {
 
     private ZadanieRepository zadanieRepository;
-    private ProjektRepository projektRepository;
+    private ProjektService projektService;
 
     @Autowired
-    public ZadanieServiceImpl(ZadanieRepository zadanieRepository, ProjektRepository projektRepository) {
+    public ZadanieServiceImpl(ZadanieRepository zadanieRepository, ProjektService projektService) {
         this.zadanieRepository = zadanieRepository;
-        this.projektRepository = projektRepository;
+        this.projektService = projektService;
     }
 
     @Override
@@ -31,20 +35,46 @@ public class ZadanieServiceImpl implements ZadanieService {
     }
 
     @Override
-    public Zadanie setZadanie(Zadanie zadanie, Integer projektId) {
+    public Page<Zadanie> getZadanieProjektu(Integer projektId, Pageable pageable){
+        return zadanieRepository.findZadaniaProjektu(projektId, pageable);
+    }
+
+    @Override
+    public Zadanie setZadanie(Zadanie zadanie) {
         Zadanie zadanieToSave = null;
         if(zadanie.getZadanieId()!=null) {
             zadanieToSave = zadanie;
         }else {
-            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis(), zadanie.getKolejnosc());
+            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis(), zadanie.getKolejnosc(), zadanie.getDataczas_dodania());
         }
         return  zadanieRepository.save(zadanieToSave);
     }
 
+//    @Override
+//    public Zadanie setZadanie(Zadanie zadanie){
+//        return zadanieRepository.save(zadanie);
+//    }
+
+//    @Override
+//    @Transactional
+//    public void deleteZadanie(Integer zadanieId) {
+//        //TODO Zmienic deleteZadanie nie uwzględnia projektId
+//        zadanieRepository.deleteById(zadanieId);
+//    }
+
     @Override
-    @Transactional
     public void deleteZadanie(Integer zadanieId) {
-        zadanieRepository.deleteById(zadanieId);
+        Integer projektId = zadanieRepository.findById(zadanieId).get().getProjekt().getProjektId();
+        zadanieRepository.delete(zadanieRepository.findById(zadanieId).get());
+
+        List<Zadanie> zadaniaProjektu = projektService.getProjekt(projektId).get().getZadania();
+        AtomicInteger kol = new AtomicInteger();
+        kol.set(1);
+        zadaniaProjektu.stream().sorted(Comparator.comparingInt(Zadanie::getKolejnosc)).forEach(s->{
+            s.setKolejnosc(kol.get());
+            kol.getAndIncrement();
+            zadanieRepository.save(s);
+        });
 
     }
 
