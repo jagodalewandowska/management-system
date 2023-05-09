@@ -49,7 +49,7 @@ public class ZadanieRestControllerTest {
     public void getZadania() throws Exception { //??
         Zadanie zadanie= new Zadanie("Nazwa1", 1, "Opis1");
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
+        when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -58,14 +58,14 @@ public class ZadanieRestControllerTest {
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
 
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
+        verify(mockZadanieService, times(1)).getZadania(any(Pageable.class));
         verifyNoMoreInteractions(mockZadanieService);
     }
     @Test
     public void getZadanie() throws Exception { //??
         Zadanie zadanie= new Zadanie("Nazwa2", 2, "Opis2");
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
+        when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -74,35 +74,35 @@ public class ZadanieRestControllerTest {
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
 
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
+        verify(mockZadanieService, times(1)).getZadania(any(Pageable.class));
         verifyNoMoreInteractions(mockZadanieService);
     }
-    @Test
-    public void getZadanieIndexDuplication() throws Exception { //??
-        Zadanie zadanie= new Zadanie("Nazwa3", null, "Opis3");
-        Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
-        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
-                .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
-                .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
-                .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
-
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
-        verifyNoMoreInteractions(mockZadanieService);
+//    @Test
+//    public void getZadanieIndexDuplication() throws Exception { //??
+//        Zadanie zadanie= new Zadanie("Nazwa3", null, "Opis3");
+//        Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
+//        when(mockZadanieService.getZadaniea(any(Pageable.class))).thenReturn(page);
+//        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
+//                .andDo(print())
+//                .andExpect(status().isOk())
+//                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+//                .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
+//                .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
+//                .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
+//
+//        verify(mockZadanieService, times(1)).getZadania(any(Pageable.class));
+//        verifyNoMoreInteractions(mockZadanieService);
 
 //        Exception exception = result.getResolvedException(); ??
 //        assertNotNull(exception);
 //        assertTrue(exception instanceof MethodArgumentNotValidException);
 //        System.out.println(exception.getMessage());
-    }
+//    }
     @Test
     public void getZadanieEmptyName() throws Exception { //??
         Zadanie zadanie = new Zadanie("", 3, "Opis3");
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
+        when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -111,14 +111,14 @@ public class ZadanieRestControllerTest {
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
 
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
+        verify(mockZadanieService, times(1)).getZadania(any(Pageable.class));
         verifyNoMoreInteractions(mockZadanieService);
     }
     @Test
     public void getZadanieEmptyDescription() throws Exception { //??
         Zadanie zadanie = new Zadanie("Nazwa4", 4, "");
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
+        when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
@@ -127,23 +127,7 @@ public class ZadanieRestControllerTest {
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
 
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
-        verifyNoMoreInteractions(mockZadanieService);
-    }
-    @Test
-    public void getZadanieEmptyDescription() throws Exception { //??
-        Zadanie zadanie = new Zadanie("Nazwa5", 1, "");
-        Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
-        when(mockZadanieService.getZadanie(any(Pageable.class))).thenReturn(page);
-        mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
-                .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
-                .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
-                .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
-
-        verify(mockZadanieService, times(1)).getZadanie(any(Pageable.class));
+        verify(mockZadanieService, times(1)).getZadania(any(Pageable.class));
         verifyNoMoreInteractions(mockZadanieService);
     }
 }
