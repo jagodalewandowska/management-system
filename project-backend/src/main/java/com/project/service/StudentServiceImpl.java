@@ -55,6 +55,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Optional<Student> searchByEmail(String email) {
+        return studentRepository.findByEmail(email);
+    }
+
+    @Override
     public Page <Student> getStudenciPageSort(String sort, String direction) {
         Pageable pageable = null;
         direction = direction.toUpperCase();

@@ -14,5 +14,6 @@ public interface StudentService {
     Page<Student> getStudenci(Pageable pageable);
     Page<Student> searchByNazwisko(String nazwisko, Pageable pageable);
     Page<Student> getStudenciPageSort(String sort, String direction);
-
+// token
+    Optional<Student> searchByEmail(String email);
 }
