@@ -47,13 +47,14 @@ public class ZadanieRestControllerTest {
 
     @Test
     public void getZadania() throws Exception { //??
-        Zadanie zadanie= new Zadanie("Nazwa1", 1, "Opis1");
+        Zadanie zadanie= new Zadanie(1,"Nazwa1", "Opis1",1, LocalDateTime.now());
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
         when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].zadanieId").value(zadanie.getZadanieId()))
                 .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
@@ -63,13 +64,14 @@ public class ZadanieRestControllerTest {
     }
     @Test
     public void getZadanie() throws Exception { //??
-        Zadanie zadanie= new Zadanie("Nazwa2", 2, "Opis2");
+        Zadanie zadanie= new Zadanie(2,"Nazwa2", "Opis2",2, LocalDateTime.now());
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
         when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].zadanieId").value(zadanie.getZadanieId()))
                 .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
@@ -100,13 +102,14 @@ public class ZadanieRestControllerTest {
 //    }
     @Test
     public void getZadanieEmptyName() throws Exception { //??
-        Zadanie zadanie = new Zadanie("", 3, "Opis3");
+        Zadanie zadanie= new Zadanie(1,"", "Opis1",1, LocalDateTime.now());
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
         when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].zadanieId").value(zadanie.getZadanieId()))
                 .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
@@ -116,13 +119,14 @@ public class ZadanieRestControllerTest {
     }
     @Test
     public void getZadanieEmptyDescription() throws Exception { //??
-        Zadanie zadanie = new Zadanie("Nazwa4", 4, "");
+        Zadanie zadanie= new Zadanie(1,"Nazwa1", "",1, LocalDateTime.now());
         Page<Zadanie> page = new PageImpl<>(Collections.singletonList(zadanie));
         when(mockZadanieService.getZadania(any(Pageable.class))).thenReturn(page);
         mockMvc.perform(get(apiPath).contentType(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[*]").exists()) //content[*] - oznacza całą zawartość tablicy content
+                .andExpect(jsonPath("$.content[0].zadanieId").value(zadanie.getZadanieId()))
                 .andExpect(jsonPath("$.content[0].nawa").value(zadanie.getNazwa()))
                 .andExpect(jsonPath("$.content[0].kolejnosc").value(zadanie.getKolejnosc()))
                 .andExpect(jsonPath("$.content[0].opis").value(zadanie.getOpis()));
