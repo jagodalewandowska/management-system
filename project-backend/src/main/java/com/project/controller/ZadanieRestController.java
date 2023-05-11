@@ -31,20 +31,23 @@ public class ZadanieRestController {
 
     @GetMapping("/zadania/{zadanieId}")
     ResponseEntity<Zadanie> getZadanie(@PathVariable Integer zadanieId) {
+        System.out.println("GET wybrane zadanie");
         return ResponseEntity.of(zadanieService.getZadanie(zadanieId));
     }
 
-    @GetMapping(path = "/zadania", params = "projektId")
-    Page<Zadanie> getZadanieProjektu(Integer projektId, Pageable pageable){
+    @GetMapping("/zadania/projektId={projektId}")
+    Page<Zadanie> getZadanieProjektu(@PathVariable Integer projektId, Pageable pageable){
+        System.out.println("GET z danym projektem");
         return zadanieService.getZadanieProjektu(projektId, pageable);
     }
 
-    @PostMapping(path = "/zadania", params = "projektId")
-    ResponseEntity<Void> createZadanie(@Valid @RequestBody Zadanie zadanie, @RequestParam(value = "projektId") Integer projektId) {
-
+    @PostMapping("/zadania/{projektId}")
+    ResponseEntity<Void> createZadanie(@Valid @RequestBody Zadanie zadanie, @PathVariable Integer projektId) {
+        System.out.println("ProjektId: "+projektId);
 //        Integer nextKolejnosc= projektService.getProjekt(projektId).get().getZadania().size();
         zadanie.setDataczas_dodania(LocalDateTime.now());
 //        zadanie.setKolejnosc(nextKolejnosc+1);
+        //System.out.println(projektId);
         zadanie.setProjekt(projektService.getProjekt(projektId).get());
         Zadanie createdZadanie = zadanieService.setZadanie(zadanie);
 
@@ -73,6 +76,7 @@ public class ZadanieRestController {
 
     @GetMapping(value = "/zadania")
     Page<Zadanie> getZadania(Pageable pageable) {
+        System.out.println("GET Wszystkie zdania");
         return zadanieService.getZadania(pageable);
     }
 

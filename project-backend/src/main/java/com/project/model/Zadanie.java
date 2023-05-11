@@ -45,6 +45,8 @@ public class Zadanie {
     @JoinColumn(name = "projekt_id")
     private Projekt projekt;
 
+
+
     public Zadanie() {
 
     }
@@ -94,14 +96,14 @@ public class Zadanie {
     }
 
     public void setProjekt(Projekt projekt) {
+        System.out.println(projekt.getProjektId());
         this.projekt = projekt;
     }
 
-    public Zadanie(String nazwa, String opis, Integer kolejnosc, LocalDateTime dataczas_dodania) {
+    public Zadanie(String nazwa, String opis, Integer kolejnosc) {
         this.nazwa = nazwa;
         this.kolejnosc = kolejnosc;
         this.opis = opis;
-        this.dataczas_dodania = dataczas_dodania;
     }
 
     public Zadanie(Integer zadanieId, String nazwa, String opis, Integer kolejnosc, LocalDateTime dataczas_dodania){

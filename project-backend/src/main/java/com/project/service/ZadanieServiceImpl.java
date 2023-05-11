@@ -1,10 +1,7 @@
 package com.project.service;
 
-import com.project.model.Projekt;
 import com.project.model.Zadanie;
-import com.project.repository.ProjektRepository;
 import com.project.repository.ZadanieRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,21 +36,21 @@ public class ZadanieServiceImpl implements ZadanieService {
         return zadanieRepository.findZadaniaProjektu(projektId, pageable);
     }
 
-    @Override
-    public Zadanie setZadanie(Zadanie zadanie) {
-        Zadanie zadanieToSave = null;
-        if(zadanie.getZadanieId()!=null) {
-            zadanieToSave = zadanie;
-        }else {
-            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis(), zadanie.getKolejnosc(), zadanie.getDataczas_dodania());
-        }
-        return  zadanieRepository.save(zadanieToSave);
-    }
-
 //    @Override
-//    public Zadanie setZadanie(Zadanie zadanie){
-//        return zadanieRepository.save(zadanie);
+//    public Zadanie setZadanie(Zadanie zadanie) {
+//        Zadanie zadanieToSave = null;
+//        if(zadanie.getZadanieId()!=null) {
+//            zadanieToSave = zadanie;
+//        }else {
+//            zadanieToSave = new Zadanie(zadanie.getNazwa(), zadanie.getOpis(), zadanie.getKolejnosc());
+//        }
+//        return  zadanieRepository.save(zadanieToSave);
 //    }
+
+    @Override
+    public Zadanie setZadanie(Zadanie zadanie){
+        return zadanieRepository.save(zadanie);
+    }
 
 //    @Override
 //    @Transactional
