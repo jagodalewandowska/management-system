@@ -20,7 +20,9 @@ import java.util.List;
 
 @Controller
 public class ProjectController {
+
     private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
+    private ProjektService projektService;
 
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
@@ -32,16 +34,16 @@ public class ProjectController {
         return Sort.Direction.ASC;
     }
 
-
-    private ProjektService projektService;
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
+
     @GetMapping({"/projektList", "/projektList/"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "redirect:projektList/results?sort=projektId&order=asc";
     }
+
     @GetMapping("/projektEdit")
     public String projektEdit(@RequestParam(required = false) Integer projektId, Model model) {
         if(projektId != null) {
@@ -52,28 +54,32 @@ public class ProjectController {
         }
         return "projektEdit";
     }
+
     @PostMapping(path = "/projektEdit")
     public String projektEditSave(@ModelAttribute @Valid Projekt projekt, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "projektEdit";
         }
         try {
-            projekt = projektService.setProjekt(projekt);
+            projektService.setProjekt(projekt);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "projektEdit";
         }
         return "redirect:/projektList";
     }
+
     @PostMapping(params="cancel", path = "/projektEdit")
     public String projektEditCancel() {
         return "redirect:/projektList";
     }
+
     @PostMapping(params="delete", path = "/projektEdit")
     public String projektEditDelete(@ModelAttribute Projekt projekt) {
         projektService.deleteProjekt(projekt.getProjektId());
         return "redirect:/projektList";
     }
+
     @GetMapping("/projektList/search")
     public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwa) {
         Pageable pageable = PageRequest.of(0, size);

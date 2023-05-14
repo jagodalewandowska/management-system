@@ -41,28 +41,23 @@ public class ZadanieRestController {
         return zadanieService.getZadanieProjektu(projektId, pageable);
     }
 
-    @PostMapping("/zadania/{projektId}")
-    ResponseEntity<Void> createZadanie(@Valid @RequestBody Zadanie zadanie, @PathVariable Integer projektId) {
-        System.out.println("ProjektId: "+projektId);
+    @PostMapping("/zadania")
+    ResponseEntity<Void> createZadanie(@Valid @RequestBody Zadanie zadanie) {
 //        Integer nextKolejnosc= projektService.getProjekt(projektId).get().getZadania().size();
         zadanie.setDataczas_dodania(LocalDateTime.now());
 //        zadanie.setKolejnosc(nextKolejnosc+1);
-        //System.out.println(projektId);
-        zadanie.setProjekt(projektService.getProjekt(projektId).get());
         Zadanie createdZadanie = zadanieService.setZadanie(zadanie);
-
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{zadanieId}")
                 .buildAndExpand(createdZadanie.getZadanieId()).toUri();
         return ResponseEntity.created(location).build();
     }
 
-    @PutMapping(path = "/zadania/{zadanieId}", params = "projektId")
+    @PutMapping(path = "/zadania/{zadanieId}")
     public ResponseEntity<Void> updateZadanie(@Valid @RequestBody Zadanie zadanie,
-                                              @PathVariable("zadanieId") Integer zadanieId, @RequestParam("projektId") Integer projektId) {
+                                              @PathVariable("zadanieId") Integer zadanieId) {
         return zadanieService.getZadanie(zadanieId).map(p -> {
-            zadanie.setProjekt(projektService.getProjekt(projektId).get());
-            zadanieService.setZadanie(zadanie);
-            return new ResponseEntity<Void>(HttpStatus.OK);
+                                        zadanieService.setZadanie(zadanie);
+                                        return new ResponseEntity<Void>(HttpStatus.OK);
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 

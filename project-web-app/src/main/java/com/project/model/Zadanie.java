@@ -1,9 +1,11 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Zadanie {
@@ -12,7 +14,7 @@ public class Zadanie {
     private Integer kolejnosc;
     private String opis;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Timestamp dataczas_dodania;
+    private LocalDateTime dataczas_dodania;
 
     private Projekt projekt;
 
@@ -48,11 +50,11 @@ public class Zadanie {
         this.opis = opis;
     }
 
-    public Timestamp getDataczas_dodania() {
+    public LocalDateTime getDataczas_dodania() {
         return dataczas_dodania;
     }
 
-    public void setDataczas_dodania(Timestamp dataczas_dodania) {
+    public void setDataczas_dodania(LocalDateTime dataczas_dodania) {
         this.dataczas_dodania = dataczas_dodania;
     }
 
@@ -72,7 +74,7 @@ public class Zadanie {
         this.opis = opis;
     }
 
-    public Zadanie(Integer zadanieId, String nazwa, Integer kolejnosc, String opis, Timestamp dataczas_dodania,
+    public Zadanie(Integer zadanieId, String nazwa, Integer kolejnosc, String opis, LocalDateTime dataczas_dodania,
                    Projekt projekt) {
         super();
         this.zadanieId = zadanieId;

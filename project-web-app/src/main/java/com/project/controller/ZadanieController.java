@@ -15,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 @Controller
-@SessionAttributes("zadanie")
 public class ZadanieController {
     private ZadanieService zadanieService;
     private ProjektService projektService;
@@ -57,14 +56,16 @@ public class ZadanieController {
     }
 
     @PostMapping(path = "/zadanieEdit")
-    public String zadanieEditSave(@ModelAttribute @Valid Zadanie zadanie, BindingResult bindingResult) {
+    public String zadanieEditSave(@ModelAttribute @Valid Zadanie zadanie, Integer projektId, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "zadanieEdit";
         }
         try {
-            zadanie = zadanieService.setZadanie(zadanie, zadanie.getProjekt().getProjektId());
+            zadanieService.setZadanie(zadanie);
         } catch (HttpStatusCodeException e) {
-            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            bindingResult.rejectValue(Strings.EMPTY,
+                                      String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            System.out.println(e.getStatusCode() + e.getMessage());
             return "zadanieEdit";
         }
         return "redirect:/zadanieList";

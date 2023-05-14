@@ -49,16 +49,15 @@ public class ZadanieServiceImpl implements ZadanieService {
     }
 
     @Override
-    public Zadanie setZadanie(Zadanie zadanie, Integer projektId) {
+    public Zadanie setZadanie(Zadanie zadanie) {
         if (zadanie.getZadanieId() != null) {
             String url = getUriStringComponent(zadanie.getZadanieId());
-            url += getProjectPath(projektId);
             logger.info("REQUEST -> PUT {}", url);
             restTemplate.put(url, zadanie);
             return zadanie;
         } else {
             HttpEntity<Zadanie> request = new HttpEntity<>(zadanie);
-            String url = getUriStringComponent() + "/" + projektId;
+            String url = getUriStringComponent();
             logger.info("REQUEST -> POST {}", url);
             URI location = restTemplate.postForLocation(url, request);
             logger.info("REQUEST (location) -> GET {}", location);

@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SecurityConfig {
     // dzięki adnotacji @Bean Spring uruchomi metodę i zarejestruje w kontenerze obiekt przez nią
-    @Bean
     // zwrócony, natomiast adnotacja @Autowired użyta w innej klasie spowoduje jego wstrzyknięcie
+    @Bean
     RestTemplate customRestTemplate(RestTemplateBuilder restTemplateBuilder) {
         return restTemplateBuilder.basicAuthentication("admin", "admin").build();
     }
