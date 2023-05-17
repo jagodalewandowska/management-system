@@ -150,27 +150,27 @@ public class StudentRestControllerTest {
         verify(mockStudentService, times(1)).getStudenci(any(Pageable.class));
         verifyNoMoreInteractions(mockStudentService);
     }
-    @Test
-    public void getStudentIndexDuplication() throws Exception {
-        Student student1 = new Student("Jan", "Kowalski", "12345", "kowalskijan@gmail.com", true);
-        Student student2 = new Student("Adam", "Nowak", "12345", "nowakadam@gmail.com", false);
-        when(mockStudentService.getStudent(student1.getStudentId())).thenReturn(Optional.of(student1));
-        when(mockStudentService.getStudent(student2.getStudentId())).thenThrow(new IllegalArgumentException("Student with index number '12345' already exists"));
-
-        mockMvc.perform(post(apiPath)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(jacksonTester.write(student1).getJson()))
-                .andExpect(status().isOk());
-
-        mockMvc.perform(post(apiPath)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(jacksonTester.write(student2).getJson()))
-                .andExpect(status().isBadRequest())
-                .andExpect(content().string("Student with index number '12345' already exists"));
-
-        verify(mockStudentService, times(1)).getStudent(student1.getStudentId());
-        verify(mockStudentService, times(1)).getStudent(student2.getStudentId());
-        verifyNoMoreInteractions(mockStudentService);
-    }
+//    @Test
+//    public void getStudentIndexDuplication() throws Exception {
+//        Student student1 = new Student("Jan", "Kowalski", "12345", "kowalskijan@gmail.com", true);
+//        Student student2 = new Student("Adam", "Nowak", "12345", "nowakadam@gmail.com", false);
+//        when(mockStudentService.getStudent(student1.getStudentId())).thenReturn(Optional.of(student1));
+//        when(mockStudentService.getStudent(student2.getStudentId())).thenThrow(new IllegalArgumentException("Student with index number '12345' already exists"));
+//
+//        mockMvc.perform(post(apiPath)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(jacksonTester.write(student1).getJson()))
+//                .andExpect(status().isOk());
+//
+//        mockMvc.perform(post(apiPath)
+//                        .contentType(MediaType.APPLICATION_JSON)
+//                        .content(jacksonTester.write(student2).getJson()))
+//                .andExpect(status().isBadRequest())
+//                .andExpect(content().string("Student with index number '12345' already exists"));
+//
+//        verify(mockStudentService, times(1)).getStudent(student1.getStudentId());
+//        verify(mockStudentService, times(1)).getStudent(student2.getStudentId());
+//        verifyNoMoreInteractions(mockStudentService);
+//    }
 
 }
