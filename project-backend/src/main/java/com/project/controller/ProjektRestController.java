@@ -56,6 +56,7 @@ public class ProjektRestController {
     @PutMapping("/projekty/{projektId}")
     public ResponseEntity<Void> updateProjekt(@Valid @RequestBody Projekt projekt,
                                               @PathVariable Integer projektId) {
+
         return projektService.getProjekt(projektId)
                 .map(p -> {
                     projektService.setProjekt(projekt);
