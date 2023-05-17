@@ -7,6 +7,7 @@ import com.project.model.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
 public interface StudentService {
     Optional<Student> getStudent(Integer studentId);
     Student setStudent(Student student);

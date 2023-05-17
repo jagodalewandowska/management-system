@@ -1,6 +1,7 @@
 package com.project.auth;
 
 import com.project.model.Student;
+import com.project.validation.ValidationService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
@@ -15,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class AuthController {
     private final AuthService authService;
-    // private final ValidationService<Student> validator;
+    private final ValidationService<Student> validator; // można dać do projektu, zadania - jest to klasa generyczna
 
 
     // zwracany token na jwt.io
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody Student student) {
+        validator.validate(student);
         authService.register(student);
         return new ResponseEntity<Void>(HttpStatus.OK);
     }
