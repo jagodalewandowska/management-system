@@ -23,3 +23,7 @@ Zmiany do tokena:
   - Controller, Request, Response, Service
 - validation
   - handler, service, violation
+
+errors:
+Parameter 0 of constructor in com.project.auth.AuthService required a bean of type 'com.project.service.StudentService' that could not be found.
+
