@@ -23,7 +23,7 @@ public class SecurityWebConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/register", "api/login").permitAll()
+                .requestMatchers("/api/register", "/api/login").permitAll()
                 .requestMatchers("/api/studenci/**").hasAuthority(Role.ADMIN.toString()) // pobierane z typu wyliczeniowego
                 .anyRequest().authenticated()
                 .and()

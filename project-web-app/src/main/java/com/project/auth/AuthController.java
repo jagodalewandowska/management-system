@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/app")
 public class AuthController {
     private final AuthService authService;
     private final TokenHolder tokenHolder;
