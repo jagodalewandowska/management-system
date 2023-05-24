@@ -26,11 +26,6 @@ public class FileController {
   @Autowired
   FilesStorageService storageService;
 
-  @GetMapping("/")
-  public String homepage() {
-    return "redirect:/files";
-  }
-
   @GetMapping("/files/new")
   public String newFile(Model model) {
     return "upload_form";
