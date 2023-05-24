@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/edit-style.css}" rel="stylesheet" />
+<!-- plik z ...\resources\static\css\edit-style.css -->
+<title>Rejestracja</title>
+</head>
+ <body>
+	<div class="root">
+		<form action="#" th:action="@{/app/register}" th:object="${student}"
+			method="POST"
+			autocomplete="off">
+			<h1>Rejestracja</h1>
+			<div class="err" th:if="${#fields.hasErrors('*')}">BŁĘDY:
+				<ul>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
+				</ul>
+			</div>
+			<div class="container">
+				<div class="btns-panel">
+					<input class="btn" type="submit" name="register" value="Zarejestruj"/> 
+					<input class="btn" type="submit" name="cancel" value="Anuluj" />
+				</div>			
+				<div>
+					<label for="imie" class="lbl">Imie:</label>
+					<input type="text" size="50" th:field="*{imie}" th:class="${#fields.hasErrors('imie')}? 'err' : 'fld'"/>
+				</div>			
+				<div>
+					<label for="nazwisko" class="lbl">Nazwisko:</label>
+					<input type="text" size="50" th:field="*{nazwisko}" th:class="${#fields.hasErrors('nazwisko')}? 'err' : 'fld'"/>
+				</div>
+				<div>
+					<label for="nrIndeksu" class="lbl">Nr Indeksu:</label>
+					<input type="text" size="50" th:field="*{nrIndeksu}" th:class="${#fields.hasErrors('nrIndeksu')}? 'err' : 'fld'"/>
+				</div>	
+				
+				<div>
+					<label for="email" class="lbl">Email:</label> 
+					<input type="text" th:field="*{email}" size="50" th:class="${#fields.hasErrors('email')}? 'err' : 'fld'"/>
+				</div>
+				<div>
+					<label for="password" class="lbl">Password:</label> 
+					<input type="password" th:field="*{password}" size="50" th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" />
+				</div>
+				<div>
+					<label for="stacjonarny" class="lbl">Stacjonarny:</label>
+					<input type="checkbox"  th:field="*{stacjonarny}" th:class="${#fields.hasErrors('stacjonarny')}? 'err' : 'fld'"/><em>zaznacz, jeśli studiujesz stacjonarnie</em>				
+				</div>
+			</div>
+		</form>
+	</div>
+ </body>
+</html>

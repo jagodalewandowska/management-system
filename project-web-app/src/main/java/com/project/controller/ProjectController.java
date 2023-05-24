@@ -1,6 +1,7 @@
 package com.project.controller;
 import com.project.service.ProjektServiceImpl;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +20,8 @@ import com.project.service.ProjektService;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
+@RequestMapping("/app")
 public class ProjectController {
     private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
 
@@ -40,7 +43,7 @@ public class ProjectController {
     @GetMapping({"/projektList", "/projektList/"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "redirect:projektList/results?sort=projektId&order=asc";
+        return "redirect:/app/projektList/results?sort=projektId&order=asc";
     }
     @GetMapping("/projektEdit")
     public String projektEdit(@RequestParam(required = false) Integer projektId, Model model) {
@@ -63,7 +66,7 @@ public class ProjectController {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "projektEdit";
         }
-        return "redirect:/projektList";
+        return "redirect:/app/projektList";
     }
     @PostMapping(params="cancel", path = "/projektEdit")
     public String projektEditCancel() {
@@ -72,7 +75,7 @@ public class ProjectController {
     @PostMapping(params="delete", path = "/projektEdit")
     public String projektEditDelete(@ModelAttribute Projekt projekt) {
         projektService.deleteProjekt(projekt.getProjektId());
-        return "redirect:/projektList";
+        return "redirect:/app/projektList";
     }
     @GetMapping("/projektList/search")
     public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwa) {

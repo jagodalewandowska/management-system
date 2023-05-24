@@ -1,6 +1,7 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Set;
@@ -14,7 +15,28 @@ public class Student {
     private String email;
     @Value("false")
     private Boolean stacjonarny;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private String password;
+
+    private Role role;
     private Set<Projekt> projekty;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public Set<Projekt> getProjekty() {
         return projekty;
