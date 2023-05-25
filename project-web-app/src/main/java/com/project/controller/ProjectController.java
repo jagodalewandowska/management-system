@@ -2,6 +2,7 @@ package com.project.controller;
 import com.project.service.ProjektServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +23,8 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/app")
+@Slf4j
 public class ProjectController {
-    private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
-
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
         if (direction.equals("asc")) {
@@ -40,7 +40,7 @@ public class ProjectController {
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
-    @GetMapping({"/projektList", "/projektList/"})
+    @GetMapping({"/projektList"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "redirect:/app/projektList/results?sort=projektId&order=asc";
@@ -91,7 +91,7 @@ public class ProjectController {
 
     @GetMapping("/projektList/results")
     public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
-        logger.info(order);
+        log.info(order);
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         model.addAttribute("order", order);

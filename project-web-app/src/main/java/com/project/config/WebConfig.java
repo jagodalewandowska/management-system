@@ -11,10 +11,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.io.IOException;
 
@@ -47,10 +44,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     private void logRequest(HttpRequest request, byte[] body) throws IOException {
         log.info("Request{");
-        log.info(" URI: ", request.getURI());
-        log.info(" Method: ", request.getMethod());
-        log.info(" Headers: ", request.getHeaders());
-        log.info(" Request body: ", new String(body, "UTF-8"));
+        log.info(" URI: {}", request.getURI());
+        log.info(" Method: {}", request.getMethod());
+        log.info(" Headers: {}", request.getHeaders());
+        log.info(" Request body: {}", new String(body, "UTF-8"));
         log.info("}");
     }
 
@@ -62,12 +59,19 @@ public class WebConfig implements WebMvcConfigurer {
                 HttpHeaders headers = request.getHeaders();
                 if(!headers.containsKey(HttpHeaders.AUTHORIZATION)) {
                     final String prefix = "Bearer ";
-                    final String bearerToken = token.startsWith(prefix) ? token : prefix;
+                    final String bearerToken = token.startsWith(prefix) ? token : prefix + token;
                     request.getHeaders().add(HttpHeaders.AUTHORIZATION, bearerToken);
                 }
             }
             logRequest(request, body);
             return execution.execute(request, body);
         }).build();
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry){
+        registry
+                .addResourceHandler("/**")
+                .addResourceLocations("classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/");
     }
 }
