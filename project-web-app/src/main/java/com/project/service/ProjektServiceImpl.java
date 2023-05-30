@@ -18,7 +18,7 @@ import com.project.model.Projekt;
 @Service
 public class ProjektServiceImpl implements ProjektService {
     private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
-    @Value("${rest.server.url}")
+    @Value("http://localhost:8080")
     private String serverUrl;
     private final static String RESOURCE_PATH = "/api/projekty";
     private RestTemplate restTemplate;

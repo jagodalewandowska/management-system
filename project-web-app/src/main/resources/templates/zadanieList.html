@@ -12,17 +12,17 @@
 <nav>
   <ul>
     <li><b>Lista projektów</b></li>
-    <li><a th:href="@{/zadanieEdit}">Dodaj zadanie</a></li>
-    <li><a th:href="@{/projektList}">Lista projektów</a></li>
-    <li><a th:href="@{/studentList}">Lista studentów</a></li>
-    <li><a th:href="@{/files}">Do pobrania</a></li>
+    <li><a th:href="@{/app/zadanieEdit}">Dodaj zadanie</a></li>
+    <li><a th:href="@{/app/projektList}">Lista projektów</a></li>
+    <li><a th:href="@{/app/studentList}">Lista studentów</a></li>
+    <li><a th:href="@{/app/files}">Do pobrania</a></li>
     <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
   </ul>
 </nav>
 <div class="root">
   <div class="container">
     <br>
-      <form method="get" action="#" th:action="@{/zadanieList/search}" id="searchform">
+      <form method="get" action="#" th:action="@{/app/zadanieList/search}" id="searchform">
         <label for="snazwa" class="myText">🔍</label>
         <input type="text" id="snazwa" name="nazwa">
         <select name="size" id="size" form="searchform">
@@ -30,7 +30,7 @@
           <option value="10">10</option>
         </select>
         <input type="submit" class="button_edit_nav" value="Szukaj">
-        <a th:href="@{/zadanieList}" class="button_edit_nav">Resetuj</a><br>
+        <a th:href="@{/app/zadanieList}" class="button_edit_nav">Resetuj</a><br>
       </form>
     <br>
     <br>
@@ -38,20 +38,20 @@
       <thead>
       <tr>
         <th>
-          <a th:href="@{'/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}">Id</a>
-          <a th:href="@{'/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}">Id</a>
+          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
-          <a th:href="@{'/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
+          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}">Kolejność</a>
-          <a th:href="@{'/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}">Kolejność</a>
+          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
-          <a th:href="@{'/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
+          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
 <!--        <th>-->
 <!--          <a th:href="@{'/zadanieList/results?sort=dataczas_dodania&order=' + ${reverseSortDir}}">Data dodania</a>-->
@@ -70,8 +70,8 @@
 <!--          <td th:text="${#temporals.format(zadanie.dataczas_dodania, 'yyyy-MM-dd HH:mm:ss')}">Data dodania</td>-->
           <td th:text="${zadanie.projekt.projektId}">projektId</td>
           <td>
-            <a th:href="@{/zadanieEdit(zadanieId=${zadanie.zadanieId})}">Edytuj</a><br>
-            <a th:href="@{/zadanieEdit(zadanieId=${zadanie.zadanieId},delete='true')}">Usuń</a>
+            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId})}">Edytuj</a><br>
+            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId},delete='true')}">Usuń</a>
           </td>
         </tr>
       </tbody>

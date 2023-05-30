@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="root" th:with="isDelete=${#strings.equalsIgnoreCase(param.delete,'true')}">
-            <form action="#" th:action="@{/studentEdit}" th:object="${student}" method="POST"
+            <form action="#" th:action="@{/app/studentEdit}" th:object="${student}" method="POST"
                   th:with="akcja=*{studentId} ? (${isDelete}?'delete':'update') :'create', opis=*{studentId} ?
          (${isDelete}?'Usuń':'Aktualizuj') : 'Utwórz'" autocomplete="off">
                 <nav>

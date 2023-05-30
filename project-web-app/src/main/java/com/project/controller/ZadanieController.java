@@ -1,12 +1,11 @@
 package com.project.controller;
+
 import com.project.model.Projekt;
 import com.project.model.Zadanie;
 import com.project.service.ProjektService;
 import com.project.service.ZadanieService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -16,7 +15,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/app")
 public class ZadanieController {
     private ZadanieService zadanieService;

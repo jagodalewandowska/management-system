@@ -2,53 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<link th:href="@{/css/edit-style.css}" rel="stylesheet" />
-<!-- plik z ...\resources\static\css\edit-style.css -->
+<link th:href="@{/css/register-style.css}" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 <title>Rejestracja</title>
 </head>
  <body>
-	<div class="root">
+ <div id="container">
+	<div class="container">
 		<form action="#" th:action="@{/app/register}" th:object="${student}"
 			method="POST"
-			autocomplete="off">
+			autocomplete="off"
+			class="form">
 			<h1>Rejestracja</h1>
 			<div class="err" th:if="${#fields.hasErrors('*')}">BŁĘDY:
 				<ul>
 					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
 				</ul>
 			</div>
-			<div class="container">
-				<div class="btns-panel">
-					<input class="btn" type="submit" name="register" value="Zarejestruj"/> 
-					<input class="btn" type="submit" name="cancel" value="Anuluj" />
-				</div>			
+				<div class="form__wrapper">
 				<div>
-					<label for="imie" class="lbl">Imie:</label>
-					<input type="text" size="50" th:field="*{imie}" th:class="${#fields.hasErrors('imie')}? 'err' : 'fld'"/>
+					<label for="imie" class="lbl">Imię:</label>
+					<input type="text" th:field="*{imie}" th:class="${#fields.hasErrors('imie')}? 'err' : 'fld'"/>
 				</div>			
 				<div>
 					<label for="nazwisko" class="lbl">Nazwisko:</label>
-					<input type="text" size="50" th:field="*{nazwisko}" th:class="${#fields.hasErrors('nazwisko')}? 'err' : 'fld'"/>
+					<input type="text" th:field="*{nazwisko}" th:class="${#fields.hasErrors('nazwisko')}? 'err' : 'fld'"/>
 				</div>
 				<div>
 					<label for="nrIndeksu" class="lbl">Nr Indeksu:</label>
-					<input type="text" size="50" th:field="*{nrIndeksu}" th:class="${#fields.hasErrors('nrIndeksu')}? 'err' : 'fld'"/>
+					<input type="text" th:field="*{nrIndeksu}" th:class="${#fields.hasErrors('nrIndeksu')}? 'err' : 'fld'"/>
 				</div>	
 				
 				<div>
 					<label for="email" class="lbl">Email:</label> 
-					<input type="text" th:field="*{email}" size="50" th:class="${#fields.hasErrors('email')}? 'err' : 'fld'"/>
+					<input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? 'err' : 'fld'"/>
 				</div>
 				<div>
 					<label for="password" class="lbl">Password:</label> 
-					<input type="password" th:field="*{password}" size="50" th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" />
+					<input type="password" th:field="*{password}" th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" />
 				</div>
 				<div>
-					<label for="stacjonarny" class="lbl">Stacjonarny:</label>
-					<input type="checkbox"  th:field="*{stacjonarny}" th:class="${#fields.hasErrors('stacjonarny')}? 'err' : 'fld'"/><em>zaznacz, jeśli studiujesz stacjonarnie</em>				
+					<label for="stacjonarny" class="lbl">Stacjonarny <h6>zaznacz, jeśli studiujesz stacjonarnie</h6></label>
+					<input type="checkbox"  th:field="*{stacjonarny}" th:class="${#fields.hasErrors('stacjonarny')}? 'err' : 'fld'"/>
+					<br>
 				</div>
-			</div>
+				<div>
+					<input class="registerButton btn" type="submit" name="register" value="Zarejestruj"/>
+					<input class="cancelButton btn" type="submit" name="cancel" value="Anuluj" />
+				</div>
+				</div>
 		</form>
 	</div>
+ </div>
  </body>
 </html>

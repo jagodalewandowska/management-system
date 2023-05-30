@@ -86,27 +86,28 @@ input::placeholder {
     left: -7%;
 }
 .heading > img {
-    width: 350px;
+    width: 325px;
 }
 .form__wrapper {
     width: 500px;
-    height: 250px;
+    height: 100%;
     margin-top: 5%;
     background-color: #fff;
-    padding: 5% 2% 5% 2%;
+    padding: 5% ;
     border-radius: 5px;
-    line-height: 150%;
+    /*line-height: 150%;*/
     display: grid;
     justify-content: center;
     align-items: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.form {
-    margin-top: -18%;
-    /*margin-bottom: 7%;*/
-}
+
 .loginButton {
     background-color: #830e21;
     color: white;
     margin-top: 2%;
+}
+
+input  {
+    width: 100%;
 }

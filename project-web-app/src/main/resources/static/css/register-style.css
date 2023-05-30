@@ -1,7 +1,5 @@
 
 :root {
-    --primaryColor: rgb(25,119,242);
-    --buttonColor: rgb(66,183,41);
     --bodyColor: rgb(239,242,245);
     --textColor: rgb(27,30,33);
 }
@@ -63,7 +61,7 @@ input::placeholder {
 
 .form__wrapper {
     width: 500px;
-    height: 350px;
+    height: 100%;
     margin-top: 5%;
     background-color: #fff;
     padding: 5% 2% 5% 2%;
@@ -71,14 +69,25 @@ input::placeholder {
     line-height: 150%;
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .form {
     margin-top: -18%;
 }
+
 .registerButton {
     background-color: #830e21;
     color: white;
+    margin-top: 2%;
+}
+
+input  {
+    width: 100%;
+}
+
+.cancelButton {
+    background-color: #818181;
+    color: #ffffff;
     margin-top: 2%;
 }

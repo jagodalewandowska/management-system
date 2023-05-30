@@ -12,16 +12,16 @@
         <nav>
             <ul>
                 <li><b>Lista Studentów</b></li>
-                <li><a th:href="@{/studentEdit}">Dodaj studenta</a></li>
-                <li><a th:href="@{/projektList}">Lista projektów</a></li>
-                <li><a th:href="@{/zadanieList}">Lista zadań</a></li>
-                <li><a th:href="@{/files}">Do pobrania</a></li>
+                <li><a th:href="@{/app/studentEdit}">Dodaj studenta</a></li>
+                <li><a th:href="@{/app/projektList}">Lista projektów</a></li>
+                <li><a th:href="@{/app/zadanieList}">Lista zadań</a></li>
+                <li><a th:href="@{/app/files}">Do pobrania</a></li>
                 <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
             </ul>
         </nav>
         <div class="root">
             <div class="container">
-                <form method="get" action="#" th:action="@{/studentList/search}" id="searchform">
+                <form method="get" action="#" th:action="@{/app/studentList/search}" id="searchform">
                     <label for="nazwisko" class="myText">🔍</label>
                     <input type="text" id="nazwisko" name="nazwisko">
                     <select name="size" id="size" form="searchform">
@@ -29,7 +29,7 @@
                         <option value="10">10</option>
                     </select>
                     <input type="submit" class="button_edit_nav" value="Szukaj">
-                    <a th:href="@{/studentList}" class="button_edit_nav">Resetuj</a><br>
+                    <a th:href="@{/app/studentList}" class="button_edit_nav">Resetuj</a><br>
                 </form>
                 <br>
                 <br>
@@ -37,28 +37,28 @@
                     <thead>
                         <tr>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=studentId&order=' + ${reverseSortDir}}">Id</a>
-                                <a th:href="@{'/studentList/results?sort=studentId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}}">Id</a>
+                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}">Nazwisko</a>
-                                <a th:href="@{'/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}">Nazwisko</a>
+                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=imie&order=' + ${reverseSortDir}}">Imię</a>
-                                <a th:href="@{'/studentList/results?sort=imie&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}}">Imię</a>
+                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}">Numer indeksu</a>
-                                <a th:href="@{'/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}">Numer indeksu</a>
+                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=email&order=' + ${reverseSortDir}}">E-mail</a>
-                                <a th:href="@{'/studentList/results?sort=email&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}}">E-mail</a>
+                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}">Rodzaj studiów</a>
-                                <a th:href="@{'/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}">Rodzaj studiów</a>
+                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>Edycja</th>
                         </tr>
@@ -75,8 +75,8 @@
 
 <!--                            <td th:text="${student.projekty}">Projekty</td>-->
                             <td>
-                                <a th:href="@{/studentEdit(studentId=${student.studentId})}" class="button_edit">Edytuj</a><br>
-                                <a th:href="@{/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>
+                                <a th:href="@{/app/studentEdit(studentId=${student.studentId})}" class="button_edit">Edytuj</a><br>
+                                <a th:href="@{/app/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>
                             </td>
                         </tr>
                     </tbody>

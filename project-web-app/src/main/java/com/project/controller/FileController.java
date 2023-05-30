@@ -9,10 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -21,6 +18,7 @@ import com.project.model.FileInfo;
 import com.project.service.FilesStorageService;
 
 @Controller
+@RequestMapping("/app")
 public class FileController {
 
   @Autowired
@@ -40,7 +38,7 @@ public class FileController {
 
 //      message = "Uploaded the file successfully: " + file.getOriginalFilename();
 //      model.addAttribute("message", message);
-      return "redirect:/files";
+      return "redirect:/app/files";
     } catch (Exception e) {
       message = "Nie można było dodać pliku: " + file.getOriginalFilename() + ". Błąd: " + e.getMessage();
       model.addAttribute("message", message);
@@ -87,6 +85,6 @@ public class FileController {
           "Nie można usunąć pliku: " + filename + ". Błąd: " + e.getMessage());
     }
 
-    return "redirect:/files";
+    return "redirect:/app/files";
   }
 }

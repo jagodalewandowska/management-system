@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 
 @Controller
-@RequiredArgsConstructor
 @RequestMapping("/app")
 @Slf4j
 public class ProjectController {
@@ -40,7 +39,7 @@ public class ProjectController {
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
-    @GetMapping({"/projektList"})
+    @GetMapping({"","/projektList"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "redirect:/app/projektList/results?sort=projektId&order=asc";
