@@ -18,6 +18,6 @@ public class Credentials {
 
     @NotNull(message = "Nie podano hasła")
     @Size(min=8, max=32,
-        message = "Hasło musi składać się z przynajmniej "+ "{min} znaków i nie przekraczać {max")
+        message = "Hasło musi składać się z przynajmniej 8 znaków i nie przekraczać 32.")
     private String password;
 }
