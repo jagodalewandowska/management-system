@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link th:href="@{/css/register-style.css}" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+  <title>404</title>
+</head>
+<body>
+<div id="container">
+  <div class="form__wrapper">
+      <h3>Strona nie istnieje lub nie masz do niej dostępu.</h3>
+      <div>
+        <button type="submit" class="registerButton btn"><a th:href="@{/app/projektList}">Wróć do listy projektów</a></button>
+      </div>
+  </div>
+</div>
+</body>
+</html>

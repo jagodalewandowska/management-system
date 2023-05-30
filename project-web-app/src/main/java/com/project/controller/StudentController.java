@@ -41,9 +41,13 @@ public class StudentController {
     }
     @GetMapping("/studentList")
     public String studentList(Model model, Pageable pageable) {
-        model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
+        try {
+            model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
 //        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "redirect:/app/studentList/results?sort=studentId&order=asc";
+            return "redirect:/app/studentList/results?sort=studentId&order=asc";
+        } catch (HttpStatusCodeException e) {
+            return "404";
+        }
     }
     @GetMapping("/studentEdit")
     public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
