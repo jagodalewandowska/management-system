@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/edit-style.css}" rel="stylesheet" />
+<!-- plik z ...\resources\static\css\edit-style.css -->
+<title>Logowanie</title>
+</head>
+ <body>
+	<div class="root">
+		<form action="#" th:action="@{/app/login}" th:object="${credentials}"
+			method="POST"
+			autocomplete="off">
+
+			<h1>Logowanie</h1>
+
+			<div class="err" th:if="${#fields.hasErrors('*')}">
+				BŁĘDY:
+				<ul>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
+				</ul>
+			</div>
+			<div class="container">
+				<div class="btns-panel">
+					<input class="btn" type="submit" name="login" value="Zaloguj" />
+				</div>
+				<div>
+					<label for="email" class="lbl">E-mail:</label> <input
+						th:field="*{email}" class="fld"
+						th:class="${#fields.hasErrors('email')}? 'err' : 'fld'" size="75" />
+					<span class="err" th:if="${#fields.hasErrors('email')}"
+						th:errors="*{email}">Error</span>
+				</div>
+				<div>
+					<label for="password" class="lbl">Password:</label> 
+					<input th:field="*{password}" class="fld" type="password"
+						th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" size="75" />
+					<span class="err" th:if="${#fields.hasErrors('password')}"
+						th:errors="*{password}">Error</span>
+				</div>
+				<div style="text-align: right;">
+					<a th:href="@{/app/register}">Rejestracja</a>
+				</div>
+			</div>
+		</form>
+	</div>
+ </body>
+</html>

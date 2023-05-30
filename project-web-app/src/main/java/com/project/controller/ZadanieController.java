@@ -4,6 +4,7 @@ import com.project.model.Zadanie;
 import com.project.service.ProjektService;
 import com.project.service.ZadanieService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 @Controller
+@RequiredArgsConstructor
+@RequestMapping("/app")
 public class ZadanieController {
     private ZadanieService zadanieService;
     private ProjektService projektService;
@@ -37,7 +40,7 @@ public class ZadanieController {
     @GetMapping("/zadanieList")
     public String zadanieList(Model model, Pageable pageable) {
         model.addAttribute("zadania", zadanieService.getZadania(pageable).getContent());
-        return "redirect:zadanieList/results?sort=zadanieId&order=asc";
+        return "redirect:/app/zadanieList/results?sort=zadanieId&order=asc";
     }
 
     @GetMapping("/zadanieEdit")
@@ -68,18 +71,18 @@ public class ZadanieController {
             System.out.println(e.getStatusCode() + e.getMessage());
             return "zadanieEdit";
         }
-        return "redirect:/zadanieList";
+        return "redirect:/app/zadanieList";
     }
 
     @PostMapping(params = "cancel", path = "/zadanieEdit")
     public String zadanieEditCancel() {
-        return "redirect:/zadanieList";
+        return "redirect:/app/zadanieList";
     }
 
     @PostMapping(params = "delete", path = "/zadanieEdit")
     public String zadanieEditDelete(@ModelAttribute Zadanie zadanie) {
         zadanieService.deleteZadanie(zadanie.getZadanieId());
-        return "redirect:/zadanieList";
+        return "redirect:/app/zadanieList";
     }
 
     @GetMapping("/zadanieList/search")

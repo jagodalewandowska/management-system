@@ -1,13 +1,14 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import jdk.jfr.DataAmount;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Set;
-
 @Entity //Indeksujemy kolumny, które są najczęściej wykorzystywane do wyszukiwania studentów
 @Table(name = "student",
         indexes = { @Index(name = "idx_nazwisko", columnList = "nazwisko", unique = false),
@@ -44,6 +45,35 @@ public class Student {
     @JsonIgnoreProperties({"projekt"})
     private Set<Projekt> projekty;
 
+    // Tokeny --
+
+    @ManyToMany(mappedBy = "studenci")
+    @JsonIgnoreProperties({"studenci"})
+    private Set<Projekt> projektys;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    // --
 
     public Set<Projekt> getProjekty() {
         return projekty;

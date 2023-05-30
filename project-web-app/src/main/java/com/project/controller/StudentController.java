@@ -19,6 +19,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import java.net.URI;
 
 @Controller
+@RequestMapping("/app")
 public class StudentController {
 
     private Sort.Direction getSortDirection(String direction) {
@@ -42,7 +43,7 @@ public class StudentController {
     public String studentList(Model model, Pageable pageable) {
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
 //        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "redirect:studentList/results?sort=studentId&order=asc";
+        return "redirect:/app/studentList/results?sort=studentId&order=asc";
     }
     @GetMapping("/studentEdit")
     public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
@@ -70,7 +71,7 @@ public class StudentController {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "studentEdit";
         }
-        return "redirect:/studentList";
+        return "redirect:/app/studentList";
     }
 
     @PostMapping(params="cancel", path = "/studentEdit")
@@ -81,7 +82,7 @@ public class StudentController {
     @PostMapping(params="delete", path = "/studentEdit")
     public String studentEditDelete(@ModelAttribute Student student) {
         studentService.deleteStudent(student.getStudentId());
-        return "redirect:/studentList";
+        return "redirect:/app/studentList";
     }
 
 

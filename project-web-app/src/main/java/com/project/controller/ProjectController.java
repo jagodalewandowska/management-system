@@ -1,10 +1,14 @@
 package com.project.controller;
+
+import com.project.model.Projekt;
+import com.project.service.ProjektService;
 import com.project.service.ProjektServiceImpl;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,12 +17,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
-import com.project.model.Projekt;
-import com.project.service.ProjektService;
-
-import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
+@RequestMapping("/app")
+@Slf4j
 public class ProjectController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
@@ -37,11 +40,10 @@ public class ProjectController {
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
-
-    @GetMapping({"/projektList", "/projektList/"})
+    @GetMapping({"/projektList"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "redirect:projektList/results?sort=projektId&order=asc";
+        return "redirect:/app/projektList/results?sort=projektId&order=asc";
     }
 
     @GetMapping("/projektEdit")
@@ -66,7 +68,7 @@ public class ProjectController {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "projektEdit";
         }
-        return "redirect:/projektList";
+        return "redirect:/app/projektList";
     }
 
     @PostMapping(params="cancel", path = "/projektEdit")
@@ -77,7 +79,7 @@ public class ProjectController {
     @PostMapping(params="delete", path = "/projektEdit")
     public String projektEditDelete(@ModelAttribute Projekt projekt) {
         projektService.deleteProjekt(projekt.getProjektId());
-        return "redirect:/projektList";
+        return "redirect:/app/projektList";
     }
 
     @GetMapping("/projektList/search")
@@ -94,7 +96,7 @@ public class ProjectController {
 
     @GetMapping("/projektList/results")
     public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
-        logger.info(order);
+        log.info(order);
         Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         model.addAttribute("order", order);

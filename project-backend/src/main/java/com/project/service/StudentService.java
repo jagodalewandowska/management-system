@@ -7,6 +7,7 @@ import com.project.model.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
 public interface StudentService {
     Optional<Student> getStudent(Integer studentId);
     Student setStudent(Student student);
@@ -14,5 +15,6 @@ public interface StudentService {
     Page<Student> getStudenci(Pageable pageable);
     Page<Student> searchByNazwisko(String nazwisko, Pageable pageable);
     Page<Student> getStudenciPageSort(String sort, String direction);
-
+// token
+    Optional<Student> searchByEmail(String email);
 }

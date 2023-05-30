@@ -30,13 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Student setStudent(Student student) {
-        Student studentToSave= null;
-        if(student.getStudentId()!=null) {
-            studentToSave = student;
-        }else {
-            studentToSave = new Student (student.getImie(), student.getNazwisko(), student.getNrIndeksu(), student.getEmail(), student.getStacjonarny());
-        }
-        return studentRepository.save(studentToSave);
+        return studentRepository.save(student);
     }
 
     @Override
@@ -52,6 +46,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Page<Student> searchByNazwisko(String nazwisko, Pageable pageable) {
         return studentRepository.findByNazwiskoStartsWithIgnoreCase(nazwisko, pageable);
+    }
+
+    @Override
+    public Optional<Student> searchByEmail(String email) {
+        return studentRepository.findByEmail(email);
     }
 
     @Override
