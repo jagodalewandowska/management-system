@@ -4,7 +4,9 @@ import com.project.config.JwtService;
 import com.project.model.CustomUserDetails;
 import com.project.model.Role;
 import com.project.model.Student;
+import com.project.model.Tutor;
 import com.project.service.StudentService;
+import com.project.service.TutorService;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthService {
     private final StudentService studentService;
+    private final TutorService tutorService;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -25,6 +28,12 @@ public class AuthService {
         student.setPassword(passwordEncoder.encode(student.getPassword()));
         student.setRole(Role.USER);
         studentService.setStudent(student);
+    }
+
+    public void registerTutor(Tutor tutor){
+        tutor.setPassword(passwordEncoder.encode(tutor.getPassword()));
+        tutor.setRole(Role.ADMIN);
+        tutorService.setTutor(tutor);
     }
 
     public AuthResponse authenticate(@NonNull String email, @NonNull String password) {
