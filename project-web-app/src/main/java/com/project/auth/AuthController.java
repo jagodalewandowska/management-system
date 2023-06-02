@@ -1,6 +1,7 @@
 package com.project.auth;
 
 import com.project.model.Student;
+import com.project.model.Tutor;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -47,6 +48,20 @@ public class AuthController {
         if (bindingResult.hasErrors()) return "register";
         tokenHolder.clear();
         authService.register(student);
+        return "redirect:/app/login";
+    }
+
+    @GetMapping("/registerTutor")
+    public String registerTutor(Model model) {
+        model.addAttribute("tutor", new Tutor());
+        return "signup";
+    }
+
+    @PostMapping(path = "/registerTutor")
+    public String registerTutor(@ModelAttribute @Valid Tutor tutor, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) return "signup";
+        tokenHolder.clear();
+        authService.registerTutor(tutor);
         return "redirect:/app/login";
     }
 

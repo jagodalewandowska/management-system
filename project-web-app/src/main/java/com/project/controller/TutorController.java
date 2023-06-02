@@ -33,10 +33,10 @@ public class TutorController {
             return "404";
         }
     }
-    @GetMapping("/studentEdit")
-    public String tutorEdit(@RequestParam(required = false) Integer studentId, Model model) {
-        if (studentId != null) {
-            model.addAttribute("tutor", tutorService.getTutor(studentId).get());
+    @GetMapping("/tutorEdit")
+    public String tutorEdit(@RequestParam(required = false) Integer tutorId, Model model) {
+        if (tutorId != null) {
+            model.addAttribute("tutor", tutorService.getTutor(tutorId).get());
         } else {
             Tutor tutor = new Tutor();
             model.addAttribute("tutor", tutor);
@@ -45,7 +45,7 @@ public class TutorController {
     }
 
     @PostMapping(path = "/tutorEdit")
-    public String studentEditSave(@ModelAttribute @Valid Tutor tutor, BindingResult bindingResult) {
+    public String tutorEditSave(@ModelAttribute @Valid Tutor tutor, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "tutorEdit";
         }

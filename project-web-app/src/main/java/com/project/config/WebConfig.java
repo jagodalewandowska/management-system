@@ -38,7 +38,7 @@ public class WebConfig implements WebMvcConfigurer {
             }
         })
         .addPathPatterns("/app/**") // wyklucza te poniżej, aby nie było zapętlenia
-        .excludePathPatterns("/app/login", "/app/register", "/app/logout"); // po wyłączeniu przeglądarki sesja jest niszczona
+        .excludePathPatterns("/app/login", "/app/register", "/app/logout", "/app/registerTutor"); // po wyłączeniu przeglądarki sesja jest niszczona
         // zawsze trzeba się logować
     }
 

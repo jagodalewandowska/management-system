@@ -1,6 +1,7 @@
 package com.project.auth;
 
 import com.project.model.Student;
+import com.project.model.Tutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,6 +38,14 @@ public class AuthServiceImpl implements AuthService {
     public void register(Student student) {
         HttpEntity<Student> request = new HttpEntity<>(student);
         String url = getUriStringComponent("/api/register");
+        log.info("Request -> Post {}", url);
+        restTemplate.postForObject(url, request, Void.class);
+    }
+
+    @Override
+    public void registerTutor(Tutor tutor) {
+        HttpEntity<Tutor> request = new HttpEntity<>(tutor);
+        String url = getUriStringComponent("/api/registerTutor");
         log.info("Request -> Post {}", url);
         restTemplate.postForObject(url, request, Void.class);
     }

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/register-style.css}" rel="stylesheet" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+<title>Rejestracja</title>
+</head>
+ <body>
+ <div id="container">
+	<div class="container">
+		<form action="#" th:action="@{/app/registerTutor}" th:object="${tutor}"
+			method="POST"
+			autocomplete="off"
+			class="form">
+			<h1>Rejestracja</h1>
+			<div class="err" th:if="${#fields.hasErrors('*')}">BŁĘDY:
+				<ul>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
+				</ul>
+			</div>
+				<div class="form__wrapper">
+				<div>
+					<label for="imie" class="lbl">Imię:</label>
+					<input type="text" th:field="*{imie}" th:class="${#fields.hasErrors('imie')}? 'err' : 'fld'"/>
+				</div>			
+				<div>
+					<label for="nazwisko" class="lbl">Nazwisko:</label>
+					<input type="text" th:field="*{nazwisko}" th:class="${#fields.hasErrors('nazwisko')}? 'err' : 'fld'"/>
+				</div>
+				<div>
+					<label for="email" class="lbl">Email:</label> 
+					<input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? 'err' : 'fld'"/>
+				</div>
+				<div>
+					<label for="password" class="lbl">Password:</label> 
+					<input type="password" th:field="*{password}" th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" />
+				</div>
+				<div>
+					<input class="registerButton btn" type="submit" name="register" value="Zarejestruj"/>
+					<input class="cancelButton btn" type="submit" name="cancel" value="Anuluj" />
+				</div>
+				</div>
+		</form>
+	</div>
+ </div>
+ </body>
+</html>

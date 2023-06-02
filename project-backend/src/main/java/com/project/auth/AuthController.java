@@ -1,6 +1,7 @@
 package com.project.auth;
 
 import com.project.model.Student;
+import com.project.model.Tutor;
 import com.project.validation.ValidationService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class AuthController {
     private final AuthService authService;
+    private final ValidationService<Tutor> validatorTutor;
     private final ValidationService<Student> validator; // można dać do projektu, zadania - jest to klasa generyczna
 
 
@@ -30,6 +32,13 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest request) {
         return ResponseEntity.ok(authService.authenticate(request));
+    }
+
+    @PostMapping("/registerTutor")
+    public ResponseEntity<Void> registerTutor(@RequestBody Tutor tutor) {
+        validatorTutor.validate(tutor);
+        authService.registerTutor(tutor);
+        return new ResponseEntity<Void>(HttpStatus.OK);
     }
 
 //    @PostMapping("/register")

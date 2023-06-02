@@ -1,10 +1,7 @@
 package com.project.auth;
 
 import com.project.config.JwtService;
-import com.project.model.CustomUserDetails;
-import com.project.model.Role;
-import com.project.model.Student;
-import com.project.model.Tutor;
+import com.project.model.*;
 import com.project.service.StudentService;
 import com.project.service.TutorService;
 import lombok.NonNull;
@@ -39,15 +36,27 @@ public class AuthService {
     public AuthResponse authenticate(@NonNull String email, @NonNull String password) {
         authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(email, password));
-        var user = studentService
-                .searchByEmail(email)
-                .map(s -> new CustomUserDetails(s))
-                .orElseThrow(() ->
-                        new UsernameNotFoundException(String.format("User '%s' not found!", email)));
-        var token = jwtService.generateToken(user);
-        return AuthResponse.builder()
-                .token(token)
-                .build();
+        if (studentService.searchByEmail(email)==null) {
+            var tutor = tutorService
+                    .searchByEmail(email)
+                    .map(s -> new CustomTutorDetails(s))
+                    .orElseThrow(() ->
+                            new UsernameNotFoundException(String.format("User '%s' not found!", email)));
+            var token = jwtService.generateToken(tutor);
+            return AuthResponse.builder()
+                    .token(token)
+                    .build();
+        } else {
+            var user = studentService
+                    .searchByEmail(email)
+                    .map(s -> new CustomUserDetails(s))
+                    .orElseThrow(() ->
+                            new UsernameNotFoundException(String.format("User '%s' not found!", email)));
+            var token = jwtService.generateToken(user);
+            return AuthResponse.builder()
+                    .token(token)
+                    .build();
+        }
     }
 
     public AuthResponse authenticate(AuthRequest request) {
