@@ -13,7 +13,6 @@
         <nav>
             <ul>
                 <li><b>Lista projektów</b></li>
-                <li><a th:href="@{/app/projektEdit}">Dodaj projekt</a></li>
                 <li><a th:href="@{/app/studentList}">Lista studentów</a></li>
                 <li><a th:href="@{/app/zadanieList}">Lista zadań</a></li>
                 <li><a th:href="@{/app/files}">Do pobrania</a></li>
@@ -22,20 +21,24 @@
             </ul>
         </nav>
         <div class="root">
+            <div id="HASH" class="blue-msg">
+                <span id="time-HASH" class="smalltext">
+                     <form method="get" action="#" th:action="@{/app/projektList/search}" id="searchform">
+                        <label for="snazwa" class="myText">🔍</label>
+                        <input type="text" id="snazwa" name="nazwa">
+                        <select name="size" id="size" form="searchform">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                        </select>
+                        <input type="submit" class="button_edit_nav" value="Szukaj">
+                        <a th:href="@{/app/projektList}" class="button_edit_nav">Resetuj</a><br>
+                    </form>
+                </span>
+                <span class="ios-circle">
+                    <a th:href="@{/app/projektEdit}" class="button_project">Dodaj projekt</a>
+                </span>
+            </div>
             <div class="container">
-                <br>
-                <form method="get" action="#" th:action="@{/app/projektList/search}" id="searchform">
-                    <label for="snazwa" class="myText">🔍</label>
-                    <input type="text" id="snazwa" name="nazwa">
-                    <select name="size" id="size" form="searchform">
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                    </select>
-                    <input type="submit" class="button_edit_nav" value="Szukaj">
-                    <a th:href="@{/app/projektList}" class="button_edit_nav">Resetuj</a><br>
-                </form>
-                <br>
-                <br>
                 <table class="styled_table">
                     <thead>
                         <tr>

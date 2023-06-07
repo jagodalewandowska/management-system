@@ -108,22 +108,16 @@ tr:nth-child(even) {
 
 .button_project {
     box-shadow:inset 0px 1px 0px 0px #ffffff;
-    background: #ffffff linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    background: #830e21;
     border-radius:6px;
-    border:1px solid #dcdcdc;
     display:inline-block;
     cursor:pointer;
-    color:#666666;
+    color:white;
     font-size:10px;
     font-weight:bold;
     padding:6px 24px;
     text-decoration:none;
-    text-shadow:0px 1px 0px #ffffff;
     font-family: 'Inter', sans-serif;
-}
-
-.button_project {
-    background: #f6f6f6 linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 }
 .button_project {
     position:relative;
@@ -165,4 +159,10 @@ tr:nth-child(even) {
 .button_edit {
     position:relative;
     top:1px;
+}
+
+#HASH {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1%;
 }

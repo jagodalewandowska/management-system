@@ -12,7 +12,6 @@
 <nav>
   <ul>
     <li><b>Lista projektów</b></li>
-    <li><a th:href="@{/app/zadanieEdit}">Dodaj zadanie</a></li>
     <li><a th:href="@{/app/projektList}">Lista projektów</a></li>
     <li><a th:href="@{/app/studentList}">Lista studentów</a></li>
     <li><a th:href="@{/app/files}">Do pobrania</a></li>
@@ -21,20 +20,24 @@
   </ul>
 </nav>
 <div class="root">
-  <div class="container">
-    <br>
+  <div id="HASH" class="blue-msg">
+    <span id="time-HASH" class="smalltext">
       <form method="get" action="#" th:action="@{/app/zadanieList/search}" id="searchform">
-        <label for="snazwa" class="myText">🔍</label>
-        <input type="text" id="snazwa" name="nazwa">
-        <select name="size" id="size" form="searchform">
-          <option value="5">5</option>
-          <option value="10">10</option>
-        </select>
-        <input type="submit" class="button_edit_nav" value="Szukaj">
-        <a th:href="@{/app/zadanieList}" class="button_edit_nav">Resetuj</a><br>
+              <label for="snazwa" class="myText">🔍</label>
+              <input type="text" id="snazwa" name="nazwa">
+              <select name="size" id="size" form="searchform">
+                <option value="5">5</option>
+                <option value="10">10</option>
+              </select>
+              <input type="submit" class="button_edit_nav" value="Szukaj">
+              <a th:href="@{/app/zadanieList}" class="button_edit_nav">Resetuj</a><br>
       </form>
-    <br>
-    <br>
+    </span>
+    <span class="ios-circle">
+      <a th:href="@{/app/zadanieEdit}" class="button_project">Dodaj zadanie</a>
+    </span>
+  </div>
+  <div class="container">
     <table class="styled_table">
       <thead>
       <tr>
