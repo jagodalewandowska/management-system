@@ -1,7 +1,10 @@
 package com.project.config;
+import com.project.model.CustomTutorDetails;
 import com.project.model.CustomUserDetails;
 import com.project.model.Student;
+import com.project.model.Tutor;
 import com.project.service.StudentService;
+import com.project.service.TutorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,13 +23,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
     private final StudentService studentService;
+    private final TutorService tutorService;
     @Bean
     public UserDetailsService userDetailsService() {
+        if (studentService.searchByEmail(userName)==null)
         return userName -> studentService
                 .searchByEmail(userName)
                 .map(s -> new CustomUserDetails((Student) s))
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User '%s' not found!", userName)));
     }
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {

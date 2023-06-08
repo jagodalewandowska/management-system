@@ -33,6 +33,7 @@ public class SecurityWebConfig {
                 .and()
 
                 .authenticationProvider(authenticationProvider) //Bean z SecurityConfig
+                .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
