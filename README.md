@@ -4,6 +4,15 @@ https://trello.com/b/9RUZ5X2m/22032023
 ---
 ## Zadania do wykonania
 
+
+### Do zrobienia na zaliczenie:
+- nastepna strona i poprzednia strona
+- dodawanie zadan do stronie listy projektow
+- walidacja w dodawaniu projektu, zadan i studentow
+- dodawanie pliku - sciezka do bazy
+- biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
+
+
 ### Realizacja powinna uwzględniać m.in.:
 - [ ] zabezpieczenie danych i aplikacji przed niepożądanym dostępem, 
 - [ ] protokół szyfrowania transmisji danych (w tym celu należy wygenerować certyfikat SSL np. za pomocą narzędzia keytool dostępnego w każdym JDK),

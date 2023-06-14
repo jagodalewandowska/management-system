@@ -20,7 +20,6 @@
 <nav>
   <ul>
     <li><b>Do pobrania</b></li>
-    <li><a th:href="@{/app/files/new}">Dodaj plik</a></li>
     <li><a th:href="@{/app/projektList}">Lista projektów</a></li>
     <li><a th:href="@{/app/studentList}">Lista studentów</a></li>
     <li><a th:href="@{/app/zadanieList}">Lista zadań</a></li>
@@ -29,9 +28,18 @@
   </ul>
 </nav>
 <div class="root">
+<!--  <div id="HASH">-->
+<!--    <span id="time-HASH" class="time-HASH">-->
+<!--                     -->
+<!--                </span>-->
+<!--    <span class="ios-circle">-->
+<!--                    <a th:href="@{/app/files/new}" class="button_project">Dodaj plik</a>-->
+<!--                </span>-->
+<!--  </div>-->
     <br>
     <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
-      <h2 class="text-center">Do pobrania</h2>
+      <a th:href="@{/app/files/new}" class="button_project">Dodaj plik</a>
+  <br>
       <br>
       <div th:if="${files.size() > 0}">
         <table class="table table-hover">
