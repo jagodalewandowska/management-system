@@ -11,7 +11,7 @@ https://trello.com/b/9RUZ5X2m/22032023
 - walidacja w dodawaniu projektu, zadan i studentow
 - dodawanie pliku - sciezka do bazy
 - biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
-
+- przygotować coś do bazy danych - administrator, np.
 
 ### Realizacja powinna uwzględniać m.in.:
 - [ ] zabezpieczenie danych i aplikacji przed niepożądanym dostępem, 
