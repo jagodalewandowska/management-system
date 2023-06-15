@@ -13,10 +13,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Credentials {
-    @Email(message = "Niepoprawny format adresu e-mail")
+    @Email(message = "Niepoprawny format adresu e-mail.")
     private String email;
 
-    @NotNull(message = "Nie podano hasła")
+    @NotNull(message = "Nie podano hasła.")
     @Size(min=8, max=32,
         message = "Hasło musi składać się z przynajmniej 8 znaków i nie przekraczać 32.")
     private String password;

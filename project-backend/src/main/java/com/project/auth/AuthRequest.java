@@ -13,11 +13,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthRequest {
-    @Email(message = "Niepoprawny format adresu e-mail")
+    @Email(message = "Niepoprawny format adresu e-mail.")
     private String email;
 
-    @NotNull(message = "Nie podano hasła")
+    @NotNull(message = "Nie podano hasła.")
     @Size(min=8, max=32,
-        message = "Hasło musi składać się z przynajmniej "+ "{min} znaków i nie przekraczać {max")
+        message = "Hasło musi składać się z przynajmniej "+ "{min} znaków i nie przekraczać {max}")
     private String password;
 }

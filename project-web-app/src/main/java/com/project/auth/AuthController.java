@@ -3,15 +3,19 @@ package com.project.auth;
 import com.project.model.Student;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/app")
 public class AuthController {
     private final AuthService authService;
@@ -26,7 +30,12 @@ public class AuthController {
     @PostMapping(path = "/login")
     public String login (@ModelAttribute @Valid Credentials credentials, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "login";
-        tokenHolder.setToken(authService.login(credentials).get());
+        try {
+            tokenHolder.setToken(authService.login(credentials).get());
+        } catch (HttpStatusCodeException e) {
+            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode() + " - Nieprawidłowy e-mail lub hasło!");
+            return "login";
+        }
         return "redirect:/app/projektList";
     }
 
@@ -45,8 +54,13 @@ public class AuthController {
     @PostMapping(path = "/register")
     public String register (@ModelAttribute @Valid Student student, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "register";
-        tokenHolder.clear();
-        authService.register(student);
+        try {
+            tokenHolder.clear();
+            authService.register(student);
+        } catch (HttpStatusCodeException e) {
+            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            return "register";
+        }
         return "redirect:/app/login";
     }
 

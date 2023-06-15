@@ -2,21 +2,29 @@ package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Set;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Student {
+
     private Integer studentId;
+   // @NotBlank(message = "Pole imię nie może być puste!")
     private String imie;
     private String nazwisko;
     private String nrIndeksu;
+    @Email(message = "Niepoprawny format adresu e-mail.")
     private String email;
     @Value("false")
     private Boolean stacjonarny;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(min=8, max=32,
+            message = "Hasło musi składać się z przynajmniej 8 znaków i nie przekraczać 32.")
     private String password;
 
     private Role role;
