@@ -23,7 +23,6 @@ import org.springframework.web.client.HttpStatusCodeException;
 @Slf4j
 public class ProjectController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
     private ProjektService projektService;
 
     private Sort.Direction getSortDirection(String direction) {
@@ -39,11 +38,19 @@ public class ProjectController {
     public ProjectController(ProjektService projektService) {
         this.projektService = projektService;
     }
+
     @GetMapping({"","/projektList"})
     public String projektList(Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-        return "redirect:/app/projektList/results?sort=projektId&order=asc";
+        model.addAttribute("size",5);
+        model.addAttribute("page",0);
+        model.addAttribute("nextPage",1);
+        model.addAttribute("previousPage",0);
+        model.addAttribute("reverseSortDir", "desc");
+        return "redirect:/app/projektList/results?size=5&page=0&order=asc&sort=projektId";
     }
+
+
 
     @GetMapping("/projektEdit")
     public String projektEdit(@RequestParam(required = false) Integer projektId, Model model) {
@@ -94,11 +101,17 @@ public class ProjectController {
     }
 
     @GetMapping("/projektList/results")
-    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
-        log.info(order);
-        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
+    public String sortProjectList(Model model, @RequestParam Integer size, @RequestParam String sort,
+                                  @RequestParam String order, @RequestParam Integer page) {
+        log.info("results" + order);
+        Pageable pageable = PageRequest.of(page, size, getSortDirection(order), sort);
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         model.addAttribute("order", order);
+        model.addAttribute("size", size);
+        model.addAttribute("sort", sort);
+        model.addAttribute("page", page.equals(0) ? 0 : page);
+        model.addAttribute("nextPage", page.equals(0)? 1 : page+1);
+        model.addAttribute("previousPage", page.equals(0)? 0 : page-1);
         model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
         return "projektList";
     }

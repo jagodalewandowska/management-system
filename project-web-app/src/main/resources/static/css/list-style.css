@@ -107,7 +107,7 @@ tr:nth-child(even) {
 }
 
 .button_project {
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    /*box-shadow:inset 0px 1px 0px 0px #ffffff;*/
     background: #830e21;
     border-radius:6px;
     display:inline-block;

@@ -43,24 +43,24 @@
                     <thead>
                         <tr>
                             <th>
-                                <a th:href="@{'/app/projektList/results?sort=projektId&order=' + ${reverseSortDir}}">Id</a>
-                                <a th:href="@{'/app/projektList/results?sort=projektId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/projektList/results?sort=projektId&order=' + ${reverseSortDir} +'&size=' + ${size}+ '&page=' + ${page}}">Id</a>
+                                <a th:href="@{'/app/projektList/results?sort=projektId&order=' + ${reverseSortDir} +'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/projektList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
-                                <a th:href="@{'/app/projektList/results?sort=nazwa&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/projektList/results?sort=nazwa&order=' + ${reverseSortDir} +'&size=' + ${size}+ '&page=' + ${page}}">Nazwa</a>
+                                <a th:href="@{'/app/projektList/results?sort=nazwa&order=' + ${reverseSortDir} +'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/projektList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
-                                <a th:href="@{'/app/projektList/results?sort=opis&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/projektList/results?sort=opis&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Opis</a>
+                                <a th:href="@{'/app/projektList/results?sort=opis&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/projektList/results?sort=dataCzasUtworzenia&order=' + ${reverseSortDir}}">Data Utworzenia</a>
-                                <a th:href="@{'/app/projektList/results?sort=dataCzasUtworzenia&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/projektList/results?sort=dataCzasUtworzenia&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Data Utworzenia</a>
+                                <a th:href="@{'/app/projektList/results?sort=dataCzasUtworzenia&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}}">Data Utworzenia</a>
-                                <a th:href="@{'/app/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Data Utworzenia</a>
+                                <a th:href="@{'/app/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>Edit</th>
                         </tr>
@@ -80,6 +80,21 @@
                     </tbody>
                 </table>
             </div>
+            <br>
+            <form method="get" action="#" th:action="@{/app/projektList/results}" id="previousForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="page" type="hidden" th:value="${previousPage}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input th:if="${page>0}" type="submit" value="Poprzednia" class="button_project">
+            </form>
+            <form method="get" action="#" th:action="@{/app/projektList/results}" id="nextForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input name="page" type="hidden" th:value="${nextPage}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input type="submit" value="Następna" class="button_project">
+            </form>
         </div>
     </body>
 </html>
