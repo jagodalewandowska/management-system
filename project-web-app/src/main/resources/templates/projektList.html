@@ -25,6 +25,9 @@
                 <span id="time-HASH" class="smalltext">
                      <form method="get" action="#" th:action="@{/app/projektList/search}" id="searchform">
                         <label for="snazwa" class="myText">🔍</label>
+                        <input name="order" type="hidden" th:value="${order}">
+                        <input name="page" type="hidden" th:value="${page==0} ? ${page} : ${page}-1">
+                        <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
                         <input type="text" id="snazwa" name="nazwa">
                         <select name="size" id="size" form="searchform">
                             <option value="5">5</option>

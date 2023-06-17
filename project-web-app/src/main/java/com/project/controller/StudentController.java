@@ -33,18 +33,20 @@ public class StudentController {
     }
 
     private StudentService studentService;
-//    private ProjektService projektService;
     public StudentController(StudentService studentService, ProjektService projektService) {
         this.studentService = studentService;
-//        this.projektService = projektService;
 
     }
     @GetMapping("/studentList")
     public String studentList(Model model, Pageable pageable) {
         try {
             model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
-//        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
-            return "redirect:/app/studentList/results?sort=studentId&order=asc";
+            model.addAttribute("size",5);
+            model.addAttribute("page",0);
+            model.addAttribute("nextPage",1);
+            model.addAttribute("previousPage",0);
+            model.addAttribute("reverseSortDir", "desc");
+            return "redirect:/app/studentList/results?size=5&page=0&sort=studentId&order=asc";
         } catch (HttpStatusCodeException e) {
             return "404";
         }
@@ -91,23 +93,31 @@ public class StudentController {
 
 
     @GetMapping("/studentList/search")
-    public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwisko) {
-        Pageable pageable = PageRequest.of(0, size);
+    public String searchProjectList(Model model, @RequestParam Integer size,
+                                    @RequestParam String nazwisko, @RequestParam String sort,
+                                    @RequestParam String order, @RequestParam Integer page) {
+        Pageable pageable = PageRequest.of(page, size);
         model.addAttribute("studenci", studentService.searchByNazwisko(nazwisko,pageable).getContent());
         model.addAttribute("size", size);
-        model.addAttribute("page", 0);
         model.addAttribute("nazwisko", nazwisko);
-        model.addAttribute("nextPage", 1);
-        model.addAttribute("previousPage", 0);
+        model.addAttribute("sort", sort);
+        model.addAttribute("order", order);
+        model.addAttribute("page", page.equals(0) ? 0 : page);
+        model.addAttribute("nextPage", page.equals(0)? 1 : page+1);
+        model.addAttribute("previousPage", page.equals(0)? 0 : page-1);
+        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
         return "studentList";
     }
 
     @GetMapping("/studentList/results")
-    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order) {
-        Pageable pageable = PageRequest.of(0, Integer.MAX_VALUE, getSortDirection(order), sort);
+    public String sortProjectList(Model model, @RequestParam String sort, @RequestParam String order,
+                                  @RequestParam Integer size, @RequestParam Integer page) {
+        Pageable pageable = PageRequest.of(page, size, getSortDirection(order), sort);
         model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
         model.addAttribute("order", order);
-        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
+        model.addAttribute("size", size);
+        model.addAttribute("sort", sort);
+        ProjectController.getTheRest(model, page, order);
         return "studentList";
     }
 }

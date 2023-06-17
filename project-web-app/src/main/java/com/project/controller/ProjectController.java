@@ -89,15 +89,29 @@ public class ProjectController {
     }
 
     @GetMapping("/projektList/search")
-    public String searchProjectList(Model model, @RequestParam Integer size, @RequestParam String nazwa) {
-        Pageable pageable = PageRequest.of(0, size);
+    public String searchProjectList(Model model, @RequestParam Integer size,
+                                    @RequestParam String nazwa, @RequestParam Integer page,
+                                    @RequestParam String order, @RequestParam String sort) {
+        Pageable pageable = PageRequest.of(page, size);
         model.addAttribute("projekty", projektService.searchByNazwa(nazwa,pageable).getContent());
         model.addAttribute("size", size);
-        model.addAttribute("page", 0);
+        model.addAttribute("page", page);
         model.addAttribute("nazwa", nazwa);
-        model.addAttribute("nextPage", 1);
-        model.addAttribute("previousPage", 0);
+        model.addAttribute("sort", sort);
+        model.addAttribute("order", order);
+        return getString(model, page, order);
+    }
+
+    private String getString(Model model, @RequestParam Integer page, @RequestParam String order) {
+        getTheRest(model, page, order);
         return "projektList";
+    }
+
+    static void getTheRest(Model model, @RequestParam Integer page, @RequestParam String order) {
+        model.addAttribute("page", page.equals(0) ? 0 : page);
+        model.addAttribute("nextPage", page.equals(0)? 1 : page+1);
+        model.addAttribute("previousPage", page.equals(0)? 0 : page-1);
+        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
     }
 
     @GetMapping("/projektList/results")
@@ -109,10 +123,6 @@ public class ProjectController {
         model.addAttribute("order", order);
         model.addAttribute("size", size);
         model.addAttribute("sort", sort);
-        model.addAttribute("page", page.equals(0) ? 0 : page);
-        model.addAttribute("nextPage", page.equals(0)? 1 : page+1);
-        model.addAttribute("previousPage", page.equals(0)? 0 : page-1);
-        model.addAttribute("reverseSortDir", order.equals("asc") ? "desc" : "asc");
-        return "projektList";
+        return getString(model, page, order);
     }
 }

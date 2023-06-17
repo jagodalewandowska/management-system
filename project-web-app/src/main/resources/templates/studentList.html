@@ -24,10 +24,16 @@
                 <span id="time-HASH" class="time-HASH">
                      <form method="get" action="#" th:action="@{/app/studentList/search}" id="searchform">
                         <label for="nazwisko" class="myText">🔍</label>
+                         <input name="order" type="hidden" th:value="${order}">
+                        <input name="page" type="hidden" th:value="${page}">
+                        <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
                         <input type="text" id="nazwisko" name="nazwisko">
                         <select name="size" id="size" form="searchform">
                             <option value="5">5</option>
                             <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
                         </select>
                         <input type="submit" class="button_edit_nav" value="Szukaj">
                         <a th:href="@{/app/studentList}" class="button_edit_nav">Resetuj</a><br>
@@ -42,28 +48,28 @@
                     <thead>
                         <tr>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}}">Id</a>
-                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Id</a>
+                                <a th:href="@{'/app/studentList/results?sort=studentId&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}">Nazwisko</a>
-                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Nazwisko</a>
+                                <a th:href="@{'/app/studentList/results?sort=nazwisko&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}}">Imię</a>
-                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Imię</a>
+                                <a th:href="@{'/app/studentList/results?sort=imie&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}">Numer indeksu</a>
-                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Numer indeksu</a>
+                                <a th:href="@{'/app/studentList/results?sort=nrIndeksu&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}}">E-mail</a>
-                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">E-mail</a>
+                                <a th:href="@{'/app/studentList/results?sort=email&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>
-                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}">Rodzaj studiów</a>
-                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Rodzaj studiów</a>
+                                <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>Edycja</th>
                         </tr>
@@ -87,6 +93,22 @@
                     </tbody>
                 </table>
             </div>
+
+            <br>
+            <form method="get" action="#" th:action="@{/app/studentList/results}" id="previousForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="page" type="hidden" th:value="${previousPage}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input th:if="${page>0}" type="submit" value="Poprzednia" class="button_project">
+            </form>
+            <form method="get" action="#" th:action="@{/app/studentList/results}" id="nextForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input name="page" type="hidden" th:value="${nextPage}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input type="submit" value="Następna" class="button_project">
+            </form>
         </div>
     </body>
 </html>
