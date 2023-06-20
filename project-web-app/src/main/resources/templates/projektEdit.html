@@ -35,17 +35,18 @@
                         <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
                     </ul>
                 </nav>
-                <div class="err" th:if="${#fields.hasErrors('*')}">
-                    BŁĘDY:
-                    <ul>
-                        <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
-                    </ul>
-                </div>
-                <div class="btns-panel">
-                    <input class="btn" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}" />
-                    <input class="btn" type="submit" name="cancel" value="Anuluj" />
-                </div>
+
                 <div class="container">
+                    <div class="btns-panel">
+                        <input class="buttons" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}" />
+                        <input class="buttons" type="submit" name="cancel" value="Anuluj" />
+                    </div>
+
+                    <div th:if="${errors}" class="error">
+                        <br>
+                        <i>Niepoprawne dane! Nazwa musi mieć od 3 do 50 znaków.</i>
+                    </div>
+                    <br>
                     <div th:if="*{projektId}">
                         <label for="projektId" class="lbl">Id:</label>
                         <input th:field="*{projektId}" class="fld" readonly />
@@ -53,7 +54,6 @@
                     <div>
                         <label for="nazwa" class="lbl">Nazwa:</label>
                         <input th:field="*{nazwa}" class="fld" required="true" th:class="${#fields.hasErrors('opis')}? 'err' : 'fld'" size="45" />
-                        <span class="err" th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}" >Error</span>
                     </div>
                     <div class="formfield">
                         <label for="opis" class="desc_label">Opis:</label>

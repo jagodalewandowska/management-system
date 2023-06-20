@@ -15,8 +15,15 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.validation.ObjectError;
+
 
 @Controller
 @RequestMapping("/app")
@@ -64,16 +71,18 @@ public class ProjectController {
     }
 
     @PostMapping(path = "/projektEdit")
-    public String projektEditSave(@ModelAttribute @Valid Projekt projekt, BindingResult bindingResult) {
+    public String projektEditSave(@ModelAttribute @Valid Projekt projekt, Model model, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "projektEdit";
         }
+
         try {
             projektService.setProjekt(projekt);
         } catch (HttpStatusCodeException e) {
-            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            model.addAttribute("errorMessage", "Niepoprawne dane!");
             return "projektEdit";
-        }
+            }
         return "redirect:/app/projektList";
     }
 
