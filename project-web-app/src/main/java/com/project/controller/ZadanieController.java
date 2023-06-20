@@ -57,16 +57,14 @@ public class ZadanieController {
     }
 
     @PostMapping(path = "/zadanieEdit")
-    public String zadanieEditSave(@ModelAttribute @Valid Zadanie zadanie, Integer projektId, BindingResult bindingResult) {
+    public String zadanieEditSave(@ModelAttribute @Valid Zadanie zadanie, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "zadanieEdit";
         }
         try {
-            zadanieService.setZadanie(zadanie);
+           zadanie = zadanieService.setZadanie(zadanie);
         } catch (HttpStatusCodeException e) {
-            bindingResult.rejectValue(Strings.EMPTY,
-                                      String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
-            System.out.println(e.getStatusCode() + e.getMessage());
+            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "zadanieEdit";
         }
         return "redirect:/app/zadanieList";

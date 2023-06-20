@@ -1,6 +1,8 @@
 package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.Size;
 import org.springframework.cglib.core.Local;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,12 +12,15 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Zadanie {
     private Integer zadanieId;
+    @Size(min = 3, max = 50, message = "Nazwa musi zawierać od {min} do {max} znaków!")
     private String nazwa;
+
     private Integer kolejnosc;
+
+    @Size(max = 50, message = "Opis ma maksymalną długość {max} znaków!")
     private String opis;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataczas_dodania;
-
     private Projekt projekt;
 
     public Integer getZadanieId() {

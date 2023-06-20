@@ -8,8 +8,8 @@ https://trello.com/b/9RUZ5X2m/22032023
 ### Do zrobienia na zaliczenie:
 - nastepna strona i poprzednia strona
 - dodawanie zadan do stronie listy projektow
-- ZROBIONE? - walidacja logowania i rejestracji
-- walidacja w dodawaniu projektu, zadan i studentow
+- ZROBIONE - walidacja logowania i rejestracji
+- ZROBIONE - walidacja w dodawaniu projektu, zadan i studentow
 - dodawanie pliku - sciezka do bazy
 - biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
 - przygotować coś do bazy danych - administrator, np.

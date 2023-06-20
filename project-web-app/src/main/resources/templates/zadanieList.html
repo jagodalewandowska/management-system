@@ -74,8 +74,8 @@
 <!--          <td th:text="${#temporals.format(zadanie.dataczas_dodania, 'yyyy-MM-dd HH:mm:ss')}">Data dodania</td>-->
           <td th:text="${zadanie.projekt.projektId}">projektId</td>
           <td>
-            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId})}">Edytuj</a><br>
-            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId},delete='true')}">Usuń</a>
+            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId})}"  class="button_edit">Edytuj</a><br>
+            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId},delete='true')}"  class="button_edit">Usuń</a>
           </td>
         </tr>
       </tbody>
