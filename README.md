@@ -7,7 +7,7 @@ https://trello.com/b/9RUZ5X2m/22032023
 
 ### Do zrobienia na zaliczenie:
 - ZROBIONE - nastepna strona i poprzednia strona
-- dodawanie zadan do stronie listy projektow
+- ZROBIONE - dodawanie zadan do stronie listy projektow
 - ZROBIONE - walidacja logowania i rejestracji
 - ZROBIONE - walidacja w dodawaniu projektu, zadan i studentow
 - dodawanie pliku - sciezka do bazy
