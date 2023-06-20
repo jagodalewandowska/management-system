@@ -42,17 +42,18 @@ public class ZadanieController {
     }
 
     @GetMapping("/zadanieEdit")
-    public String zadanieEdit(@RequestParam(required = false) Integer zadanieId, Model model, Pageable pageable) {
+    public String zadanieEdit(@RequestParam(required = false) Integer zadanieId, @RequestParam(required = false) Integer projektId, Model model, Pageable pageable) {
         if (zadanieId != null) {
             model.addAttribute("zadanie", zadanieService.getZadanie(zadanieId).get());
-            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         } else {
             Zadanie zadanie = new Zadanie();
-            Projekt projekt = new Projekt();
-            zadanie.setProjekt(projekt);
+            if (projektId != null) {
+                Projekt projekt = projektService.getProjekt(projektId).get();
+                zadanie.setProjekt(projekt);
+            }
             model.addAttribute("zadanie", zadanie);
-            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         }
+        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         return "zadanieEdit";
     }
 

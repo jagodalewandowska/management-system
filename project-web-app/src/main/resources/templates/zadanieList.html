@@ -33,9 +33,10 @@
               <a th:href="@{/app/zadanieList}" class="button_edit_nav">Resetuj</a><br>
       </form>
     </span>
-    <span class="ios-circle">
-      <a th:href="@{/app/zadanieEdit}" class="button_project">Dodaj zadanie</a>
-    </span>
+<!--    Dodawanie zadań przeniesiono do projektów -->
+<!--    <span class="ios-circle">-->
+<!--      <a th:href="@{/app/zadanieEdit}" class="button_project">Dodaj zadanie</a>-->
+<!--    </span>-->
   </div>
   <div class="container">
     <table class="styled_table">
@@ -71,7 +72,6 @@
           <td th:text="${zadanie.nazwa}">Nazwa</td>
           <td th:text="${zadanie.kolejnosc}">Kolejność</td>
           <td th:text="${zadanie.opis}">Opis</td>
-<!--          <td th:text="${#temporals.format(zadanie.dataczas_dodania, 'yyyy-MM-dd HH:mm:ss')}">Data dodania</td>-->
           <td th:text="${zadanie.projekt.projektId}">projektId</td>
           <td>
             <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId})}"  class="button_edit">Edytuj</a><br>
