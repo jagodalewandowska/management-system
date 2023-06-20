@@ -2,6 +2,8 @@ package com.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,9 +15,11 @@ import java.util.Set;
 public class Student {
 
     private Integer studentId;
-   // @NotBlank(message = "Pole imię nie może być puste!")
+    @Size(min = 3, max = 50, message = "Imię musi zawierać od {min} do {max} znaków!")
     private String imie;
+    @Size(min = 3, max = 100, message = "Nazwisko musi zawierać od {min} do {max} znaków!")
     private String nazwisko;
+    @Digits(integer = 10, message = "Wartość musi być liczbą całkowitą.", fraction = 0)
     private String nrIndeksu;
     @Email(message = "Niepoprawny format adresu e-mail.")
     private String email;

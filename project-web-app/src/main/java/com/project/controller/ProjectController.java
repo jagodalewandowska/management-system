@@ -71,18 +71,16 @@ public class ProjectController {
     }
 
     @PostMapping(path = "/projektEdit")
-    public String projektEditSave(@ModelAttribute @Valid Projekt projekt, Model model, BindingResult bindingResult) {
+    public String projektEditSave(@ModelAttribute @Valid Projekt projekt, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "projektEdit";
         }
-
         try {
-            projektService.setProjekt(projekt);
+            projekt = projektService.setProjekt(projekt);
         } catch (HttpStatusCodeException e) {
-            model.addAttribute("errors", bindingResult.getAllErrors());
-            model.addAttribute("errorMessage", "Niepoprawne dane!");
+            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "projektEdit";
-            }
+        }
         return "redirect:/app/projektList";
     }
 

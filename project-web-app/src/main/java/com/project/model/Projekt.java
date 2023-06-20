@@ -13,9 +13,7 @@ import java.util.Set;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Projekt {
     private Integer projektId;
-
-//    @NotBlank(message = "Pole nazwa nie może być puste!")
-//    @Size(min = 3, max = 50, message = "Nazwa musi zawierać od {min} do {max} znaków!")
+    @Size(min = 3, max = 50, message = "Nazwa musi zawierać od {min} do {max} znaków!")
     private String nazwa;
     private String opis;
 

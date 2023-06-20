@@ -42,9 +42,9 @@
                         <input class="buttons" type="submit" name="cancel" value="Anuluj" />
                     </div>
 
-                    <div th:if="${errors}" class="error">
+                    <div class="err" th:if="${#fields.hasErrors('*')}">
                         <br>
-                        <i>Niepoprawne dane! Nazwa musi mieć od 3 do 50 znaków.</i>
+                        Wprowadzone dane są niepoprawne!
                     </div>
                     <br>
                     <div th:if="*{projektId}">
@@ -54,6 +54,7 @@
                     <div>
                         <label for="nazwa" class="lbl">Nazwa:</label>
                         <input th:field="*{nazwa}" class="fld" required="true" th:class="${#fields.hasErrors('opis')}? 'err' : 'fld'" size="45" />
+                        <span class="err" th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}">Error</span>
                     </div>
                     <div class="formfield">
                         <label for="opis" class="desc_label">Opis:</label>

@@ -127,3 +127,7 @@ textarea {
     position:relative;
     top:1px;
 }
+
+.err {
+    font-family: Inter, sans-serif;
+}
