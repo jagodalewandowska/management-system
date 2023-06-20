@@ -7,6 +7,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
         <title>Edycja projektu</title>
+        <script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+        <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+        <link rel="stylesheet" th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" />
+
+        <script>
+            $(document).ready(function() {
+                $('#dataOddania').datepicker({
+                    dateFormat: 'yy-mm-dd'
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="root" th:with="isDelete=${#strings.equalsIgnoreCase(param.delete,'true')}">
@@ -41,16 +52,16 @@
                     </div>
                     <div>
                         <label for="nazwa" class="lbl">Nazwa:</label>
-                        <input th:field="*{nazwa}" class="fld" th:class="${#fields.hasErrors('opis')}? 'err' : 'fld'" size="45" />
-                        <span class="err" th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}">Error</span>
+                        <input th:field="*{nazwa}" class="fld" required="true" th:class="${#fields.hasErrors('opis')}? 'err' : 'fld'" size="45" />
+                        <span class="err" th:if="${#fields.hasErrors('nazwa')}" th:errors="*{nazwa}" >Error</span>
                     </div>
                     <div class="formfield">
                         <label for="opis" class="desc_label">Opis:</label>
-                        <textarea class="fld" rows="3" cols="47" th:field="*{opis}">Opis</textarea>
+                        <textarea class="fld" rows="3" cols="47" th:field="*{opis}" required="true">Opis</textarea>
                     </div>
                     <div>
                         <label for="dataOddania" class="lbl">Data oddania:</label>
-                        <input th:field="*{dataOddania}" class="fld" type="text" size="10" /><i>(RRRR-MM-DD)</i>
+                        <input th:field="*{dataOddania}" class="fld" type="text" size="10" required="true"/>
                     </div>
                     <div th:if="*{dataCzasUtworzenia}">
                         <label for="dataCzasUtworzenia" class="lbl">Utworzony:</label>

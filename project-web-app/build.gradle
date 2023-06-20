@@ -42,6 +42,8 @@ dependencies {
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
     runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
 
+    implementation 'org.webjars:jquery:3.6.0'
+    implementation 'org.webjars:jquery-ui:1.12.1'
 
 }
 tasks.named('test') {
