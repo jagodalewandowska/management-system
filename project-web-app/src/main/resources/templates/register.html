@@ -16,7 +16,9 @@
 			autocomplete="off"
 			class="form">
 			<h1>Rejestracja</h1>
-			<div class="err" th:if="${#fields.hasErrors('*')}">BŁĘDY:
+			<div class="err" th:if="${#fields.hasErrors('*')}">
+				<br>
+				BŁĘDY:
 				<ul>
 					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
 				</ul>

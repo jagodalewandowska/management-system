@@ -16,19 +16,17 @@
 			autocomplete="off"
 			class="form">
 			<div class="err" th:if="${#fields.hasErrors('*')}">
-				<ul>
-					<h5 th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</h5>
-				</ul>
+				Wprowadzone dane są niepoprawne!
 			</div>
 			<br>
 					<label for="email" class="lbl">E-mail:</label> <input
 						th:field="*{email}" class="fld"
-						th:class="${#fields.hasErrors('email')}? 'err' : 'fld'" size="75" />
+						th:class="${#fields.hasErrors('email')}? 'err' : 'fld'" size="75" required="true"/>
 					<span class="err" th:if="${#fields.hasErrors('email')}"></span>
 				<div>
 					<label for="password" class="lbl">Hasło:</label>
 					<input th:field="*{password}" class="fld" type="password"
-						th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" size="75" />
+						th:class="${#fields.hasErrors('password')}? 'err' : 'fld'" size="75" required="true"/>
 					<span class="err" th:if="${#fields.hasErrors('password')}"></span>
 				</div>
 					<button class="loginButton btn" type="submit" name="login" value="Zaloguj">Zaloguj</button>

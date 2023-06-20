@@ -19,7 +19,7 @@ public class Student {
     private String imie;
     @Size(min = 3, max = 100, message = "Nazwisko musi zawierać od {min} do {max} znaków!")
     private String nazwisko;
-    @Digits(integer = 10, message = "Wartość musi być liczbą całkowitą.", fraction = 0)
+    @Digits(integer = 10, message = "Wartość indeksu musi być liczbą całkowitą.", fraction = 0)
     private String nrIndeksu;
     @Email(message = "Niepoprawny format adresu e-mail.")
     private String email;
