@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ZadanieService {
     Optional<Zadanie> getZadanie(Integer zadanieId);
     Zadanie setZadanie(Zadanie zadanie);
-    void deleteZadanie(Integer zadanieId);
+    void deleteZadanie(Integer zadanieId,Integer projektId);
     Page<Zadanie> getZadania(Pageable pageable);
     Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable);
 }

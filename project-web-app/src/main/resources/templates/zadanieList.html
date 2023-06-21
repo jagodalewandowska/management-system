@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:import="org.thymeleaf.expression.Strings">
 <head>
   <meta charset="UTF-8">
   <link th:href="@{/css/list-style.css}" rel="stylesheet" />
@@ -43,20 +43,20 @@
       <thead>
       <tr>
         <th>
-          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}">Id</a>
-          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Id</a>
+          <a th:href="@{'/app/zadanieList/results?sort=zadanieId&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}">Nazwa</a>
-          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Nazwa</a>
+          <a th:href="@{'/app/zadanieList/results?sort=nazwa&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}">Kolejność</a>
-          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Kolejność</a>
+          <a th:href="@{'/app/zadanieList/results?sort=kolejnosc&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
         <th>
-          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}">Opis</a>
-          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
+          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Opis</a>
+          <a th:href="@{'/app/zadanieList/results?sort=opis&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
         </th>
 <!--        <th>-->
 <!--          <a th:href="@{'/zadanieList/results?sort=dataczas_dodania&order=' + ${reverseSortDir}}">Data dodania</a>-->
@@ -75,12 +75,27 @@
           <td th:text="${zadanie.projekt.projektId}">projektId</td>
           <td>
             <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId})}"  class="button_edit">Edytuj</a><br>
-            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId},delete='true')}"  class="button_edit">Usuń</a>
+            <a th:href="@{/app/zadanieEdit(zadanieId=${zadanie.zadanieId},projektId=${zadanie.projekt.projektId},delete='true')}"  class="button_edit">Usuń</a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+  <br>
+  <form method="get" action="#" th:action="@{/app/zadanieList/results}" id="previousForm">
+    <input name="size" type="hidden" th:value="${size}">
+    <input name="page" type="hidden" th:value="${previousPage}">
+    <input name="order" type="hidden" th:value="${order}">
+    <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+    <input th:if="${page>0}" type="submit" value="Poprzednia" class="button_project">
+  </form>
+  <form method="get" action="#" th:action="@{/app/zadanieList/results}" id="nextForm">
+    <input name="size" type="hidden" th:value="${size}">
+    <input name="order" type="hidden" th:value="${order}">
+    <input name="page" type="hidden" th:value="${nextPage}">
+    <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+    <input type="submit" value="Następna" class="button_project">
+  </form>
 </div>
 </body>
 </html>
