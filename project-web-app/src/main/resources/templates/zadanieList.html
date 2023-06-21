@@ -25,9 +25,13 @@
       <form method="get" action="#" th:action="@{/app/zadanieList/search}" id="searchform">
               <label for="snazwa" class="myText">🔍</label>
               <input type="text" id="snazwa" name="nazwa">
+              <input name="order" type="hidden" th:value="${order}">
+              <input name="page" type="hidden" th:value="${page}">
+              <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
               <select name="size" id="size" form="searchform">
                 <option value="5">5</option>
                 <option value="10">10</option>
+                <option value="15">15</option>
               </select>
               <input type="submit" class="button_edit_nav" value="Szukaj">
               <a th:href="@{/app/zadanieList}" class="button_edit_nav">Resetuj</a><br>
