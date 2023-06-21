@@ -75,16 +75,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="student : ${studenci}">
+                    <tr th:each="student : ${studenci}" th:unless="${student.email == 'administrator@admin.admin'}">
                             <td th:text="${student.studentId}">Id</td>
                             <td th:text="${student.nazwisko}">Nazwisko</td>
                             <td th:text="${student.imie}">Imię</td>
                             <td th:text="${student.nrIndeksu}">Numer indeksu</td>
                             <td th:text="${student.email}">E-mail</td>
                             <td th:text="(${student.stacjonarny}) ? 'stacjonarny' : 'niestacjonarny'">Rodzaj studiów</td>
-
-
-<!--                            <td th:text="${student.projekty}">Projekty</td>-->
                             <td>
                                 <a th:href="@{/app/studentEdit(studentId=${student.studentId})}" class="button_edit">Edytuj</a><br>
                                 <a th:href="@{/app/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>
