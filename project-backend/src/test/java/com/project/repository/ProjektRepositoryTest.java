@@ -26,7 +26,7 @@ public class ProjektRepositoryTest {
     private ProjektRepository projektRepository;
 
     @InjectMocks
-    private ProjektServiceImpl projektService; // Concrete implementation of the interface
+    private ProjektServiceImpl projektService;
 
     @Test
     public void testFindByNazwaContainingIgnoreCase() {
@@ -36,19 +36,14 @@ public class ProjektRepositoryTest {
         expectedResult.add(new Projekt("Projekt pierwszy", "Opis projektu 1", LocalDate.now()));
         expectedResult.add(new Projekt("Projekt drugi", "Opis projektu 2", LocalDate.now()));
 
-        // Create a Page object with the matching Projekt
         Page<Projekt> expectedPage = new PageImpl<>(expectedResult.subList(0, 1));
 
-        // Mock the repository method
         when(projektRepository.findByNazwaContainingIgnoreCase(nazwa, pageable)).thenReturn(expectedPage);
 
-        // Call the service method
         Page<Projekt> result = projektService.searchByNazwa(nazwa, pageable);
 
-        // Verify the result
         assertEquals(expectedResult.subList(0, 1), result.getContent());
 
-        // Print terminal comments
         System.out.println("Oczekiwany projekt:");
         expectedResult.subList(0, 1).forEach(p -> System.out.println("Nazwa: " + p.getNazwa() + ", Opis: " + p.getOpis() + ", Data: " + p.getDataOddania()));
 
