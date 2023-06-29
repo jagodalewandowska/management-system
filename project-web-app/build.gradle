@@ -29,6 +29,7 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.26'
     implementation 'org.projectlombok:lombok:1.18.26'
     implementation 'org.projectlombok:lombok:1.18.26'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
 //    implementation project(path: ':')
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -44,6 +45,10 @@ dependencies {
 
     implementation 'org.webjars:jquery:3.6.0'
     implementation 'org.webjars:jquery-ui:1.12.1'
+
+    implementation 'javax.servlet:javax.servlet-api:4.0.1'
+
+
 
 }
 tasks.named('test') {

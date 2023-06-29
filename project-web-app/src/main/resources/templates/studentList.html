@@ -7,6 +7,27 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
         <title>Lista studentów</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                // Create the button element
+                var button = document.createElement("a");
+                button.href = "/app/chat"; // Set the URL for redirection
+                button.classList.add("float-button"); // Add a custom class for styling
+
+                // Create the icon element
+                var icon = document.createElement("i");
+                icon.classList.add("fas", "fa-comment-dots"); // Add the Font Awesome classes for the desired icon
+                icon.style.color = "#830e21"; // Set the color of the icon
+                icon.style.fontSize = "24px"; // Set the font size of the icon
+
+                // Append the icon to the button
+                button.appendChild(icon);
+
+                // Append the button to the body
+                document.body.appendChild(button);
+            });
+        </script>
     </head>
     <body>
         <nav>

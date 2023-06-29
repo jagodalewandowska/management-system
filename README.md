@@ -11,7 +11,7 @@ https://trello.com/b/9RUZ5X2m/22032023
 - ZROBIONE - walidacja logowania i rejestracji
 - ZROBIONE - walidacja w dodawaniu projektu, zadan i studentow
 - dodawanie pliku - sciezka do bazy
-- biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
+- ZROBIONE <poniekąd> - nie ma nicków kto pisze, ale ciężka z tym sprawa ogólnie. // biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
 - ZROBIONE - przygotować coś do bazy danych - administrator, np.
 - problem z sortowaniem wyniku po wyszukiwaniu - może utworzyć stronę z tylko wynikami, bez przeglądania stron?
 ### Realizacja powinna uwzględniać m.in.:

@@ -120,9 +120,48 @@ tr:nth-child(even) {
     font-family: 'Inter', sans-serif;
 }
 .button_project {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
+
+.chat-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: #f0f0f2;
+    border-radius: 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+}
+.float-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #eff2f5;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 16px;
+    font-size: 18px;
+    text-decoration: none;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.chat-wrapper {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.chat-input {
+    padding: 7px;
+    margin: 2% 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 300px;
+    font-family: Inter, sans-serif;
+}
+
 .button_edit_dodaj {
     background: #830e21;
     border-radius:6px;

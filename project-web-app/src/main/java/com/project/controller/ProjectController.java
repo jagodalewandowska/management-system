@@ -1,5 +1,6 @@
 package com.project.controller;
 
+import com.project.auth.Credentials;
 import com.project.model.Projekt;
 import com.project.service.ProjektService;
 import com.project.service.ProjektServiceImpl;
@@ -56,8 +57,6 @@ public class ProjectController {
         model.addAttribute("reverseSortDir", "desc");
         return "redirect:/app/projektList/results?size=5&page=0&order=asc&sort=projektId";
     }
-
-
 
     @GetMapping("/projektEdit")
     public String projektEdit(@RequestParam(required = false) Integer projektId, Model model) {
