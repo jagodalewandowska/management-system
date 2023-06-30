@@ -26,14 +26,15 @@
       };
 
       $("#sendButton").click(function() {
-        var message = $("#messageInput").val();
+        var message = $("#username").val() + ": " + $("#messageInput").val();
+
         socket.send(message);
         $("#messageInput").val("");
       });
     });
   </script>
 </head>
-<body>
+<tbody>
 <nav>
   <ul>
     <li><b>Czat</b></li>
@@ -42,19 +43,20 @@
     <li><a th:href="@{/app/zadanieList}">Lista zadań</a></li>
     <li><a th:href="@{/app/files}">Do pobrania</a></li>
     <li><a th:href="@{/app/logout}">Wyloguj się</a></li>
-    <li><a th:href="@{/}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
+    <li><a th:href="@{/app/projektList}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
   </ul>
 </nav>
 <div class="root">
   <br>
   <div class="chat-wrapper">
     <div class="chat-container">
+      <input type="text" id="username" class="chat-username" readonly="readonly" disabled="disabled"/>
       <input type="text" id="messageInput" class="chat-input"/>
-      <button id="sendButton" class="button_project">Send</button>
+      <button id="sendButton" class="button_project" th:utext="${username}">Send</button>
       <br>
       <div id="chatBox"></div>
     </div>
   </div>
 </div>
-</body>
+</tbody>
 </html>

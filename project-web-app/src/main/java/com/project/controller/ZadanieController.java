@@ -91,9 +91,9 @@ public class ZadanieController {
     }
 
     @PostMapping(params = "delete", path = "/zadanieEdit")
-    public String zadanieEditDelete(@ModelAttribute Zadanie zadanie, @RequestParam Integer projektId) {
+    public String zadanieEditDelete(@ModelAttribute Zadanie zadanie) {
         logger.info("usuwam");
-            zadanieService.deleteZadanie(zadanie.getZadanieId(), projektId);
+        zadanieService.deleteZadanie(zadanie.getZadanieId());
         return "redirect:/app/zadanieList";
     }
 

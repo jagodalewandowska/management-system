@@ -224,6 +224,15 @@ tr:nth-child(even) {
     font-family: Inter, sans-serif;
 }
 
+.chat-username {
+    padding: 7px;
+    margin: 2% 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 150px;
+    font-family: Inter, sans-serif;
+}
+
 .bottom-middle {
     position: fixed;
     bottom: 0;

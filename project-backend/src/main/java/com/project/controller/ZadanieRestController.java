@@ -61,8 +61,8 @@ public class ZadanieRestController {
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping(path = "/zadania/{zadanieId}", params = "projektId")
-    public ResponseEntity<Void> deleteZadanie(@PathVariable Integer zadanieId, @RequestParam Integer projektId) {
+    @DeleteMapping(path = "/zadania/{zadanieId}")
+    public ResponseEntity<Void> deleteZadanie(@PathVariable Integer zadanieId) {
         return zadanieService.getZadanie(zadanieId).map(p -> {
             zadanieService.deleteZadanie(zadanieId);
             return new ResponseEntity<Void>(HttpStatus.OK);
