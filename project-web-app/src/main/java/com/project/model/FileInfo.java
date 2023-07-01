@@ -4,11 +4,16 @@ public class FileInfo {
   
   private String name;
   private String url;
+  private Projekt projekt;
 
   public FileInfo(String name, String url) {
     this.name = name;
     this.url = url;
   }
+
+    public FileInfo() {
+
+    }
 
   public String getName() {
     return this.name;

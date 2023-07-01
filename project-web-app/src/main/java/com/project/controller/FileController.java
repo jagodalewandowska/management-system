@@ -36,8 +36,6 @@ public class FileController {
     try {
       storageService.save(file);
 
-//      message = "Uploaded the file successfully: " + file.getOriginalFilename();
-//      model.addAttribute("message", message);
       return "redirect:/app/files";
     } catch (Exception e) {
       message = "Nie można było dodać pliku: " + file.getOriginalFilename() + ". Błąd: " + e.getMessage();
