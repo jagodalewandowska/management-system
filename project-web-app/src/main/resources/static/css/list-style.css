@@ -239,4 +239,9 @@ tr:nth-child(even) {
     left: 50%;
     transform: translateX(-50%);
 }
+
+.chatBox {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
 /**/

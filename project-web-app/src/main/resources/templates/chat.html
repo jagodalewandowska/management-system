@@ -19,7 +19,7 @@
 
       socket.onmessage = function(event) {
         var message = event.data;
-        $("#chatBox").append("<p>" + message + "</p><br>");
+        $("#chatBox").append("<p>" + message + "</p><br><hr><br>");
       };
 
       $("#sendButton").click(function() {
@@ -52,7 +52,9 @@
       <input type="text" id="messageInput" class="chat-input"/>
       <button id="sendButton" class="button_project">Send</button>
       <br>
-      <div id="chatBox"></div>
+      <div id="chatBox" class="chatBox">
+        <br>
+      </div>
     </div>
   </div>
 </div>
