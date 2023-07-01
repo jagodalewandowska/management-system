@@ -17,9 +17,10 @@ public class ChatController {
 
     private StudentService studentService;
 
-//    @GetMapping("/chat")
-//    public String chat(Model model) {
+    @GetMapping("/chat")
+    public String chat(Model model, @RequestParam("projektId") Integer projektId) {
+        model.addAttribute("projektId", projektId);
 //        model.addAttribute("username", studentService.getStudent() + " " + nazwisko);
-//        return "chat";
-//    }
+        return "chat";
+    }
 }

@@ -10,26 +10,26 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
         <title>Lista projektów</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script th:inline="javascript">
-            $(document).ready(function() {
-                // Create the button element
-                var button = document.createElement("a");
-                button.href = "/app/chat"; // Set the URL for redirection
-                button.classList.add("float-button"); // Add a custom class for styling
+<!--        <script th:inline="javascript">-->
+<!--            $(document).ready(function() {-->
+<!--                // Create the button element-->
+<!--                var button = document.createElement("a");-->
+<!--                button.href = "/app/chat"; // Set the URL for redirection-->
+<!--                button.classList.add("float-button"); // Add a custom class for styling-->
 
-                // Create the icon element
-                var icon = document.createElement("i");
-                icon.classList.add("fas", "fa-comment-dots"); // Add the Font Awesome classes for the desired icon
-                icon.style.color = "#830e21"; // Set the color of the icon
-                icon.style.fontSize = "24px"; // Set the font size of the icon
+<!--                // Create the icon element-->
+<!--                var icon = document.createElement("i");-->
+<!--                icon.classList.add("fas", "fa-comment-dots"); // Add the Font Awesome classes for the desired icon-->
+<!--                icon.style.color = "#830e21"; // Set the color of the icon-->
+<!--                icon.style.fontSize = "24px"; // Set the font size of the icon-->
 
-                // Append the icon to the button
-                button.appendChild(icon);
+<!--                // Append the icon to the button-->
+<!--                button.appendChild(icon);-->
 
-                // Append the button to the body
-                document.body.appendChild(button);
-            });
-        </script>
+<!--                // Append the button to the body-->
+<!--                document.body.appendChild(button);-->
+<!--            });-->
+<!--        </script>-->
     </head>
     <body>
         <nav>
@@ -88,6 +88,7 @@
                                 <a th:href="@{'/app/projektList/results?sort=dataOddania&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
                             <th>Edit</th>
+                            <th>Czat</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -99,8 +100,14 @@
                             <td th:text="${#temporals.format(projekt.dataOddania, 'yyyy-MM-dd')}">Data oddania</td>
                             <td>
                                 <a th:href="@{/app/zadanieEdit(projektId=${projekt.projektId})}" class="button_edit_dodaj">Dodaj zadanie</a><br>
+                                <a th:href="@{/app/chat(projektId=${projekt.projektId})}" class="button_edit_dodaj">Przejdź do czatu</a><br>
                                 <a th:href="@{/app/projektEdit(projektId=${projekt.projektId})}" class="button_edit">Edytuj</a><br>
                                 <a th:href="@{/app/projektEdit(projektId=${projekt.projektId},delete='true')}" class="button_edit" >Usuń</a>
+                            </td>
+                            <td>
+                                <a th:href="@{/app/chat(projektId=${projekt.projektId})}">
+                                    <i class="fas fa-comment-dots" style="color: #830e21; font-size: 24px;"></i>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
