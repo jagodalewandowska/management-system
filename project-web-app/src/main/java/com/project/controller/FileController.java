@@ -77,21 +77,17 @@ public class FileController {
   @GetMapping("/files")
   public String getListFiles(@RequestParam(required = false) Integer projektId,
                              Pageable pageable, Model model) {
-    // tymczasowe rozwiązanie dla zakładki "Do pobrania"
-    if (projektId == null) {
-      projektId = 1;
-    }
-    Integer finalProjektId = projektId;
-    // --
+    model.addAttribute("filesDB", storageService.getFileInfos(pageable));
     List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
       String filename = path.getFileName().toString();
       String url = MvcUriComponentsBuilder
           .fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
       Projekt projekt;
-      projekt = projektService.getProjekt(finalProjektId).get();
+      projekt = projektService.getProjekt(projektId).get();
+
       return new FileInfo(filename, url, projekt);
     }).collect(Collectors.toList());
-     model.addAttribute("files", fileInfos);
+    model.addAttribute("files", fileInfos);
     model.addAttribute("projektId", projektId);
     return "files";
   }

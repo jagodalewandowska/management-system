@@ -48,7 +48,7 @@
             <td>[[${file.name}]]</td>
             <td><a th:href="@{${file.url}}" class="fa fa-download icon-dark"></a></td>
             <td>
-              <a th:href="@{'/app/files/delete/' + ${file.name}}" th:fileName="${file.name}" id="btnDelete"
+              <a th:href="@{'/app/files/delete/' + ${file.name} + '/' +${file.fileId}}" th:fileName="${file.name}" th:fileId="${file.fileId}" id="btnDelete"
                  class="fa-regular fa-trash-can icon-dark btn-delete"></a>
             </td>
           </tr>
@@ -59,6 +59,33 @@
       <div th:unless="${files.size() > 0}">
         <span>Nie odnaleziono plików!</span>
       </div>
+
+      <table class="styled_table">
+        <thead>
+        <tr>
+          <th>
+            <b>fileID</b>
+           </th>
+          <th>
+            <b>NAME</b>
+          </th>
+          <th>
+            <b>URL</b>
+           </th>
+          <th>
+            projektID
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="f : ${filesDB}">
+          <td th:text="${f.fileId}">Id</td>
+          <td th:text="${f.name}">Nazwa</td>
+          <td th:text="${f.url}">url</td>
+          <td th:text="${f.projekt.projektId}">projekt</td>
+        </tr>
+        </tbody>
+      </table>
 </div>
 </body>
 </html>

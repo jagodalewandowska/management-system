@@ -20,9 +20,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api")
-@Slf4j
 public class FileRestController {
 
   private FileService fileService;
@@ -37,7 +36,7 @@ public class FileRestController {
 
   @GetMapping("/files")
   Page<FileInfo> getFiles(Pageable pageable) {
-    return fileService.getFiles(pageable);
+      return fileService.getFiles(pageable);
   }
 
   @GetMapping("/files/{fileId}")
