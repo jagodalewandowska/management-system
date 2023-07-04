@@ -2,18 +2,6 @@
 
 https://trello.com/b/9RUZ5X2m/22032023
 ---
-## Zadania do wykonania
-
-
-### Do zrobienia na zaliczenie:
-- ZROBIONE - nastepna strona i poprzednia strona
-- ZROBIONE - dodawanie zadan do stronie listy projektow
-- ZROBIONE - walidacja logowania i rejestracji
-- ZROBIONE - walidacja w dodawaniu projektu, zadan i studentow
-- ZROBIONE - dodawanie pliku - sciezka do bazy
-- ZROBIONE <poniekąd> - nie ma nicków kto pisze, ale ciężka z tym sprawa ogólnie. // biblioteka springowa do chatu - napisać email, jeśli nie będzie działać i dostaniemy punkciki za walkę do końca
-- ZROBIONE - przygotować coś do bazy danych - administrator, np.
-- problem z sortowaniem wyniku po wyszukiwaniu - może utworzyć stronę z tylko wynikami, bez przeglądania stron?
 ### Realizacja powinna uwzględniać m.in.:
 - [ ] zabezpieczenie danych i aplikacji przed niepożądanym dostępem, 
 - [ ] protokół szyfrowania transmisji danych (w tym celu należy wygenerować certyfikat SSL np. za pomocą narzędzia keytool dostępnego w każdym JDK),
@@ -43,7 +31,7 @@ Trzeba będzie definiować m.in.:
 
 
 ---
-### Nadawanie statusu administratora:
+### Nadawanie statusu administratora
 0. Dodajcie sobie studenta przez rejestrację na frontend
 1. Wchodzicie w pgAdmin, co zainstalowaliście w ramach postgresql
 2. Wpisujecie hasło (politechnika)?
