@@ -27,7 +27,7 @@ public class StudentRepositoryTest {
     private StudentRepository studentRepository;
 
     @InjectMocks
-    private StudentServiceImpl studentService; // Concrete implementation of the interface
+    private StudentServiceImpl studentService;
     @Test
     public void testFindByNazwiskoStartsWithIgnoreCase() {
         String nazwisko = "Smith";

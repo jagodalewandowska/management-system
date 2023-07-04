@@ -50,6 +50,10 @@ public class Projekt {
     @JsonIgnoreProperties(value = {"projekt"}, allowSetters = true)
     private List<Zadanie> zadania;
 
+    @OneToMany(mappedBy = "projekt")
+    @JsonIgnoreProperties(value = {"projekt"}, allowSetters = true)
+    private List<FileInfo> fileInfos;
+
     @ManyToMany
     @JoinTable(name = "projekt_student",
             joinColumns = {@JoinColumn(name="projekt_id")},
@@ -62,6 +66,14 @@ public class Projekt {
 
     public void setStudenci(Set<Student> studenci) {
         this.studenci = studenci;
+    }
+
+    public List<FileInfo> getFileInfos() {
+        return fileInfos;
+    }
+
+    public void setFileInfos(List<FileInfo> fileInfos) {
+        this.fileInfos = fileInfos;
     }
 
     public Integer getProjektId() {

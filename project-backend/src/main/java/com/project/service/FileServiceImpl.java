@@ -3,23 +3,27 @@ package com.project.service;
 import com.project.model.FileInfo;
 import com.project.repository.FileRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
 @Slf4j
 public class FileServiceImpl implements FileService {
 
-    @Autowired
     private FileRepository fileRepository;
 
+    public FileServiceImpl(FileRepository fileRepository) {
+        this.fileRepository = fileRepository;
+    }
+
     @Override
-    public List<FileInfo> getFiles() {
-        return fileRepository.findAll();
+    public Page<FileInfo> getFiles(Pageable pageable) {
+        return fileRepository.findAll(pageable);
     }
 
     @Override
@@ -28,18 +32,16 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public FileInfo setFile(FileInfo fileInfo) {
+    public FileInfo setFile(@NotNull FileInfo fileInfo) {
         if (fileInfo.getName() != null) {
-            FileInfo fileToSave = new FileInfo(fileInfo.getName(), fileInfo.getUrl());
-
+            FileInfo fileToSave = new FileInfo(fileInfo.getName(), fileInfo.getUrl(), fileInfo.getProjekt());
             return fileRepository.save(fileToSave);
         } else {
             String newName = fileInfo.getUrl().replace("/uploads/", "");
-            FileInfo fileToSave = new FileInfo(newName, fileInfo.getUrl());
+            FileInfo fileToSave = new FileInfo(newName, fileInfo.getUrl(), fileInfo.getProjekt());
 
             return fileRepository.save(fileToSave);
         }
-
     }
 
     @Override

@@ -3,8 +3,14 @@ package com.project.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.project.model.Projekt;
+import com.project.service.ProjektService;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -16,27 +22,50 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.model.FileInfo;
 import com.project.service.FilesStorageService;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/app")
+@Slf4j
 public class FileController {
 
-  @Autowired
   FilesStorageService storageService;
 
+  private ProjektService projektService;
+
+  public FileController(ProjektService projektService, FilesStorageService storageService) {
+    this.storageService = storageService;
+    this.projektService = projektService;
+  }
+
   @GetMapping("/files/new")
-  public String newFile(Model model) {
+  public String newFile(Model model, @RequestParam("projektId") Integer projektId, Pageable pageable) {
+    model.addAttribute("projektId", projektId);
     return "upload_form";
   }
 
-  @PostMapping("/files/upload")
-  public String uploadFile(Model model, @RequestParam("file") MultipartFile file) {
+  @PostMapping(path = "/files/upload")
+  public String uploadFile(@ModelAttribute @Valid FileInfo fileInfo, Model model, @RequestParam("file") MultipartFile file,
+                           @RequestParam("projektId") Integer projektId) {
     String message = "";
 
     try {
-      storageService.save(file);
 
+      model.addAttribute("projektId", projektId);
+
+      String originalFilename = file.getOriginalFilename();
+      String filename = originalFilename.substring(originalFilename.lastIndexOf("/") + 1);
+
+      fileInfo.setName(filename);
+      fileInfo.setUrl("/uploads/" + filename);
+
+      Projekt projekt = new Projekt();
+      projekt.setProjektId(projektId);
+      fileInfo.setProjekt(projekt);
+
+      storageService.save(file, fileInfo);
       return "redirect:/app/files";
+
     } catch (Exception e) {
       message = "Nie można było dodać pliku: " + file.getOriginalFilename() + ". Błąd: " + e.getMessage();
       model.addAttribute("message", message);
@@ -46,17 +75,24 @@ public class FileController {
   }
 
   @GetMapping("/files")
-  public String getListFiles(Model model) {
+  public String getListFiles(@RequestParam(required = false) Integer projektId,
+                             Pageable pageable, Model model) {
+    // tymczasowe rozwiązanie dla zakładki "Do pobrania"
+    if (projektId == null) {
+      projektId = 1;
+    }
+    Integer finalProjektId = projektId;
+    // --
     List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
       String filename = path.getFileName().toString();
       String url = MvcUriComponentsBuilder
           .fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
-
-      return new FileInfo(filename, url);
+      Projekt projekt;
+      projekt = projektService.getProjekt(finalProjektId).get();
+      return new FileInfo(filename, url, projekt);
     }).collect(Collectors.toList());
-
-    model.addAttribute("files", fileInfos);
-
+     model.addAttribute("files", fileInfos);
+    model.addAttribute("projektId", projektId);
     return "files";
   }
 
@@ -69,9 +105,10 @@ public class FileController {
   }
 
   @GetMapping("/files/delete/{filename:.+}")
-  public String deleteFile(@PathVariable String filename, Model model, RedirectAttributes redirectAttributes) {
+  public String deleteFile(@PathVariable String filename, @PathVariable Integer fileId,
+                           Model model, RedirectAttributes redirectAttributes) {
     try {
-      boolean existed = storageService.delete(filename);
+      boolean existed = storageService.delete(filename, fileId);
 
       if (existed) {
         redirectAttributes.addFlashAttribute("message", "Usunięto plik: " + filename);

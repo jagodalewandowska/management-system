@@ -27,6 +27,7 @@ public class Projekt {
     private LocalDateTime dataCzasModyfikacji;
 
     private List<Zadanie> zadania;
+    private List<FileInfo> fileInfos;
     private Set<Student> studenci;
     public Set<Student> getStudenci() {
         return studenci;
@@ -99,6 +100,14 @@ public class Projekt {
 
     public void setZadania(List<Zadanie> zadania) {
         this.zadania = zadania;
+    }
+
+    public List<FileInfo> getFileInfos() {
+        return fileInfos;
+    }
+
+    public void setFileInfos(List<FileInfo> fileInfos) {
+        this.fileInfos = fileInfos;
     }
 
     // konstruktory?

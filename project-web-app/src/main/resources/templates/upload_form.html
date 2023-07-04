@@ -33,14 +33,14 @@
   <div class="container-fluid" style="max-width: 400px; margin: 0 auto;">
   <table class="table table-hover">
     <thead>
-      <th scope="col">Wybierz plik do dodania:</th>
+      <th scope="col">Wybierz plik do dodania do projektu:</th>
     </thead>
     <tbody>
     <td>
       <form
               id="uploadForm"
               method="post"
-              th:action="@{/app/files/upload}"
+              th:action="@{/app/files/upload(projektId=${projektId})}"
               enctype="multipart/form-data">
         <input id="input-file" type="file" name="file"/>
         <button class="button_project" type="submit">

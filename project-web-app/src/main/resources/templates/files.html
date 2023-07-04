@@ -29,17 +29,9 @@
   </ul>
 </nav>
 <div class="root">
-<!--  <div id="HASH">-->
-<!--    <span id="time-HASH" class="time-HASH">-->
-<!--                     -->
-<!--                </span>-->
-<!--    <span class="ios-circle">-->
-<!--                    <a th:href="@{/app/files/new}" class="button_project">Dodaj plik</a>-->
-<!--                </span>-->
-<!--  </div>-->
     <br>
     <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
-      <a th:href="@{/app/files/new}" class="button_project">Dodaj plik</a>
+      <a th:href="@{/app/files/new(projektId=${projektId})}" class="button_project">Dodaj plik</a>
   <br>
       <br>
       <div th:if="${files.size() > 0}">
@@ -57,7 +49,7 @@
             <td><a th:href="@{${file.url}}" class="fa fa-download icon-dark"></a></td>
             <td>
               <a th:href="@{'/app/files/delete/' + ${file.name}}" th:fileName="${file.name}" id="btnDelete"
-                 title="Delete this file" class="fa-regular fa-trash-can icon-dark btn-delete"></a>
+                 class="fa-regular fa-trash-can icon-dark btn-delete"></a>
             </td>
           </tr>
           </tbody>

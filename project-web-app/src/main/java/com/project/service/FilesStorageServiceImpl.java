@@ -11,10 +11,12 @@ import java.util.stream.Stream;
 
 import com.project.model.FileInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
@@ -25,14 +27,20 @@ import org.springframework.web.multipart.MultipartFile;
 @Slf4j
 public class FilesStorageServiceImpl implements FilesStorageService {
   private final Path root = Paths.get("./uploads");
-  @Autowired
   private RestTemplate restTemplate;
+
+  private ProjektService projektService;
 
 
   @Value("http://localhost:8080")
   private String  serverUrl;
 
   private final static String RESOURCE_PATH = "/api/files";
+
+  public FilesStorageServiceImpl(RestTemplate restTemplate, ProjektService projektService) {
+    this.restTemplate = restTemplate;
+    this.projektService = projektService;
+  }
 
   @Override
   public void init() {
@@ -44,22 +52,16 @@ public class FilesStorageServiceImpl implements FilesStorageService {
   }
 
   @Override
-  public FileInfo save(MultipartFile file) {
+  public FileInfo save(MultipartFile file, FileInfo fileInfo) {
     try {
       Files.copy(file.getInputStream(), this.root.resolve(file.getOriginalFilename()));
-      String originalFilename = file.getOriginalFilename();
-      String filename = originalFilename.substring(originalFilename.lastIndexOf("/") + 1);
-
-      // Create the FileInfo object
-      FileInfo fileInfo = new FileInfo();
-      fileInfo.setName(filename);
-      fileInfo.setUrl("/uploads/" + filename);
 
       HttpEntity<FileInfo> request = new HttpEntity<>(fileInfo);
       String url = getUriStringComponent();
       log.info("REQUEST -> POST {}", url);
       URI location = restTemplate.postForLocation(url, request);
       log.info("REQUEST (location) -> GET {}", location);
+
       return restTemplate.getForObject(location, FileInfo.class);
     } catch (Exception e) {
       if (e instanceof FileAlreadyExistsException) {
@@ -87,8 +89,13 @@ public class FilesStorageServiceImpl implements FilesStorageService {
   }
 
   @Override
-  public boolean delete(String filename) {
+  public boolean delete(String filename, Integer fileId) {
     try {
+      URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(fileId))
+              .build()
+              .toUri();
+      log.info("REQUEST -> DELETE {}", url);
+      restTemplate.delete(url);
       Path file = root.resolve(filename);
       return Files.deleteIfExists(file);
     } catch (IOException e) {
@@ -102,8 +109,16 @@ public class FilesStorageServiceImpl implements FilesStorageService {
   }
 
   @Override
+  public Page<FileInfo> getFileInfos(Pageable pageable) {
+    URI url = ServiceUtil.getURI(serverUrl, getResourcePath(), pageable);
+    log.info("REQUEST -> GET {}", url);
+    return getPage(url, restTemplate);
+  }
+
+  @Override
   public Stream<Path> loadAll() {
     try {
+
       return Files.walk(this.root, 1).filter(path -> !path.equals(this.root)).map(this.root::relativize);
     } catch (IOException e) {
       throw new RuntimeException("Nie można było załadować plików!");
@@ -121,6 +136,11 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
   private String getProjectPath(Integer id) {
     return "/" + id;
+  }
+
+  private Page<FileInfo> getPage(URI uri, RestTemplate restTemplate) {
+    return ServiceUtil.getPage(uri, restTemplate,
+            new ParameterizedTypeReference<RestResponsePage<FileInfo>>() {});
   }
 
   private String getUriStringComponent() {
