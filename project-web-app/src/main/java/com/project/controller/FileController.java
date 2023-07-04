@@ -61,7 +61,7 @@ public class FileController {
       fileInfo.setProjekt(projekt);
 
       storageService.save(file, fileInfo);
-      return "redirect:/app/files";
+      return "redirect:/app/doPobrania";
 
     } catch (Exception e) {
       message = "Nie można było dodać pliku: " + file.getOriginalFilename() + ". Błąd: " + e.getMessage();
