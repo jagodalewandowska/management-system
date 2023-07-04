@@ -100,7 +100,7 @@
                             <td th:text="${#temporals.format(projekt.dataOddania, 'yyyy-MM-dd')}">Data oddania</td>
                             <td>
                                 <a th:href="@{/app/zadanieEdit(projektId=${projekt.projektId})}" class="button_edit_dodaj">Dodaj zadanie</a><br>
-                                <a th:href="@{/app/files(projektId=${projekt.projektId})}" class="button_edit_dodaj">Dodaj plik</a><br>
+                                <a th:href="@{/app/files(projektId=${projekt.projektId})}" class="button_edit_dodaj">Pliki projektu</a><br>
                                 <a th:href="@{/app/projektEdit(projektId=${projekt.projektId})}" class="button_edit">Edytuj</a><br>
                                 <a th:href="@{/app/projektEdit(projektId=${projekt.projektId},delete='true')}" class="button_edit" >Usuń</a>
                             </td>

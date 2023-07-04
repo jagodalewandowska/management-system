@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
-  <title>Lista projektów</title>
+  <title>Lista plików</title>
 
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
@@ -60,10 +60,10 @@
           </thead>
           <tbody>
           <tr th:each="f : ${filesDB}" th:if="${f.projekt.projektId == projektId}">
-            <td th:text="${f.fileId}">Id</td>
-            <td th:text="${f.name}">Nazwa</td>
-            <td th:text="${f.url}">url</td>
-            <td th:text="${f.projekt.projektId}">projekt</td>
+            <td th:text="${f.fileId}"></td>
+            <td th:text="${f.name}"></td>
+            <td th:text="${f.url}"></td>
+            <td th:text="${f.projekt.projektId}"></td>
             <td>
               <a th:href="@{'/app/files/' + ${f.name}}" class="fa fa-download icon-dark"></a>
             </td>
