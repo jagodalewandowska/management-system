@@ -7,9 +7,7 @@ import com.project.model.Projekt;
 import com.project.service.ProjektService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.model.FileInfo;
 import com.project.service.FilesStorageService;
-import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 @RequestMapping("/app")
@@ -74,16 +71,27 @@ public class FileController {
     return "upload_form";
   }
 
+  @GetMapping("/doPobrania")
+  public String doPobrania(Pageable pageable, Model model) {
+    model.addAttribute("filesDB", storageService.getFileInfos(pageable));
+    return "allFiles";
+  }
+
   @GetMapping("/files")
   public String getListFiles(@RequestParam(required = false) Integer projektId,
                              Pageable pageable, Model model) {
+
+    if (projektId == null) {
+      projektId = 1;
+    }
     model.addAttribute("filesDB", storageService.getFileInfos(pageable));
+    Integer finalProjektId = projektId;
     List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
       String filename = path.getFileName().toString();
       String url = MvcUriComponentsBuilder
           .fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
       Projekt projekt;
-      projekt = projektService.getProjekt(projektId).get();
+      projekt = projektService.getProjekt(finalProjektId).get();
 
       return new FileInfo(filename, url, projekt);
     }).collect(Collectors.toList());

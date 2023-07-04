@@ -29,56 +29,48 @@
   </ul>
 </nav>
 <div class="root">
-    <br>
-    <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
-      <a th:href="@{/app/files/new(projektId=${projektId})}" class="button_project">Dodaj plik</a>
   <br>
-      <br>
-      <div th:if="${files.size() > 0}">
-        <table class="styled_table">
-          <thead>
-          <tr>
-            <th>
-              <b>ID</b>
-            </th>
-            <th>
-              <b>Nazwa</b>
-            </th>
-            <th>
-              <b>URL</b>
-            </th>
-            <th>
-              ID projektu
-            </th>
-            <th>
-              Pobierz
-            </th>
-            <th>
-              Usuń
-            </th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr th:each="f : ${filesDB}" th:if="${f.projekt.projektId == projektId}">
-            <td th:text="${f.fileId}">Id</td>
-            <td th:text="${f.name}">Nazwa</td>
-            <td th:text="${f.url}">url</td>
-            <td th:text="${f.projekt.projektId}">projekt</td>
-            <td>
-              <a th:href="@{'/app/files/' + ${f.name}}" class="fa fa-download icon-dark"></a>
-            </td>
-            <td>
-              <a th:href="@{'/app/files/delete/' + ${f.name} + '/' +${f.fileId}}" th:fileName="${f.name}" th:fileId="${f.fileId}" id="btnDelete"
-                 class="fa-regular fa-trash-can icon-dark btn-delete"></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-      <div th:unless="${files.size() > 0}">
-        <span>Nie odnaleziono plików!</span>
-      </div>
-      </div>
+  <div class="container-fluid" style="max-width: 600px; margin: 0 auto;">
+      <table class="styled_table">
+        <thead>
+        <tr>
+          <th>
+            <b>ID</b>
+          </th>
+          <th>
+            <b>Nazwa</b>
+          </th>
+          <th>
+            <b>URL</b>
+          </th>
+          <th>
+            ID projektu
+          </th>
+          <th>
+            Pobierz
+          </th>
+          <th>
+            Usuń
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="f : ${filesDB}">
+          <td th:text="${f.fileId}">Id</td>
+          <td th:text="${f.name}">Nazwa</td>
+          <td th:text="${f.url}">url</td>
+          <td th:text="${f.projekt.projektId}">projekt</td>
+          <td>
+            <a th:href="@{'/app/files/' + ${f.name}}" class="fa fa-download icon-dark"></a>
+          </td>
+          <td>
+            <a th:href="@{'/app/files/delete/' + ${f.name} + '/' +${f.fileId}}" th:fileName="${f.name}" th:fileId="${f.fileId}" id="btnDelete"
+               class="fa-regular fa-trash-can icon-dark btn-delete"></a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
 </body>
 </html>

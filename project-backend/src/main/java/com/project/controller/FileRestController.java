@@ -58,7 +58,7 @@ public class FileRestController {
     return ResponseEntity.created(location).build();
   }
 
-  @DeleteMapping("/files/{id}")
+  @DeleteMapping(path = "/files/{id}")
   public ResponseEntity<Void> deleteFile(@PathVariable Integer fileId) {
     return fileService.getFile(fileId).map(p -> {
       fileService.deleteFile(fileId);
