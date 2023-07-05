@@ -108,6 +108,6 @@ public class FileController {
   @PostMapping("/files/delete/{name}/{fileId}")
   public String fileDelete(@ModelAttribute FileInfo fileInfo, @PathVariable String name) throws IOException {
     storageService.delete(name, fileInfo.getFileId());
-    return "redirect:/app/files";
+    return "redirect:/app/doPobrania";
   }
 }
