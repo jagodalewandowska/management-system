@@ -1,5 +1,6 @@
 package com.project.service;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
@@ -18,7 +19,7 @@ public interface FilesStorageService {
 
   public Resource load(String filename);
 
-  public boolean delete(String filename, Integer fileId);
+  public void delete(String filename, Integer fileId) throws IOException;
 
   public void deleteAll();
 

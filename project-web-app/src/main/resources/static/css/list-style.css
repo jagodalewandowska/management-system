@@ -251,3 +251,8 @@ tr:nth-child(even) {
     padding: 10px;
 }
 /**/
+
+.fa-trash-can {
+    border: none;
+    background-color: transparent;
+}

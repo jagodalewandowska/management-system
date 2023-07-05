@@ -1,9 +1,11 @@
 package com.project.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.project.model.Projekt;
+import com.project.model.Zadanie;
 import com.project.service.ProjektService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -80,18 +82,13 @@ public class FileController {
   @GetMapping("/files")
   public String getListFiles(@RequestParam(required = false) Integer projektId,
                              Pageable pageable, Model model) {
-
-    if (projektId == null) {
-      projektId = 1;
-    }
     model.addAttribute("filesDB", storageService.getFileInfos(pageable));
-    Integer finalProjektId = projektId;
     List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
       String filename = path.getFileName().toString();
       String url = MvcUriComponentsBuilder
           .fromMethodName(FileController.class, "getFile", path.getFileName().toString()).build().toString();
       Projekt projekt;
-      projekt = projektService.getProjekt(finalProjektId).get();
+      projekt = projektService.getProjekt(projektId).get();
 
       return new FileInfo(filename, url, projekt);
     }).collect(Collectors.toList());
@@ -108,22 +105,9 @@ public class FileController {
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
   }
 
-  @GetMapping("/files/delete/{filename:.+}")
-  public String deleteFile(@PathVariable String filename, @PathVariable Integer fileId,
-                           Model model, RedirectAttributes redirectAttributes) {
-    try {
-      boolean existed = storageService.delete(filename, fileId);
-
-      if (existed) {
-        redirectAttributes.addFlashAttribute("message", "Usunięto plik: " + filename);
-      } else {
-        redirectAttributes.addFlashAttribute("message", "Plik nie istnieje!");
-      }
-    } catch (Exception e) {
-      redirectAttributes.addFlashAttribute("message",
-          "Nie można usunąć pliku: " + filename + ". Błąd: " + e.getMessage());
-    }
-
+  @PostMapping("/files/delete/{name}/{fileId}")
+  public String fileDelete(@ModelAttribute FileInfo fileInfo, @PathVariable String name) throws IOException {
+    storageService.delete(name, fileInfo.getFileId());
     return "redirect:/app/files";
   }
 }

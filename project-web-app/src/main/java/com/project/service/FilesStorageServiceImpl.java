@@ -89,18 +89,14 @@ public class FilesStorageServiceImpl implements FilesStorageService {
   }
 
   @Override
-  public boolean delete(String filename, Integer fileId) {
-    try {
-      URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(fileId))
+  public void delete(String name, Integer fileId) throws IOException {
+    Path file = root.resolve(name);
+    Files.deleteIfExists(file);
+    URI url = ServiceUtil.getUriComponent(serverUrl, getResourcePath(fileId))
               .build()
               .toUri();
       log.info("REQUEST -> DELETE {}", url);
       restTemplate.delete(url);
-      Path file = root.resolve(filename);
-      return Files.deleteIfExists(file);
-    } catch (IOException e) {
-      throw new RuntimeException("Błąd: " + e.getMessage());
-    }
   }
 
   @Override
