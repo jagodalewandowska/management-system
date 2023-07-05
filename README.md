@@ -3,14 +3,14 @@
 https://trello.com/b/9RUZ5X2m/22032023
 ---
 ### Realizacja powinna uwzględniać m.in.:
-- [ ] zabezpieczenie danych i aplikacji przed niepożądanym dostępem, 
-- [ ] protokół szyfrowania transmisji danych (w tym celu należy wygenerować certyfikat SSL np. za pomocą narzędzia keytool dostępnego w każdym JDK),
-- [x] odrębne uprawnienia dla prowadzącego i studentów (dla nas administrator),
-- [ ] testy jednostkowe i integracyjne (koniecznie serwisów i kontrolerów, zalecane JUnit5, Mockito i MockMVC),
-- [x] pełną funkcjonalność systemu pozwalającą dodawać, modyfikować i usuwać dane projektów, zadań i studentów. Powinna istnieć możliwość stronicowania i wyszukiwania, opcjonalnie sortowania, danych projektów i studentów.
-- [ ] możliwość przesyłania na serwer i pobierania plików przypisywanych do danego projektu lub zadania, 
-- [ ] ogólnodostępny chat korzystający z dwukierunkowego kanału websocketowego (można przy tym użyć frameworku Atmosphere lub skorzystać ze Springa tworząc kanał websocketowy z wykorzystaniem protokołu STOMP). Dla chętnych funkcjonalność komunikacji w obrębie grupy projektowej i możliwość przesyłania plików do wybranych użytkowników,
-- [x] aplikacja powinna używać mechanizmu rejestracji np. Logback z SLF4J.
+- zabezpieczenie danych i aplikacji przed niepożądanym dostępem, 
+- protokół szyfrowania transmisji danych (w tym celu należy wygenerować certyfikat SSL np. za pomocą narzędzia keytool dostępnego w każdym JDK),
+- odrębne uprawnienia dla prowadzącego i studentów (dla nas administrator),
+- testy jednostkowe i integracyjne (koniecznie serwisów i kontrolerów, zalecane JUnit5, Mockito i MockMVC),
+- pełną funkcjonalność systemu pozwalającą dodawać, modyfikować i usuwać dane projektów, zadań i studentów. Powinna istnieć możliwość stronicowania i wyszukiwania, opcjonalnie sortowania, danych projektów i studentów.
+- możliwość przesyłania na serwer i pobierania plików przypisywanych do danego projektu lub zadania, 
+- ogólnodostępny chat korzystający z dwukierunkowego kanału websocketowego (można przy tym użyć frameworku Atmosphere lub skorzystać ze Springa tworząc kanał websocketowy z wykorzystaniem protokołu STOMP). Dla chętnych funkcjonalność komunikacji w obrębie grupy projektowej i możliwość przesyłania plików do wybranych użytkowników,
+- aplikacja powinna używać mechanizmu rejestracji np. Logback z SLF4J.
 
 ### Kolejne zadania i technologie do rozważenia:
 - Aplikacja reaktywna z użyciem Spring WebFlux (R2DBC - Reactive Relational Database Connectivity, Reactive Transactions, Backpressure, RSocket) lub korzystająca z wątków wirtualnych (z projektu Loom, wymagana Java 19 lub nowsza), 
