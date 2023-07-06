@@ -1,5 +1,6 @@
 package com.project.service;
 
+import com.project.model.Student;
 import com.project.model.Zadanie;
 import com.project.repository.ZadanieRepository;
 import jakarta.transaction.Transactional;
@@ -66,5 +67,10 @@ public class ZadanieServiceImpl implements ZadanieService {
             pageable = PageRequest.of(0, Integer.MAX_VALUE);
         }
         return zadanieRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable) {
+        return zadanieRepository.findByNazwaStartsWithIgnoreCase(nazwa, pageable);
     }
 }

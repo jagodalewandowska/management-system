@@ -4,6 +4,7 @@ import java.net.URI;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.project.model.Student;
 import com.project.service.ProjektService;
 import jakarta.validation.Valid;
 
@@ -79,5 +80,10 @@ public class ZadanieRestController {
     public List <Zadanie> getSortedZadania(@PathVariable String sort, @PathVariable String order) {
         Page <Zadanie> data = zadanieService.getZadaniaPageSort(sort, order);
         return data.getContent();
+    }
+
+    @GetMapping(value = "/zadania", params = "nazwa")
+    Page<Zadanie> getZadaniaByNazwa(@RequestParam String nazwa, Pageable pageable) {
+        return zadanieService.searchByNazwa(nazwa, pageable);
     }
 }

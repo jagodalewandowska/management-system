@@ -53,15 +53,11 @@ public class StudentController {
     }
     @GetMapping("/studentEdit")
     public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
-//                              , Integer projektId) {
         if (studentId != null) {
             model.addAttribute("student", studentService.getStudent(studentId).get());
-//            model.addAttribute("projekt", projektService.getProjekt(projektId).get());
         } else {
             Student student = new Student();
-//            Projekt projekt = new Projekt();
             model.addAttribute("student", student);
-//            model.addAttribute("projekt", projekt);
         }
         return "studentEdit";
     }

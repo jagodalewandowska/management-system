@@ -2,6 +2,7 @@ package com.project.service;
 
 import java.util.Optional;
 
+import com.project.model.Student;
 import com.project.model.Zadanie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,5 @@ public interface ZadanieService {
     Page<Zadanie> getZadania(Pageable pageable);
     Page<Zadanie> getZadaniaPageSort(String sort, String direction);
     Page<Zadanie> getZadanieProjektu(Integer projektId, Pageable pageable);
+    Page<Zadanie> searchByNazwa(String nazwa, Pageable pageable);
 }

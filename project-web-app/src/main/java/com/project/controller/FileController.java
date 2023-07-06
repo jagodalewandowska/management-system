@@ -63,8 +63,7 @@ public class FileController {
       fileInfo.setProjekt(projekt);
 
       storageService.save(file, fileInfo);
-      return "redirect:/app/doPobrania";
-
+      return "redirect:/app/files?projektId=" + projektId;
     } catch (Exception e) {
       message = "Nie można było dodać pliku: " + file.getOriginalFilename() + ". Błąd: " + e.getMessage();
       model.addAttribute("message", message);
