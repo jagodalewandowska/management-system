@@ -68,7 +68,7 @@
               <a th:href="@{'/app/files/' + ${f.name}}" class="fa fa-download icon-dark"></a>
             </td>
             <td>
-              <form action="#" th:action="@{'/app/files/delete/{name}/{fileId}'(name=${f.name}, fileId=${f.fileId})}" th:method="delete" >
+              <form action="#" th:action="@{'/app/files/delete/{name}/{fileId}/{projektId}'(name=${f.name}, fileId=${f.fileId}, projektId=${f.projekt.projektId})}" th:method="delete" >
                 <input type="hidden" name="_method" value="delete" />
                 <button type="submit" id="submitButton" class="fa-regular fa-trash-can icon-dark btn-delete"
                         onclick="return confirm('Czy na pewno chcesz usunąć plik?');"></button>

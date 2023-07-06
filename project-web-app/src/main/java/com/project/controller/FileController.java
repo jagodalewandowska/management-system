@@ -105,9 +105,10 @@ public class FileController {
         .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
   }
 
-  @PostMapping("/files/delete/{name}/{fileId}")
-  public String fileDelete(@ModelAttribute FileInfo fileInfo, @PathVariable String name) throws IOException {
+  @PostMapping("/files/delete/{name}/{fileId}/{projektId}")
+  public String fileDelete(@ModelAttribute FileInfo fileInfo, @PathVariable String name,
+                           @PathVariable Integer projektId) throws IOException {
     storageService.delete(name, fileInfo.getFileId());
-    return "redirect:/app/doPobrania";
+    return "redirect:/app/files?projektId=" + projektId;
   }
 }
