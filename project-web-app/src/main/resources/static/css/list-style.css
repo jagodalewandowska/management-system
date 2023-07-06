@@ -230,12 +230,11 @@ tr:nth-child(even) {
     font-family: Inter, sans-serif;
 }
 
-.chat-username {
-    padding: 7px;
-    margin: 2% 0;
+.chat-messageInfo {
+    text-align: left;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 150px;
+    width: 180px;
     font-family: Inter, sans-serif;
 }
 
