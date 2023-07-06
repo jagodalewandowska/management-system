@@ -1,29 +1,24 @@
 package com.project.controller;
 
-import com.project.auth.Credentials;
+import com.project.model.FileInfo;
 import com.project.model.Projekt;
+import com.project.service.FilesStorageService;
 import com.project.service.ProjektService;
-import com.project.service.ProjektServiceImpl;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 
+import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.validation.ObjectError;
 
 
 @Controller
@@ -32,6 +27,7 @@ import org.springframework.validation.ObjectError;
 public class ProjectController {
 
     private ProjektService projektService;
+    private FilesStorageService filesStorageService;
 
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
@@ -43,8 +39,9 @@ public class ProjectController {
         return Sort.Direction.ASC;
     }
 
-    public ProjectController(ProjektService projektService) {
+    public ProjectController(ProjektService projektService, FilesStorageService filesStorageService) {
         this.projektService = projektService;
+        this.filesStorageService = filesStorageService;
     }
 
     @GetMapping({"","/projektList"})
@@ -89,8 +86,24 @@ public class ProjectController {
     }
 
     @PostMapping(params="delete", path = "/projektEdit")
-    public String projektEditDelete(@ModelAttribute Projekt projekt) {
-        projektService.deleteProjekt(projekt.getProjektId());
+    public String projektEditDelete(@ModelAttribute Projekt projekt, Model model,
+                                    BindingResult bindingResult, Pageable pageable,
+                                    @RequestParam Integer projektId) {
+        try {
+            Page<FileInfo> fileInfoPage = filesStorageService.getFileInfos(pageable);
+            List<FileInfo> files = fileInfoPage.getContent();
+            for (FileInfo file : files) {
+                if (file.getProjekt().getProjektId() == projektId) {
+                    filesStorageService.delete(file.getName(), file.getFileId());
+                }
+            }
+            projektService.deleteProjekt(projekt.getProjektId());
+        } catch (HttpStatusCodeException e) {
+            bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            return "projektEdit";
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         return "redirect:/app/projektList";
     }
 
