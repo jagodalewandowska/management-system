@@ -43,7 +43,7 @@
                                     onclick="return confirm('Czy na pewno chcesz usunąć projekt wraz z plikami przypisanymi do projektu?');"
                         />
                         <input class="buttons" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}"
-                               th:if="${akcja == 'create' || 'update'}"/>
+                               th:if="${akcja == 'create' || akcja == 'update'}"/>
                         <input class="buttons" type="submit" name="cancel" value="Anuluj" />
                     </div>
 
