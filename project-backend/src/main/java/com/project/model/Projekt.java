@@ -17,11 +17,11 @@ import java.util.Set;
 
 
 @Entity
-@Table(name="projekt") //TODO Indeksować kolumny, które są najczęściej wykorzystywane do wyszukiwania projektów
+@Table(name="projekt")
 public class Projekt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="projekt_id") //tylko jeżeli nazwa kolumny w bazie danych ma być inna od nazwy zmiennej
+    @Column(name="projekt_id")
     private Integer projektId;
 
     @NotBlank(message = "Pole nazwa nie może być puste!")
@@ -31,10 +31,6 @@ public class Projekt {
 
     @Column(nullable = true, length = 1000)
     private String opis;
-
-//    @Column(nullable = false)
-//    private Timestamp dataczas_utworzenia;
-
     @Column(name = "dataOddania")
     private LocalDate dataOddania;
 
@@ -100,15 +96,6 @@ public class Projekt {
         this.opis = opis;
     }
 
-//    public Timestamp getDataczas_utworzenia() {
-//        return dataczas_utworzenia;
-//    }
-//
-//    public void setDataczas_utworzenia(Timestamp dataczas_utworzenia) {
-//        this.dataczas_utworzenia = dataczas_utworzenia;
-//    }
-
-
     public LocalDate getDataOddania() {
         return dataOddania;
     }
@@ -140,8 +127,6 @@ public class Projekt {
     public void setZadania(List<Zadanie> zadania) {
         this.zadania = zadania;
     }
-
-    // konstruktory?
 
     public Projekt() {}
 
