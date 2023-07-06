@@ -38,13 +38,13 @@
 
                 <div class="container">
                     <div class="btns-panel">
-                        <input class="buttons" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}" />
+                        <input class="buttons" type="submit" name="create" value="create" th:name="${akcja}" th:value="${opis}"
+                               th:if="${akcja == 'delete'}" onclick="return confirm('Czy na pewno chcesz usunąć projekt wraz z plikami przypisanymi do projektu?');" />
                         <input class="buttons" type="submit" name="cancel" value="Anuluj" />
                     </div>
 
                     <div class="err" th:if="${#fields.hasErrors('*')}">
                         <br>
-                        Istnieją pliki przypisane do projektu. Usuń je, zanim usuniesz projekt.
                     </div>
                     <br>
                     <div th:if="*{projektId}">
