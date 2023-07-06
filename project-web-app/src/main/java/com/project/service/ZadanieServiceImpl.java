@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ZadanieServiceImpl implements ZadanieService {
-    private static final Logger logger = LoggerFactory.getLogger(ProjektServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(ZadanieServiceImpl.class);
 
     @Value("http://localhost:8080")
     private String  serverUrl;
