@@ -226,14 +226,12 @@ tr:nth-child(even) {
     margin: 2% 0;
     border: 1px solid lightgray;
     border-radius: 5px;
-    width: 300px;
+    width: 90%;
     font-family: Inter, sans-serif;
 }
 
 .chat-messageInfo {
     text-align: left;
-    border: 1px solid lightgray;
-    border-radius: 5px;
     width: 180px;
     font-family: Inter, sans-serif;
 }
@@ -248,6 +246,7 @@ tr:nth-child(even) {
 .chatBox {
     border: 1px solid #ccc;
     padding: 10px;
+    margin-top: 1%;
 }
 /**/
 
