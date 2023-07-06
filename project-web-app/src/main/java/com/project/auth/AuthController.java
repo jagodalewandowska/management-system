@@ -59,6 +59,9 @@ public class AuthController {
             authService.register(student);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
+            if (e.getStatusCode() == HttpStatus.FORBIDDEN) {
+                bindingResult.rejectValue(Strings.EMPTY, "403", "Użytkownik istnieje już w bazie danych.");
+            }
             return "register";
         }
         return "redirect:/app/login";

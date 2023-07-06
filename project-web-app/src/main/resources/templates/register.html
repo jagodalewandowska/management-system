@@ -20,7 +20,7 @@
 				<br>
 				BŁĘDY:
 				<ul>
-					<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Wprowadzone dane są niepoprawne!</li>
+					<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
 				</ul>
 			</div>
 				<div class="form__wrapper">
