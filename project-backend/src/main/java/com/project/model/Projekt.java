@@ -50,17 +50,29 @@ public class Projekt {
     @JsonIgnoreProperties(value = {"projekt"}, allowSetters = true)
     private List<FileInfo> fileInfos;
 
-    @ManyToMany
-    @JoinTable(name = "projekt_student",
-            joinColumns = {@JoinColumn(name="projekt_id")},
-            inverseJoinColumns = {@JoinColumn(name="student_id")})
-    private Set<Student> studenci;
+    @OneToMany(mappedBy = "projekt")
+    @JsonIgnoreProperties(value = {"projekt"}, allowSetters = true)
+    private List<Student> studenci;
 
-    public Set<Student> getStudenci() {
+    public List<Student> getStudenci() {
         return studenci;
     }
 
-    public void setStudenci(Set<Student> studenci) {
+    public Projekt(Integer projektId, String nazwa, String opis, LocalDate dataOddania,
+                   LocalDateTime dataCzasUtworzenia, LocalDateTime dataCzasModyfikacji,
+                   List<Zadanie> zadania, List<FileInfo> fileInfos, List<Student> studenci) {
+        this.projektId = projektId;
+        this.nazwa = nazwa;
+        this.opis = opis;
+        this.dataOddania = dataOddania;
+        this.dataCzasUtworzenia = dataCzasUtworzenia;
+        this.dataCzasModyfikacji = dataCzasModyfikacji;
+        this.zadania = zadania;
+        this.fileInfos = fileInfos;
+        this.studenci = studenci;
+    }
+
+    public void setStudenci(List<Student> studenci) {
         this.studenci = studenci;
     }
 

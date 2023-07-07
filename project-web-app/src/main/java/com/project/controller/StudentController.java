@@ -2,9 +2,9 @@ package com.project.controller;
 import com.project.model.Projekt;
 import com.project.model.Student;
 import com.project.service.ProjektService;
-import com.project.service.ServiceUtil;
 import com.project.service.StudentService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,12 +16,18 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 
-import java.net.URI;
+import java.util.List;
 
 @Controller
 @RequestMapping("/app")
+@Slf4j
 public class StudentController {
-
+    private StudentService studentService;
+    private ProjektService projektService;
+    public StudentController(StudentService studentService, ProjektService projektService) {
+        this.studentService = studentService;
+        this.projektService = projektService;
+    }
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
         if (direction.equals("asc")) {
@@ -31,15 +37,10 @@ public class StudentController {
         }
         return Sort.Direction.ASC;
     }
-
-    private StudentService studentService;
-    public StudentController(StudentService studentService, ProjektService projektService) {
-        this.studentService = studentService;
-
-    }
     @GetMapping("/studentList")
     public String studentList(Model model, Pageable pageable) {
         try {
+            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
             model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
             model.addAttribute("size",5);
             model.addAttribute("page",0);
@@ -51,8 +52,11 @@ public class StudentController {
             return "404";
         }
     }
+
     @GetMapping("/studentEdit")
-    public String studentEdit(@RequestParam(required = false) Integer studentId, Model model) {
+    public String studentEdit(@RequestParam(required = false) Integer studentId,
+                              Model model, Pageable pageable) {
+        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         if (studentId != null) {
             model.addAttribute("student", studentService.getStudent(studentId).get());
         } else {
@@ -63,7 +67,9 @@ public class StudentController {
     }
 
     @PostMapping(path = "/studentEdit")
-    public String studentEditSave(@ModelAttribute @Valid Student student, BindingResult bindingResult) {
+    public String studentEditSave(@ModelAttribute @Valid Student student, BindingResult bindingResult,
+                                  Model model, Pageable pageable) {
+        model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         if (bindingResult.hasErrors()) {
             return "studentEdit";
         }
@@ -86,7 +92,6 @@ public class StudentController {
         studentService.deleteStudent(student.getStudentId());
         return "redirect:/app/studentList";
     }
-
 
     @GetMapping("/studentList/search")
     public String searchProjectList(Model model, @RequestParam Integer size,
@@ -115,5 +120,17 @@ public class StudentController {
         model.addAttribute("sort", sort);
         ProjectController.getTheRest(model, page, order);
         return "studentList";
+    }
+
+    @GetMapping("/projektStudentList" )
+    public String projektStudentList(Model model, Pageable pageable,  Integer projektId) {
+        try {
+            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+            model.addAttribute("studenci", studentService.getStudenci(pageable).getContent());
+            model.addAttribute("projektId", projektId);
+            return "projektStudentList";
+        } catch (HttpStatusCodeException e) {
+            return "404";
+        }
     }
 }

@@ -41,15 +41,12 @@ public class Student {
 
     private boolean stacjonarny;
 
-    @ManyToMany(mappedBy = "studenci")
+    @ManyToOne
     @JsonIgnoreProperties({"projekt"})
-    private Set<Projekt> projekty;
+    @JoinColumn(name = "projekt_id")
+    private Projekt projekt;
 
     // Tokeny --
-
-    @ManyToMany(mappedBy = "studenci")
-    @JsonIgnoreProperties({"studenci"})
-    private Set<Projekt> projektys;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
@@ -73,14 +70,16 @@ public class Student {
         this.role = role;
     }
 
-    // --
-
-    public Set<Projekt> getProjekty() {
-        return projekty;
+    public boolean isStacjonarny() {
+        return stacjonarny;
     }
 
-    public void setProjekty(Set<Projekt> projekty) {
-        this.projekty = projekty;
+    public Projekt getProjekt() {
+        return projekt;
+    }
+
+    public void setProjekt(Projekt projekt) {
+        this.projekt = projekt;
     }
 
     public Integer getStudentId() {

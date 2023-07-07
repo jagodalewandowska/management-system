@@ -73,6 +73,7 @@
                                 <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}">Rodzaj studiów</a>
                                 <a th:href="@{'/app/studentList/results?sort=stacjonarny&order=' + ${reverseSortDir}+'&size=' + ${size}+ '&page=' + ${page}}"><img src="https://i.imgur.com/U7EG8nu.png"></a>
                             </th>
+                            <th>Projekt </th>
                             <th>Edycja</th>
                         </tr>
                     </thead>
@@ -84,6 +85,10 @@
                             <td th:text="${student.nrIndeksu}">Numer indeksu</td>
                             <td th:text="${student.email}">E-mail</td>
                             <td th:text="(${student.stacjonarny}) ? 'stacjonarny' : 'niestacjonarny'">Rodzaj studiów</td>
+                            <td>
+                                <span th:if="${student.projekt == null}">Student nie należy do żadnego projektu.</span>
+                                <span th:if="${student.projekt != null}" th:text="${student.projekt.nazwa}"></span>
+                            </td>
                             <td>
                                 <a th:href="@{/app/studentEdit(studentId=${student.studentId})}" class="button_edit">Edytuj</a><br>
                                 <a th:href="@{/app/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>

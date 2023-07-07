@@ -63,24 +63,17 @@
                         <label for="stacjonarny" class="lbl">Czy studiujesz stacjonarnie?</label>
                         <input type="checkbox" id="stacjonarny" name="stacjonarny" checked="true" />
                     </div>
-<!--                    <div>-->
-<!--                        <label for="projekty" class="lbl">Id projektów:</label>-->
-<!--                        <select th:field="*{projekty}">-->
-<!--                            <option th:each="projekt : ${projekty}" th:field="${projekt.projektId}">-->
-<!--                               -->
-<!--                            </option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <select th:field="*{projekty}">-->
-<!--                            <option value="#" disabled = "disabled" selected="selected">Role...</option>-->
-<!--                            <option th:each="projekt : ${projekty}" th:value="${projektId}" th:text="${opis}">Developer</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <label for="projekty" class="lbl">Id projektów:</label>-->
-<!--                        <input type="text" th:field="*{projekty}"> </input>-->
-<!--                    </div>-->
+                    <div th:if="${akcja != 'delete'}">
+                        <label for="projekt.projektId" class="lbl">Nazwa projektu</label>
+                        <select class="form-control" id="dropDownList" name="projekt.projektId">
+                            <option></option>
+                            <option th:each="projekt : ${projekty}" th:value="${projekt.projektId}" th:text="${projekt.nazwa}"></option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="hidden" name="password" th:value="${password}" />
+                        <input type="hidden" name="role" th:value="${role}" />
+                    </div>
                 </div>
             </form>
         </div>

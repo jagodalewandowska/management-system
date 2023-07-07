@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <link th:href="@{/css/list-style.css}" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+        <title>Lista studentów w projekcie</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><b>Lista Studentów</b></li>
+                <li><a th:href="@{/app/projektList}">Lista projektów</a></li>
+                <li><a th:href="@{/app/zadanieList}">Lista zadań</a></li>
+                <li><a th:href="@{/app/doPobrania}">Do pobrania</a></li>
+                <li><a th:href="@{/app/logout}">Wyloguj się</a></li>
+                <li><a th:href="@{/app/projektList}"><img src="https://i.imgur.com/syPNg3Z.png" alt="logo"></a></li>
+            </ul>
+        </nav>
+        <div class="root">
+            <div id="HASH">
+                <span id="time-HASH" class="time-HASH">
+                </span>
+                <span class="ios-circle">
+                    <a th:href="@{/app/studentEdit}" class="button_project">Dodaj studenta</a>
+                </span>
+            </div>
+            <div class="container">
+                <table class="styled_table">
+                    <thead>
+                        <tr>
+                            <th>ID studenta</th>
+                            <th>Nazwisko</th>
+                            <th>Imię</th>
+                            <th>Nr indeksu</th>
+                            <th>Email</th>
+                            <th>Rodzaj studiów</th>
+                            <th>Projekt </th>
+                            <th>Edycja</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student : ${studenci}"  th:if="${student.projekt != null and student.projekt.projektId == projektId}"
+                        th:unless="${student.email == 'administrator@admin.admin'}">
+                            <td th:text="${student.studentId}">Id</td>
+                            <td th:text="${student.nazwisko}">Nazwisko</td>
+                            <td th:text="${student.imie}">Imię</td>
+                            <td th:text="${student.nrIndeksu}">Numer indeksu</td>
+                            <td th:text="${student.email}">E-mail</td>
+                            <td th:text="(${student.stacjonarny}) ? 'stacjonarny' : 'niestacjonarny'">Rodzaj studiów</td>
+                            <td>
+                                <span th:if="${student.projekt == null}">Student nie należy do żadnego projektu.</span>
+                                <span th:if="${student.projekt != null}" th:text="${student.projekt.nazwa}"></span>
+                            </td>
+                            <td>
+                                <a th:href="@{/app/studentEdit(studentId=${student.studentId}, projektId=${projektId})}" class="button_edit">Edytuj</a><br>
+                                <a th:href="@{/app/studentEdit(studentId=${student.studentId},delete='true')}" class="button_edit" >Usuń</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <br>
+            <form method="get" action="#" th:action="@{/app/studentList/results}" id="previousForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="page" type="hidden" th:value="${previousPage}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input th:if="${page>0}" type="submit" value="Poprzednia" class="button_project">
+            </form>
+            <form method="get" action="#" th:action="@{/app/studentList/results}" id="nextForm">
+                <input name="size" type="hidden" th:value="${size}">
+                <input name="order" type="hidden" th:value="${order}">
+                <input name="page" type="hidden" th:value="${nextPage}">
+                <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
+                <input type="submit" value="Następna" class="button_project">
+            </form>
+        </div>
+    </body>
+</html>

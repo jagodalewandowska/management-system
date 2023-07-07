@@ -99,6 +99,7 @@
                             <td th:text="${#temporals.format(projekt.dataCzasUtworzenia, 'yyyy-MM-dd HH:mm:ss')}">Utworzony</td>
                             <td th:text="${#temporals.format(projekt.dataOddania, 'yyyy-MM-dd')}">Data oddania</td>
                             <td>
+                                <a th:href="@{/app/projektStudentList(projektId=${projekt.projektId})}" class="button_edit_dodaj">Studenci</a><br>
                                 <a th:href="@{/app/zadanieEdit(projektId=${projekt.projektId})}" class="button_edit_dodaj">Dodaj zadanie</a><br>
                                 <a th:href="@{/app/files(projektId=${projekt.projektId})}" class="button_edit_dodaj">Pliki projektu</a><br>
                                 <a th:href="@{/app/projektEdit(projektId=${projekt.projektId})}" class="button_edit">Edytuj</a><br>

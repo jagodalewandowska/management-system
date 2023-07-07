@@ -2,8 +2,10 @@ package com.project.controller;
 
 import com.project.model.FileInfo;
 import com.project.model.Projekt;
+import com.project.model.Student;
 import com.project.service.FilesStorageService;
 import com.project.service.ProjektService;
+import com.project.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
@@ -28,7 +30,7 @@ public class ProjectController {
 
     private ProjektService projektService;
     private FilesStorageService filesStorageService;
-
+    private StudentService studentService;
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
         if (direction.equals("asc")) {
@@ -39,9 +41,10 @@ public class ProjectController {
         return Sort.Direction.ASC;
     }
 
-    public ProjectController(ProjektService projektService, FilesStorageService filesStorageService) {
+    public ProjectController(ProjektService projektService, FilesStorageService filesStorageService, StudentService studentService) {
         this.projektService = projektService;
         this.filesStorageService = filesStorageService;
+        this.studentService = studentService;
     }
 
     @GetMapping({"","/projektList"})
@@ -92,9 +95,16 @@ public class ProjectController {
         try {
             Page<FileInfo> fileInfoPage = filesStorageService.getFileInfos(pageable);
             List<FileInfo> files = fileInfoPage.getContent();
+            Page<Student> studentsPage = studentService.getStudenci(pageable);
+            List<Student> students = studentsPage.getContent();
             for (FileInfo file : files) {
                 if (file.getProjekt().getProjektId() == projektId) {
                     filesStorageService.delete(file.getName(), file.getFileId());
+                }
+            }
+            for (Student student : students) {
+                if (student.getProjekt().getProjektId() == projektId) {
+                    studentService.deleteStudent(student.getStudentId());
                 }
             }
             projektService.deleteProjekt(projekt.getProjektId());

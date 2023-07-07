@@ -93,6 +93,7 @@ public class DatabaseInitializer implements CommandLineRunner {
                     student.setRole(Role.USER);
                     student.setNrIndeksu(String.valueOf(1234567+i));
                     student.setStacjonarny(i % 2 == 0);
+                    student.setProjekt(projekt);
 
                     studentRepository.save(student);
                 }

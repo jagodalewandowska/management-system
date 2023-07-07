@@ -32,7 +32,8 @@ public class Student {
     private String password;
 
     private Role role;
-    private Set<Projekt> projekty;
+
+    private Projekt projekt;
 
     public String getPassword() {
         return password;
@@ -50,13 +51,6 @@ public class Student {
         this.role = role;
     }
 
-    public Set<Projekt> getProjekty() {
-        return projekty;
-    }
-
-    public void setProjekty(Set<Projekt> projekty) {
-        this.projekty = projekty;
-    }
 
     public Integer getStudentId() {
         return studentId;
@@ -98,6 +92,23 @@ public class Student {
         this.email = email;
     }
 
+    public Projekt getProjekt() {
+        return projekt;
+    }
+
+    public void setProjekt(Projekt projekt) {
+        this.projekt = projekt;
+    }
+
+    public Student(String imie, String nazwisko, String nrIndeksu,
+                   String email, Boolean stacjonarny, Projekt projekt) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.nrIndeksu = nrIndeksu;
+        this.email = email;
+        this.stacjonarny = stacjonarny;
+        this.projekt = projekt;
+    }
 
     public void setStacjonarny(boolean stacjonarny) {
         this.stacjonarny = stacjonarny;
