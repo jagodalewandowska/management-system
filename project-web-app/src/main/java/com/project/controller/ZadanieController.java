@@ -128,4 +128,16 @@ public class ZadanieController {
         model.addAttribute("previousPage", page.equals(0)? 0 : page-1);
         return "zadanieList";
     }
+
+    @GetMapping("/zadanieProjektList")
+    public String projektStudentList(Model model, Pageable pageable,  Integer projektId) {
+        try {
+            model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+            model.addAttribute("zadania", zadanieService.getZadania(pageable).getContent());
+            model.addAttribute("projektId", projektId);
+            return "zadanieProjektList";
+        } catch (HttpStatusCodeException e) {
+            return "404";
+        }
+    }
 }
