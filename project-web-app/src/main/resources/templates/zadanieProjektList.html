@@ -62,20 +62,6 @@
     </table>
   </div>
   <br>
-  <form method="get" action="#" th:action="@{/app/zadanieList/results}" id="previousForm">
-    <input name="size" type="hidden" th:value="${size}">
-    <input name="page" type="hidden" th:value="${previousPage}">
-    <input name="order" type="hidden" th:value="${order}">
-    <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
-    <input th:if="${page>0}" type="submit" value="Poprzednia" class="button_project">
-  </form>
-  <form method="get" action="#" th:action="@{/app/zadanieList/results}" id="nextForm">
-    <input name="size" type="hidden" th:value="${size}">
-    <input name="order" type="hidden" th:value="${order}">
-    <input name="page" type="hidden" th:value="${nextPage}">
-    <input th:if="${sort!=null}" name="sort" type="hidden" th:value="${sort}">
-    <input type="submit" value="Następna" class="button_project">
-  </form>
 </div>
 </body>
 </html>
