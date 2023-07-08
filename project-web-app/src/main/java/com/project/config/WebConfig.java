@@ -8,6 +8,7 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -21,6 +22,11 @@ import java.io.IOException;
 @Slf4j
 public class WebConfig implements WebMvcConfigurer {
     private final TokenHolder tokenHolder;
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoderController() {
+        return new BCryptPasswordEncoder();
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

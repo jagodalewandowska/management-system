@@ -1,5 +1,4 @@
 package com.project.controller;
-import com.project.model.Projekt;
 import com.project.model.Role;
 import com.project.model.Student;
 import com.project.service.ProjektService;
@@ -7,10 +6,11 @@ import com.project.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
-import org.springframework.data.domain.Page;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpStatusCodeException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/app")
@@ -26,10 +27,18 @@ public class StudentController {
     private StudentService studentService;
     private ProjektService projektService;
     private Role role[] = Role.values();
+    private BCryptPasswordEncoder passwordEncoderController;
 
-    public StudentController(StudentService studentService, ProjektService projektService) {
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return passwordEncoderController;
+    }
+
+
+    public StudentController(StudentService studentService, ProjektService projektService, BCryptPasswordEncoder passwordEncoderController) {
         this.studentService = studentService;
         this.projektService = projektService;
+        this.passwordEncoderController = passwordEncoderController;
     }
     private Sort.Direction getSortDirection(String direction) {
         direction = direction.toLowerCase();
@@ -76,17 +85,37 @@ public class StudentController {
                                   Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
         model.addAttribute("role", role);
+
         if (bindingResult.hasErrors()) {
             return "studentEdit";
         }
+
         try {
+            List<Student> existingStudents = studentService.getStudenci(pageable).getContent();
+
+            if (student.getProjekt().getProjektId() != null) {
+                Optional<Student> existingStudentOptional = existingStudents.stream()
+                        .filter(s -> s.getStudentId().equals(student.getStudentId()))
+                        .findFirst();
+
+                if (existingStudentOptional.isPresent()) {
+                    Student existingStudent = existingStudentOptional.get();
+                    student.setPassword(existingStudent.getPassword());
+                }
+            } else {
+                student.setPassword(passwordEncoderController.encode(
+                        student.getNazwisko() + student.getImie() + student.getNrIndeksu()));
+            }
+
             studentService.setStudent(student);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "studentEdit";
         }
+
         return "redirect:/app/studentList";
     }
+
 
     @PostMapping(params="cancel", path = "/studentEdit")
     public String studentEditCancel() { // żądanie będzie zawierało parametr 'cancel'
