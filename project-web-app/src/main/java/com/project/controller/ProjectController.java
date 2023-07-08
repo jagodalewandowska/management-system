@@ -103,8 +103,10 @@ public class ProjectController {
                 }
             }
             for (Student student : students) {
-                if (student.getProjekt().getProjektId() == projektId) {
-                    studentService.deleteStudent(student.getStudentId());
+                if (student.getProjekt() != null && student.getProjekt().getProjektId() != null) {
+                    if (student.getProjekt().getProjektId() == projektId) {
+                        studentService.deleteStudent(student.getStudentId());
+                    }
                 }
             }
             projektService.deleteProjekt(projekt.getProjektId());

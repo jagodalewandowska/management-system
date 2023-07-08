@@ -48,6 +48,18 @@ public class Student {
 
     // Tokeny --
 
+
+    public Student(String imie, String nazwisko, String nrIndeksu, String email, boolean stacjonarny, Projekt projekt, String password, Role role) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.nrIndeksu = nrIndeksu;
+        this.email = email;
+        this.stacjonarny = stacjonarny;
+        this.projekt = projekt;
+        this.password = password;
+        this.role = role;
+    }
+
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
