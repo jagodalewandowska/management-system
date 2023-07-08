@@ -70,9 +70,16 @@
                             <option th:each="projekt : ${projekty}" th:value="${projekt.projektId}" th:text="${projekt.nazwa}"></option>
                         </select>
                     </div>
+                    <div th:if="${akcja != 'delete'}">
+                        <label for="rola" class="lbl">Rola</label>
+                        <select class="form-control" id="dropDownListofRole" name="rola">
+                            <option></option>
+                            <option th:each="rola : ${role}" th:value="${rola}" th:text="${rola}"></option>
+                        </select>
+                    </div>
 <!--                    <div>-->
-<!--                        <input type="hidden" name="password" th:value="${password}" />-->
-<!--                        <input type="hidden" name="role" th:value="${role}" />-->
+<!--                        <input name="password" th:value="${password}" />-->
+<!--                        <input name="role" th:value="${role}" />-->
 <!--                    </div>-->
                 </div>
             </form>

@@ -1,5 +1,6 @@
 package com.project.controller;
 import com.project.model.Projekt;
+import com.project.model.Role;
 import com.project.model.Student;
 import com.project.service.ProjektService;
 import com.project.service.StudentService;
@@ -24,6 +25,8 @@ import java.util.List;
 public class StudentController {
     private StudentService studentService;
     private ProjektService projektService;
+    private Role role[] = Role.values();
+
     public StudentController(StudentService studentService, ProjektService projektService) {
         this.studentService = studentService;
         this.projektService = projektService;
@@ -57,6 +60,8 @@ public class StudentController {
     public String studentEdit(@RequestParam(required = false) Integer studentId,
                               Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+        //System.out.println("asd:" + role[0]);
+        model.addAttribute("role", role);
         if (studentId != null) {
             model.addAttribute("student", studentService.getStudent(studentId).get());
         } else {
@@ -70,11 +75,12 @@ public class StudentController {
     public String studentEditSave(@ModelAttribute @Valid Student student, BindingResult bindingResult,
                                   Model model, Pageable pageable) {
         model.addAttribute("projekty", projektService.getProjekty(pageable).getContent());
+        model.addAttribute("role", role);
         if (bindingResult.hasErrors()) {
             return "studentEdit";
         }
         try {
-            student = studentService.setStudent(student);
+            studentService.setStudent(student);
         } catch (HttpStatusCodeException e) {
             bindingResult.rejectValue(Strings.EMPTY, String.valueOf(e.getStatusCode().value()), e.getStatusCode().toString());
             return "studentEdit";
