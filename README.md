@@ -1,4 +1,19 @@
-# Programowanie zwinne
+# management-system
+
+The aim of the project is to create a web application for managing projects, divided into back-end and front-end. Additionally, it utilizes the Spring Boot framework and Gradle as the build tool.
+
+The tasks that the web application fulfills include:
+- Securing data and the application against unauthorized access.
+- Implementing a data transmission encryption protocol.
+- Providing separate permissions for the instructor and students.
+- Conducting unit and integration testing.
+- Offering full functionality that allows adding, modifying, and deleting data for projects, tasks, and students.
+- Implementing pagination, searching, and sorting of project and student data.
+- Enabling file uploads to the server and downloads of files associated with specific projects or tasks.
+- Providing a public chat that uses a bidirectional WebSocket channel.
+- Implementing a registration mechanism within the application.
+
+---
 
 https://trello.com/b/9RUZ5X2m/22032023
 ---
